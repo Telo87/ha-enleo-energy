@@ -1,0 +1,30 @@
+name: ENLEO-Energy
+version: "0.16.0"
+slug: enleo
+description: >-
+  Energie- und Lade-Optimierer für PV, Batterie und dynamischen Strompreis –
+  vergleicht PV-Prognosen mit der echten Erzeugung, lernt daraus und plant den Akku.
+url: https://github.com/Telo87/ha-enleo-energy
+# Fertiges Abbild aus dem Release-Workflow ("Build") – Home Assistant lädt es, statt selbst zu bauen.
+# Das Paket muss auf GitHub öffentlich sein.
+image: ghcr.io/telo87/enleo
+arch:
+  - aarch64
+  - amd64
+init: false
+ingress: true
+panel_icon: mdi:solar-power-variant
+panel_title: ENLEO-Energy
+homeassistant_api: true
+# Direktzugriff ohne Home Assistant (z. B. als App auf dem Handy): standardmäßig aus.
+# Aktiv erst, wenn hier ein Port freigegeben UND unten ein Passwort gesetzt ist.
+ports:
+  8099/tcp: null
+ports_description:
+  8099/tcp: Direktzugriff ohne Home Assistant (nur mit Passwort)
+options:
+  log_level: info
+  direct_password: ""
+schema:
+  log_level: list(debug|info|warning|error)
+  direct_password: password?
