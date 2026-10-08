@@ -1,9 +1,13 @@
 # ENLEO-Energy – Dokumentation
 
-ENLEO-Energy sammelt PV-Prognosen mehrerer Wetterdienste, vergleicht sie mit der tatsächlichen
-Erzeugung deiner Anlagen und zeigt dynamische Strompreise. Diese Version (0.1) ist die
-**Datengrundlage**. Die eigene, lernende Prognose und die Steuerung von Batterie, E-Auto und
-Heizstab bauen darauf auf.
+> 🧪 **Testphase:** ENLEO-Energy prognostiziert, plant und empfiehlt – es **steuert den Speicher noch nicht**.
+> Die automatische Steuerung folgt, sobald die Auswertungen über einen längeren Zeitraum zeigen, dass Prognose
+> und Planung verlässlich sind. Bis dahin ändert das Add-on nichts an deiner Anlage.
+
+ENLEO-Energy sammelt PV-Prognosen mehrerer Wetterdienste, vergleicht sie mit der tatsächlichen Erzeugung deiner
+Anlagen und lernt daraus eine eigene Prognose. Zusammen mit der Verbrauchsprognose und den dynamischen
+Strompreisen entsteht ein Fahrplan für den Heimspeicher; jede Empfehlung wird festgehalten und mit den Messwerten
+nachgerechnet.
 
 ## Erste Schritte
 
@@ -19,12 +23,12 @@ Nach dem Speichern lädt ENLEO-Energy im Hintergrund:
 - die **Messwerte der letzten 90 Tage** aus der Langzeitstatistik von Home Assistant,
 - das **Prognose-Archiv** der Wettermodelle für denselben Zeitraum.
 
-Der **Prognose-Check** zeigt damit schon nach wenigen Minuten, welche Quelle bei dir am
+Die Seite **Prognosegüte** zeigt damit schon nach wenigen Minuten, welche Quelle bei dir am
 genauesten ist. Er muss nicht erst wochenlang Daten sammeln.
 
-## Einrichtung prüfen
+## Systemprüfung
 
-Die Seite **Einrichtung** (unter Verwaltung) prüft, ob alles vorhanden und plausibel ist, und verlinkt zur
+Die Seite **Systemprüfung** (unter Verwaltung) prüft, ob alles vorhanden und plausibel ist, und verlinkt zur
 passenden Einstellung. Geprüft werden unter anderem:
 
 - ob die gewählten Sensoren existieren, die richtige Einheit und eine Langzeitstatistik haben und aktuelle Werte liefern,
@@ -37,8 +41,8 @@ passenden Einstellung. Geprüft werden unter anderem:
 
 Gibt es Probleme, zeigt das Menü deren Anzahl und die Übersicht einen Hinweis.
 
-**Diagnose-Export** (oben auf der Seite Einrichtung) lädt eine ZIP-Datei herunter: die Datenbank des
-Add-ons (alle Prognosen, Messwerte, Preise und das Protokoll), die Einstellungen ohne Solcast-Schlüssel und
+**Diagnose-Export** (oben auf der Seite Systemprüfung) lädt eine ZIP-Datei herunter: die Datenbank des
+Add-ons (alle Prognosen, Messwerte, Preise und die festgehaltenen Empfehlungen), die Einstellungen ohne Solcast-Schlüssel und
 den aktuellen Zustand (Plan mit Erklärung, Live-Werte, gelernte Gewichte, Status der Datenquellen). Damit lässt
 sich alles außerhalb von Home Assistant nachrechnen, etwa für eine ausführliche Fehlersuche. Die Datei enthält
 den Standort und stündliche Verbrauchs- und Erzeugungswerte – nur weitergeben, wem du das anvertraust.
@@ -61,7 +65,7 @@ vergleicht die Summe mit dem Sensor. Die Wechselrichter-Grenze (Erweitert) gilt 
 
 Liefert der Wechselrichter die Strings einzeln (z. B. Spannung und Strom je MPPT-Eingang), kannst du
 in Home Assistant je String einen Leistungssensor anlegen und daraus zwei getrennte Anlagen machen.
-Dann zeigt der Prognose-Check sogar, welches Modell Osten und Westen jeweils besser trifft.
+Dann zeigt die Prognosegüte sogar, welches Modell Osten und Westen jeweils besser trifft.
 
 ## Prognosequellen
 
@@ -79,7 +83,7 @@ sofort neu.
 
 Standardmäßig sind alle Modelle außer UK Met Office aktiv – dessen Feinmodell deckt nur Großbritannien ab.
 KNMI Harmonie und DMI Harmonie rechnen wie ICON-D2 mit 2 km Auflösung und decken Mitteleuropa bzw.
-Nordwesteuropa ab. Welches Modell an deinem Standort am besten trifft, zeigt der Prognose-Check; schwache
+Nordwesteuropa ab. Welches Modell an deinem Standort am besten trifft, zeigt die Prognosegüte; schwache
 Modelle kannst du abschalten, das Lernmodell gewichtet sie ohnehin nach ihrem bisherigen Fehler.
 
 **Solcast einrichten:** Unter Einstellungen › Prognosequellen führt der Knopf „Anleitung“ durch die
@@ -92,7 +96,7 @@ Süden 180°). Danach die Resource-ID bei der PV-Anlage und den API-Schlüssel b
 Jede Prognose wird für jede Stunde in zwei Varianten gespeichert:
 
 - **Vortag:** die letzte Prognose, die vor Mitternacht vorlag. Auf ihr beruht die Planung für den nächsten Tag, z. B. ob die Batterie nachts günstig aus dem Netz geladen wird.
-- **Kurzfristig:** die letzte Prognose, bevor die Stunde begann.
+- **Kurz vorher:** die letzte Prognose, bevor die Stunde begann.
 
 ## Eigene Prognose „ENLEO-Energy (lernend)“
 
@@ -105,15 +109,15 @@ ENLEO-Energy baut aus allen Quellen eine eigene Prognose je Anlage:
 3. **Spanne (80 %):** aus der Verteilung der bisherigen Fehler in derselben Wetterlage – so eingestellt, dass
    die Erzeugung in 8 von 10 Stunden innerhalb des grauen Bandes liegt (an echten Daten nachgeprüft).
 
-Gelernt wird **jede Stunde neu** und rückwirkend Tag für Tag nur aus den Tagen davor. Im Prognose-Check
+Gelernt wird **jede Stunde neu** und rückwirkend Tag für Tag nur aus den Tagen davor. In der Prognosegüte
 tritt sie daher fair gegen die Wetterdienste an.
 
 ### Live-Korrektur
 
 Die gemessene PV-Leistung der letzten Stunde wird mit der Prognose verglichen. Die Abweichung korrigiert
 die laufende Stunde (40 %), die nächste (20 %) und die übernächste (10 %). Stärkere Gewichte reagieren an
-echten Daten zu sehr auf einzelne Wolken und machen die Prognose schlechter. Im Prognose-Check erscheint
-sie unter „Kurzfristig“ als „ENLEO-Energy (live korrigiert)“; der Planer rechnet damit.
+echten Daten zu sehr auf einzelne Wolken und machen die Prognose schlechter. In der Prognosegüte erscheint
+sie unter „kurz vorher“ als „ENLEO-Energy (live korrigiert)“; der Planer rechnet damit.
 
 ### Ausrichtung prüfen
 
@@ -123,7 +127,7 @@ Form, nicht die Höhe. Eine falsch eingetragene Ausrichtung macht alle Wetterdie
 der Vorschlag lässt sich mit einem Klick übernehmen.
 
 Die Prüfung läuft außerdem **automatisch einmal pro Woche** für jede Anlage mit Messsensor. Das Ergebnis steht in
-der Liste unter der Anlage und in der Einrichtung; ein Hinweis erscheint nur, wenn die Messwerte zu einer anderen
+der Liste unter der Anlage und in der Systemprüfung; ein Hinweis erscheint nur, wenn die Messwerte zu einer anderen
 Ausrichtung deutlich besser passen (mindestens 5 % weniger Abweichung). Übernommen wird nichts von selbst.
 
 Nicht jede Anlage lässt sich so prüfen: Bei manchen Belegungen – vor allem flach und zu gleichen Teilen nach Ost und
@@ -145,7 +149,7 @@ Aus Hausverbrauch minus E-Auto minus Heizstab (Einstellungen › Sensoren) ergib
 Feiertage des in Home Assistant eingestellten Landes), jüngere Wochen zählen mehr; hängt der Verbrauch
 erkennbar von der Außentemperatur ab, wird das berücksichtigt. Zusätzlich folgt die Prognose zur Hälfte dem
 Verbrauchsniveau der letzten drei Tage – etwa wenn Besuch da ist oder ein neues Gerät läuft. E-Auto und
-Heizstab sind steuerbar und werden später gezielt eingeplant. Vergleichsmaßstab im Prognose-Check
+Heizstab sind steuerbar und werden später gezielt eingeplant. Vergleichsmaßstab in der Prognosegüte
 (Auswahl „Grundverbrauch“) ist „Wie vor einer Woche“.
 
 ## Planung
@@ -154,12 +158,12 @@ Die Seite **Planung** rechnet alle 5 Minuten den günstigsten Fahrplan für den 
 der bekannten Strompreise (die Preise für morgen erscheinen gegen 13 Uhr). **„Warum dieser Plan?“** erklärt
 jede Entscheidung aus dem aktuellen Plan: was ohne Eingriff passieren würde (wann der Akku leer wäre und was
 Netzstrom danach kostet), für welche Stunden gehaltene oder gekaufte Energie aufgehoben wird und was das je
-kWh bringt – oder, wenn der Akku im Eigenverbrauch bleibt, warum sich kein Eingriff lohnt. Im Stundenplan
+kWh bringt – oder, wenn der Akku im Normalbetrieb bleibt, warum sich kein Eingriff lohnt. Im Stundenplan
 steht die Begründung beim Überfahren einer Stunde. Für jede Stunde gibt es drei Möglichkeiten:
 
 | Modus | Bedeutung |
 |---|---|
-| Eigenverbrauch | Der Akku arbeitet wie gewohnt: PV-Überschuss laden, Verbrauch decken |
+| Normalbetrieb | Der Akku arbeitet wie gewohnt: PV-Überschuss laden, Verbrauch decken |
 | Akku halten | Der Akku wird nicht entladen – die Energie wird für spätere, teurere Stunden aufgespart |
 | Aus dem Netz laden | Günstiger Netzstrom wird eingespeichert, weil er später teureren Netzstrom ersetzt |
 
@@ -168,15 +172,15 @@ aktuelle Ladezustand, die Akku-Daten (Einstellungen › Batterie) und die Stromp
 Ende noch im Akku ist, wird mit einem vorsichtigen Preis bewertet, damit der Plan den Akku nicht
 künstlich leerfährt. Umgeschaltet wird nur, wenn es über den ganzen Zeitraum mindestens 1 ct spart.
 
-Mit dem **Sicherheitsabschlag** (Einstellungen › Batterie) rechnet der Planer mit weniger Sonne, als die eigene
-Prognose sagt. Wie viel, lernt ENLEO-Energy aus ganzen Tagen: „Vorsichtig“ nimmt den Tagesertrag an, der nur an einem
+Mit der Einstellung **Vorsicht beim PV-Ertrag** (Einstellungen › Batterie) rechnet der Planer mit weniger Sonne, als die eigene
+Prognose sagt. Wie viel, lernt ENLEO-Energy aus ganzen Tagen: „Hoch“ nimmt den Tagesertrag an, der nur an einem
 von zehn Tagen unterschritten wird, „Mittel“ die Hälfte dieses Abschlags. Der Abschlag gilt für den ganzen Tag, weil
 sich Abweichungen einzelner Stunden über den Tag weitgehend ausgleichen – die Summe der unteren Stundengrenzen wäre
 ein Tag, den es praktisch nie gibt. Für heute und morgen wird er getrennt bestimmt (die Prognose für heute ist
 genauer). Solange weniger als 14 vergleichbare Tage vorliegen, gilt die untere Grenze der Stundenspanne. So bleibt der
 Akku eher für den Abend gefüllt, wenn der Tag trüber wird als erwartet.
 
-Die **Reichweite** zeigt, wie lange der Akku beim aktuellen Hausverbrauch bis zur Reserve reicht, und
+Die **Reichweite** zeigt, wie lange der Akku beim aktuellen Hausverbrauch bis zum Mindest-Ladestand reicht, und
 wann er laut Prognose (mit PV-Erzeugung) leer bzw. wieder voll ist.
 
 ENLEO-Energy **steuert den Akku noch nicht** – der Plan ist eine Empfehlung, die du in der Oberfläche siehst.
@@ -217,7 +221,7 @@ liegt der Wert meist niedriger, weil der Speicher selbst Strom braucht.
 
 Ist ein Sensor für die Akku-Leistung eingetragen, misst ENLEO-Energy den Wert selbst: geladene gegen entladene
 Energie der letzten bis zu 90 Tage, sobald das 15-Fache der Kapazität durch den Akku gegangen ist. Das Ergebnis
-steht unter Einstellungen › Batterie neben dem Feld und in der Einrichtung. Übernommen wird es nicht von selbst.
+steht unter Einstellungen › Batterie neben dem Feld und in der Systemprüfung. Übernommen wird es nicht von selbst.
 
 ## Regelung des Speichers
 
@@ -225,7 +229,7 @@ Viele Speicher regeln beim Entladen nicht exakt auf null: Während der Akku das 
 Netzbezug (oft 20–50 Wh pro Stunde). ENLEO-Energy erkennt das selbst aus den Messwerten der letzten zwei Wochen –
 aus den Stunden ohne PV, in denen der Akku für die ganze Stunde reichte und der Verbrauch innerhalb seiner Leistung
 lag. Der mittlere Netzbezug dieser Stunden steht im Plan in den Stunden, in denen der Akku entlädt, und in der
-Nachrechnung des Protokolls. Liegt er unter 5 Wh pro Stunde oder gibt es weniger als zwölf solcher Stunden, nimmt
+Nachrechnung auf der Seite Ersparnis. Liegt er unter 5 Wh pro Stunde oder gibt es weniger als zwölf solcher Stunden, nimmt
 ENLEO-Energy nichts an – einstellen muss man dafür nichts.
 
 ## Heizstab mit Überschuss-Regelung
@@ -236,7 +240,9 @@ ENLEO-Energy lernt aus den Messwerten der letzten zwei Wochen, welchen Anteil de
 aufnimmt (bis zur eingetragenen maximalen Leistung), und zieht diesen Anteil im Plan von der Einspeisung ab. Wann
 der Pufferspeicher voll ist, steckt damit in den Messwerten; ein Temperaturfühler ist nicht nötig.
 
-## Plan-Check
+## Plan gegen Messung
+
+*Zu finden unter **Auswertung** – die vier Reiter Prognosegüte, Plan gegen Messung, Ersparnis und Kosten stehen dort unter der Kopfzeile.*
 
 Vergleicht für einen Tag den Plan mit der Wirklichkeit: Was ENLEO-Energy zu Beginn jeder Stunde erwartet hat
 (Prognose für PV und Grundverbrauch und was daraus für Akku und Netz folgt) gegen das, was in der Stunde gemessen
@@ -246,9 +252,9 @@ Stunden. Stunden, in denen der Plan den Akku pausiert („Akku halten“) oder a
 Diagrammen farbig hinterlegt.
 
 Mit **„Plan vom“** wählst du, wie weit im Voraus der Plan gemacht wurde: zu Beginn jeder Stunde, kurz nach
-Mitternacht für den ganzen Tag („Tagesbeginn“) oder am Vortag, sobald der Plan den Tag zum ersten Mal enthielt
+Mitternacht für den ganzen Tag („vom Tagesbeginn“) oder am Vortag, sobald der Plan den Tag zum ersten Mal enthielt
 (meist gegen 13 Uhr, wenn die Preise für morgen kommen). Je weiter im Voraus, desto größer die Abweichung – das
-zeigt, wie verlässlich die Planung über Nacht und für den nächsten Tag ist. „Tagesbeginn“ und „Vortag“ gibt es
+zeigt, wie verlässlich die Planung über Nacht und für den nächsten Tag ist. „vom Tagesbeginn“ und „vom Vortag“ gibt es
 ab dem ersten Tag nach der Einrichtung.
 
 Der Plan kennt den Grundverbrauch und den üblichen Anteil eines Überschuss-Heizstabs; das E-Auto ist nicht planbar.
@@ -256,7 +262,9 @@ Lädt das Auto oder läuft der Heizstab anders als üblich, weichen Netzbezug, E
 Erklärung auf der Seite. Solange ENLEO-Energy den Akku nicht steuert, zeigt der Plan bei „Akku halten“ und „Aus dem
 Netz laden“, was passiert wäre, wenn die Empfehlung befolgt worden wäre.
 
-## Protokoll
+## Ersparnis
+
+*Zu finden unter **Auswertung** – die vier Reiter Prognosegüte, Plan gegen Messung, Ersparnis und Kosten stehen dort unter der Kopfzeile.*
 
 Jede Stunde hält ENLEO-Energy fest, was es zu Beginn der Stunde empfohlen hat – mit Preis, PV- und
 Verbrauchsprognose sowie geplantem und gemessenem Ladezustand. Sobald die Messwerte der Stunde da sind,
@@ -264,7 +272,7 @@ rechnet es für jeden Tag drei Stromrechnungen aus den **echten** Werten:
 
 | Rechnung | Bedeutung |
 |---|---|
-| ohne ENLEO-Energy | Akku im Eigenverbrauch – so, wie er tatsächlich lief |
+| ohne ENLEO-Energy | Akku im Normalbetrieb – so, wie er tatsächlich lief |
 | mit ENLEO-Energy | die Empfehlungen, die aus den Prognosen entstanden, wären befolgt worden |
 | optimal | im Nachhinein bestmöglicher Fahrplan mit perfektem Wissen |
 
@@ -275,7 +283,9 @@ einschließlich E-Auto. Ein Heizstab, der nur mit PV-Überschuss läuft (Einstel
 nimmt in der Nachrechnung nur auf, was sonst eingespeist würde. Zur Kontrolle steht daneben die gemessene
 Rechnung aus Netzbezug und Einspeisung.
 
-## Prognose-Check
+## Prognosegüte
+
+*Zu finden unter **Auswertung** – die vier Reiter Prognosegüte, Plan gegen Messung, Ersparnis und Kosten stehen dort unter der Kopfzeile.*
 
 | Kennzahl | Bedeutung |
 |---|---|
@@ -352,22 +362,22 @@ Messwerte, Einstellungen, Standort, Namen von Sensoren oder Zugangsdaten werden 
 die bei jeder Internetverbindung anfällt, wird vom Dienst nicht gespeichert. Gezählt wird nur, wie viele Anfragen
 pro Tag und Version eingehen – daraus ergibt sich, wie viele Installationen mit welcher Version laufen.
 
-Abschalten: Einstellungen › Darstellung › **Versionsprüfung**. Danach wird nichts mehr gesendet, und es erscheinen
+Abschalten: Einstellungen › System › **Versionsprüfung**. Danach wird nichts mehr gesendet, und es erscheinen
 keine Hinweise mehr. Ohne Internetverbindung läuft ENLEO-Energy unverändert weiter.
 
 ## Datensicherung und Umzug
 
-Unter Einstellungen › **Datensicherung** lässt sich der gesamte Bestand einer Installation als eine Datei
+Unter Einstellungen › **System** lässt sich der gesamte Bestand einer Installation als eine Datei
 exportieren und in einer anderen Installation wieder importieren:
 
 - **Daten exportieren** lädt eine ZIP-Datei herunter. Sie enthält die Datenbank (Messwerte, Prognosen aller Quellen,
-  Preise, Protokoll und damit alles, woraus gelernt wird) und sämtliche Einstellungen.
+  Preise, festgehaltene Empfehlungen und damit alles, woraus gelernt wird) und sämtliche Einstellungen.
 - **Daten importieren** ersetzt alle Daten und Einstellungen der Installation durch den Inhalt einer solchen Datei.
   Sie wird vorher geprüft; ist sie beschädigt oder keine Datensicherung, bleibt alles unverändert. Danach startet die
   Berechnung neu.
 
 Die Datei enthält den Standort, stündliche Verbrauchs- und Erzeugungswerte und – falls eingetragen – den
-Solcast-Schlüssel. Sie gehört nicht in fremde Hände. Der Diagnose-Export (Seite Einrichtung) ist etwas anderes: Er
+Solcast-Schlüssel. Sie gehört nicht in fremde Hände. Der Diagnose-Export (Seite Systemprüfung) ist etwas anderes: Er
 enthält keine Schlüssel und lässt sich nicht importieren.
 
 Eine Datensicherung aus der Vorgängerversion lässt sich ebenfalls importieren – so zieht eine bestehende
