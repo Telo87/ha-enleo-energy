@@ -126,6 +126,11 @@ Die Prüfung läuft außerdem **automatisch einmal pro Woche** für jede Anlage 
 der Liste unter der Anlage und in der Einrichtung; ein Hinweis erscheint nur, wenn die Messwerte zu einer anderen
 Ausrichtung deutlich besser passen (mindestens 5 % weniger Abweichung). Übernommen wird nichts von selbst.
 
+Nicht jede Anlage lässt sich so prüfen: Bei manchen Belegungen – vor allem flach und zu gleichen Teilen nach Ost und
+West – ändert eine Drehung die Tageskurve kaum, die Messwerte passen dann zu vielen Ausrichtungen gleich gut. In
+diesem Fall steht dort „Ausrichtung aus den Messwerten nicht bestimmbar“; die eingetragenen Werte bleiben, und der
+Systemwirkungsgrad wird trotzdem verglichen.
+
 Dieselbe Prüfung vergleicht den **Systemwirkungsgrad**: wie hoch die gemessene Kurve in klaren Stunden gegenüber
 der berechneten liegt. Der Wert fasst alle Verluste zwischen Modul und Zähler zusammen (Wechselrichter, Kabel,
 Verschmutzung, Alterung) – und auch Abweichungen der eingetragenen Leistung oder des Wettermodells. Er lässt sich
@@ -163,9 +168,13 @@ aktuelle Ladezustand, die Akku-Daten (Einstellungen › Batterie) und die Stromp
 Ende noch im Akku ist, wird mit einem vorsichtigen Preis bewertet, damit der Plan den Akku nicht
 künstlich leerfährt. Umgeschaltet wird nur, wenn es über den ganzen Zeitraum mindestens 1 ct spart.
 
-Mit dem **Sicherheitsabschlag** (Einstellungen › Batterie) rechnet der Planer bei unsicherer
-PV-Prognose mit weniger Sonne („Vorsichtig“ = untere Grenze der Spanne). So bleibt der Akku eher für den
-Abend gefüllt, wenn der Tag trüber wird als erwartet.
+Mit dem **Sicherheitsabschlag** (Einstellungen › Batterie) rechnet der Planer mit weniger Sonne, als die eigene
+Prognose sagt. Wie viel, lernt ENLEO-Energy aus ganzen Tagen: „Vorsichtig“ nimmt den Tagesertrag an, der nur an einem
+von zehn Tagen unterschritten wird, „Mittel“ die Hälfte dieses Abschlags. Der Abschlag gilt für den ganzen Tag, weil
+sich Abweichungen einzelner Stunden über den Tag weitgehend ausgleichen – die Summe der unteren Stundengrenzen wäre
+ein Tag, den es praktisch nie gibt. Für heute und morgen wird er getrennt bestimmt (die Prognose für heute ist
+genauer). Solange weniger als 14 vergleichbare Tage vorliegen, gilt die untere Grenze der Stundenspanne. So bleibt der
+Akku eher für den Abend gefüllt, wenn der Tag trüber wird als erwartet.
 
 Die **Reichweite** zeigt, wie lange der Akku beim aktuellen Hausverbrauch bis zur Reserve reicht, und
 wann er laut Prognose (mit PV-Erzeugung) leer bzw. wieder voll ist.
@@ -239,8 +248,8 @@ Diagrammen farbig hinterlegt.
 Mit **„Plan vom“** wählst du, wie weit im Voraus der Plan gemacht wurde: zu Beginn jeder Stunde, kurz nach
 Mitternacht für den ganzen Tag („Tagesbeginn“) oder am Vortag, sobald der Plan den Tag zum ersten Mal enthielt
 (meist gegen 13 Uhr, wenn die Preise für morgen kommen). Je weiter im Voraus, desto größer die Abweichung – das
-zeigt, wie verlässlich die Planung über Nacht und für den nächsten Tag ist. „Tagesbeginn“ und „Vortag“ werden seit
-Version 0.12.1 aufgezeichnet.
+zeigt, wie verlässlich die Planung über Nacht und für den nächsten Tag ist. „Tagesbeginn“ und „Vortag“ gibt es
+ab dem ersten Tag nach der Einrichtung.
 
 Der Plan kennt den Grundverbrauch und den üblichen Anteil eines Überschuss-Heizstabs; das E-Auto ist nicht planbar.
 Lädt das Auto oder läuft der Heizstab anders als üblich, weichen Netzbezug, Einspeisung und Akku vom Plan ab; die gemessenen Mengen stehen in der
@@ -288,6 +297,10 @@ nur mit den Daten, die damals vorlagen.
 
 Mit **Nur gemeinsame Stunden** werden alle Quellen auf denselben Stunden verglichen. Das ist fair,
 wenn Quellen unterschiedlich lange Daten haben, z. B. Forecast.Solar ohne Archiv.
+
+Eine Quelle bekommt erst dann einen Platz in der Rangliste, wenn sie mindestens 60 % der Tage abdeckt, die die am
+besten abgedeckte Quelle hat. Bis dahin steht sie mit „–“ unter den übrigen: Sie wurde an anderen Tagen gemessen und
+ist noch nicht vergleichbar. Auch der Plan wählt seine PV-Prognose nur unter den platzierten Quellen.
 
 ## Strompreis
 
