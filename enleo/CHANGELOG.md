@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.17.3
+
+- Seite Ersparnis lädt schneller: Abgeschlossene Tage werden nur noch einmal am Tag nachgerechnet, nicht bei jedem Aufruf
+- Planung: Die aktuelle Stunde im Fahrplan pulsiert jetzt wirklich – die Animation war seit 0.17.0 ohne Wirkung
+- Fünf Kennzahl-Kacheln stehen auf mittelbreiten Bildschirmen als drei und zwei statt vier und einer einzelnen; am Handy füllt eine einzelne letzte Kachel die Zeile
+- Planung: negative Stromkosten mit richtigem Minuszeichen
+
 ## 0.17.2
 
 **Ersparnis**
