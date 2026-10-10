@@ -223,14 +223,26 @@ Ist ein Sensor für die Akku-Leistung eingetragen, misst ENLEO-Energy den Wert s
 Energie der letzten bis zu 90 Tage, sobald das 15-Fache der Kapazität durch den Akku gegangen ist. Das Ergebnis
 steht unter Einstellungen › Batterie neben dem Feld und in der Systemprüfung. Übernommen wird es nicht von selbst.
 
+Genauso misst ENLEO-Energy die **nutzbare Kapazität**: wie viel Energie für 100 % Ladestand hineingeht und wie viel
+wieder herauskommt, aus den Stunden, in denen sich der Ladestand deutlich bewegt hat. Der Wert erscheint, sobald der
+Akku zusammen etwa dreimal geladen und entladen wurde. Ist die eingetragene Kapazität zu hoch, hält der Akku im Plan
+länger als in Wirklichkeit.
+
 ## Regelung des Speichers
 
-Viele Speicher regeln beim Entladen nicht exakt auf null: Während der Akku das Haus versorgt, bleibt ein kleiner
-Netzbezug (oft 20–50 Wh pro Stunde). ENLEO-Energy erkennt das selbst aus den Messwerten der letzten zwei Wochen –
-aus den Stunden ohne PV, in denen der Akku für die ganze Stunde reichte und der Verbrauch innerhalb seiner Leistung
-lag. Der mittlere Netzbezug dieser Stunden steht im Plan in den Stunden, in denen der Akku entlädt, und in der
-Nachrechnung auf der Seite Ersparnis. Liegt er unter 5 Wh pro Stunde oder gibt es weniger als zwölf solcher Stunden, nimmt
-ENLEO-Energy nichts an – einstellen muss man dafür nichts.
+Kein Speicher folgt dem Haus ohne Verzögerung. Während der Akku das Haus versorgt, bleibt ein kleiner Netzbezug
+(oft 20–50 Wh pro Stunde), und ein wenig fließt ins Netz – umso mehr, je höher und unruhiger der Verbrauch ist.
+Während er aus dem PV-Überschuss lädt, geht ein kleiner Teil an ihm vorbei ins Netz.
+
+ENLEO-Energy lernt das selbst aus den Messwerten der letzten zwei Wochen, getrennt für beide Fälle: aus den Stunden
+ohne PV, in denen der Akku für die ganze Stunde reichte, und aus den Stunden, in denen der Überschuss den noch nicht
+vollen Akku geladen hat. Für jeden Fall entsteht ein Grundwert und ein Anteil, der mit der Energie wächst, die der
+Akku gerade liefert oder aufnimmt. Stunden, in denen das E-Auto lädt, bleiben außen vor.
+
+Das Gelernte steht im Plan (Netzbezug in den Stunden, in denen der Akku arbeitet) und in der Nachrechnung auf der
+Seite Ersparnis. An den Empfehlungen ändert es nichts, weil es mit und ohne Plan gleich anfällt. Zeigt die Anlage
+weniger als 5 Wh pro Stunde oder gibt es weniger als zwölf passende Stunden, nimmt ENLEO-Energy nichts an –
+einstellen muss man dafür nichts.
 
 ## Heizstab mit Überschuss-Regelung
 
@@ -354,7 +366,7 @@ er nicht erreichbar; dort bleibt der Weg über die Home-Assistant-App. Ohne Pass
 
 ## Versionsprüfung
 
-ENLEO-Energy fragt einmal am Tag, ob es zur installierten Version etwas Wichtiges gibt – etwa einen bekannten
+ENLEO-Energy fragt einmal am Tag und nach einem Update, ob es zur installierten Version etwas Wichtiges gibt – etwa einen bekannten
 Fehler oder ein dringendes Update. Gibt es einen Hinweis, erscheint er oben in der Übersicht.
 
 Gesendet wird dabei ausschließlich die **Versionsnummer** von ENLEO-Energy. Es gibt keine Kennung der Installation;

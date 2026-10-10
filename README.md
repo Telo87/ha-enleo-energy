@@ -103,7 +103,7 @@ Die ausführliche Anleitung steht im Add-on unter **Dokumentation**, die Neuerun
 ## Datenschutz
 
 ENLEO-Energy rechnet lokal. Nach außen gehen nur die Abfragen bei den Prognose- und Preisdiensten (mit deinem
-Standort) und einmal am Tag eine **Versionsprüfung**, die ausschließlich die Versionsnummer sendet – keine Kennung,
+Standort) und einmal am Tag (sowie nach einem Update) eine **Versionsprüfung**, die ausschließlich die Versionsnummer sendet – keine Kennung,
 keine Messwerte, keine Einstellungen. Sie lässt sich unter Einstellungen › System abschalten.
 
 ## Lizenz
