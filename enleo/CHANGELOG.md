@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.18.0
+
+**Schatten nach Sonnenstand**
+- Die eigene PV-Prognose lernt Verschattung jetzt nach Sonnenstand: aus welcher Richtung und unter welcher Höhe die Sonne verdeckt ist, etwa von einem Nachbarhaus oder Baum. Was die Sonne bei 30° verdeckt, verdeckt sie auch bei 20° – im Herbst wird der Schatten deshalb schon erwartet, während die Sonne sinkt. Bisher lernte die Korrektur nur je Uhrzeit aus den letzten 30 Tagen und hinkte dem wachsenden Schatten hinterher
+- Genutzt wird der gelernte Schatten nur, wenn er die letzte Woche besser vorhergesagt hätte als die Prognose ohne ihn – eine Anlage ohne Schatten bleibt unverändert
+- Zu sehen unter Prognosegüte › „So rechnet die eigene Prognose“: Richtung und Höhe des Schattens je Anlage
+- Lernen schneller: Die gelernten Modelle vergangener Tage werden in der Datenbank gespeichert und übernommen, solange sich ihre Daten nicht ändern – auch über einen Neustart hinweg. Nur der erste Lauf nach diesem Update rechnet alle Tage einmal neu
+
 ## 0.17.3
 
 - Seite Ersparnis lädt schneller: Abgeschlossene Tage werden nur noch einmal am Tag nachgerechnet, nicht bei jedem Aufruf

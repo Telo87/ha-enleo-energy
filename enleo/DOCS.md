@@ -104,9 +104,15 @@ ENLEO-Energy baut aus allen Quellen eine eigene Prognose je Anlage:
 
 1. **Gewichtung:** Jede Quelle zählt umso mehr, je kleiner ihr Fehler bei dieser Anlage in den letzten
    30 Tagen war – getrennt nach erwarteter Wetterlage.
-2. **Korrektur je Uhrzeit, getrennt für Sonne und Wolken:** Schatten von Bäumen oder Nachbarhäusern
-   wirkt nur bei direkter Sonne; systematische Fehler der Wettermodelle zeigen sich auch bei Bewölkung.
-3. **Spanne (80 %):** aus der Verteilung der bisherigen Fehler in derselben Wetterlage – so eingestellt, dass
+2. **Schatten nach Sonnenstand:** ENLEO-Energy lernt aus den sonnigen Stunden, aus welcher Richtung und unter
+   welcher Höhe die Sonne verdeckt ist – etwa von einem Nachbarhaus oder Baum – und wie viel des Ertrags dann
+   fehlt. Was die Sonne bei 30° Höhe verdeckt, verdeckt sie auch bei 20°: Im Herbst wird der Schatten deshalb
+   schon erwartet, während die Sonne Woche für Woche sinkt. Genutzt wird der gelernte Schatten nur, wenn er die
+   letzte Woche besser vorhergesagt hätte als die Prognose ohne ihn; eine Anlage ohne Schatten behält keinen.
+   Zu sehen unter Prognosegüte › „So rechnet die eigene Prognose“. Einstellen muss man nichts.
+3. **Korrektur je Uhrzeit, getrennt für Sonne und Wolken:** was danach noch systematisch abweicht –
+   Fehler der Wettermodelle zeigen sich auch bei Bewölkung, Abregelung oder Verschmutzung nur bei Sonne.
+4. **Spanne (80 %):** aus der Verteilung der bisherigen Fehler in derselben Wetterlage – so eingestellt, dass
    die Erzeugung in 8 von 10 Stunden innerhalb des grauen Bandes liegt (an echten Daten nachgeprüft).
 
 Gelernt wird **jede Stunde neu** und rückwirkend Tag für Tag nur aus den Tagen davor. In der Prognosegüte

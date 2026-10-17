@@ -52,7 +52,7 @@ Alles läuft **lokal** auf deinem Home Assistant. Es braucht kein Konto und kein
 ### ☀️ PV-Prognose
 - **Mehrere PV-Anlagen** mit eigenem Messsensor, auch mit mehreren Ausrichtungen an einem Wechselrichter (z. B. Ost-West)
 - **Prognosequellen:** DWD ICON-D2 und ICON-EU, ECMWF, NOAA GFS, Météo-France, KNMI Harmonie, DMI Harmonie und weitere über Open-Meteo (kostenlos), Forecast.Solar, optional Solcast
-- **Eigene, lernende Prognose:** gewichtet die Quellen nach ihrer Treffsicherheit bei deinen Anlagen und lernt Verschattung und Abregelung getrennt für Sonne und Wolken – mit Spanne (P10–P90) und Live-Korrektur nach der Erzeugung der letzten Stunde
+- **Eigene, lernende Prognose:** gewichtet die Quellen nach ihrer Treffsicherheit bei deinen Anlagen, lernt Verschattung nach Sonnenstand (Richtung und Höhe von Nachbarhaus oder Baum) und weitere Abweichungen getrennt für Sonne und Wolken – mit Spanne (P10–P90) und Live-Korrektur nach der Erzeugung der letzten Stunde
 - **Sofortiger Rückblick:** Messwerte aus der Langzeitstatistik von Home Assistant und archivierte Modellprognosen der letzten 90 Tage – die Rangliste steht nach wenigen Minuten
 
 ### 🔋 Planung für den Heimspeicher
