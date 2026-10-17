@@ -383,6 +383,21 @@ pro Tag und Version eingehen – daraus ergibt sich, wie viele Installationen mi
 Abschalten: Einstellungen › System › **Versionsprüfung**. Danach wird nichts mehr gesendet, und es erscheinen
 keine Hinweise mehr. Ohne Internetverbindung läuft ENLEO-Energy unverändert weiter.
 
+## Lizenz für die Steuerung
+
+Die automatische Steuerung des Akkus wird im Abo freigeschaltet (sobald es sie gibt). Den Lizenzschlüssel
+(`ENLEO-XXXX-XXXX-XXXX-XXXX`) unter Einstellungen › System eintragen und **Aktivieren** klicken. Prognose,
+Planung und Empfehlungen bleiben ohne Lizenz unverändert.
+
+- Bei der Aktivierung und einmal am Tag danach werden der Lizenzschlüssel, eine zufällige Kennung dieser
+  Installation (entsteht bei der Aktivierung) und die Versionsnummer gesendet – keine Messwerte, keine Einstellungen,
+  kein Standort.
+- Zurück kommt eine digital unterschriebene Freigabe, die ENLEO-Energy selbst prüft. Ohne Internet läuft die
+  Steuerung weiter, bis die Freigabe abläuft (höchstens 35 Tage). Endet das Abo, bleiben 7 Tage Kulanz.
+- Eine Lizenz gilt für eine Installation. Für den Umzug auf einen neuen Rechner die Lizenz auf dem alten Gerät
+  entfernen – oder den Support bitten, das Gerät zurückzusetzen.
+- Der Diagnose-Export enthält den Lizenzschlüssel nicht.
+
 ## Datensicherung und Umzug
 
 Unter Einstellungen › **System** lässt sich der gesamte Bestand einer Installation als eine Datei

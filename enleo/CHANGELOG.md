@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.19.1
+
+**Lizenz für die Steuerung (vorbereitet)**
+- Unter Einstellungen › System gibt es ein Feld für den Lizenzschlüssel. Mit einer Lizenz (Abo) wird die automatische Steuerung des Akkus freigeschaltet, sobald es sie gibt – an Prognose, Planung und Empfehlungen ändert sich ohne Lizenz nichts
+- Die Freigabe ist digital unterschrieben und wird von ENLEO-Energy selbst geprüft; sie wird einmal am Tag erneuert und hält ohne Internet bis zu 35 Tage
+- Gesendet werden dabei nur der Schlüssel, eine zufällige Kennung der Installation und die Versionsnummer – und nur, wenn eine Lizenz eingetragen ist
+- Der Diagnose-Export enthält den Lizenzschlüssel nicht
+
 ## 0.18.0
 
 **Schatten nach Sonnenstand**
