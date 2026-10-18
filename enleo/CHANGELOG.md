@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.25.0
+
+**Tabellen**
+- Sortieren per Klick auf einen Spaltenkopf (auch mit der Tastatur): auf, ab, zurück zur ursprünglichen Reihenfolge – im Plan, bei Ersparnis und Kosten und im Protokoll der Schaltungen
+- Suchfeld für den Plan, die Tage der Ersparnis und das Protokoll, z. B. „Laden“ oder „18:00“
+- Lange Tabellen in Seiten (Plan 24 Zeilen, Tage 14 bzw. 16, Protokoll 10)
+- Zeilen, deren Werte sich beim Neuberechnen geändert haben, leuchten kurz auf
+
+**Oberfläche**
+- Beim Laden einer Seite stehen Platzhalter in der Form dieser Seite (Kennzahlen, Diagramm, Tabelle) – der Inhalt blendet dort ein, wo sein Platzhalter war
+- Mit der Maus: Knöpfe wachsen beim Überfahren leicht, Listeneinträge und anklickbare Zeilen reagieren auf den Zeiger
+
 ## 0.24.1
 
 - Ersparnis: neue Spalte **Akkuladung** – was die Energie, die um Mitternacht noch im Akku steckt, danach an Netzbezug spart. Damit geht jede Zeile auf: gespart = ohne − mit + Akkuladung. An Ladetagen ist die Tagesrechnung „mit ENLEO“ höher als „ohne“, die Ersparnis kommt am nächsten Morgen
