@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.23.3
+
+- Übersicht: Ein Abschnitt der Leiste der nächsten Stunden zeigt beim Überfahren mit der Maus bzw. beim Antippen seine Details – Zeitraum, Betriebsart, Durchschnittspreis und Akku-Ladestand am Ende. Nochmal antippen schließt sie
+- Ein kleiner Pfeil über der Leiste markiert die aktuelle Uhrzeit; die Leiste beginnt dort, wo die aktuelle Betriebsart angefangen hat (höchstens 3 Stunden zurück), und der laufende Abschnitt füllt sich mit der verstrichenen Zeit
+- Darüber steht rechts, wie lange die aktuelle Betriebsart laut Plan noch dauert (z. B. „Akku halten noch 1 h 25 min“)
+- Beginn und Ende jeder Betriebsart sind mit einem kräftigen Strich und der Uhrzeit (fett) markiert; die Uhrzeiten alle 3 Stunden treten zurück, wo es sonst zu eng wird
+
+## 0.23.2
+
+- Übersicht: Die Leiste der nächsten Stunden hat eine Stundeneinteilung – jede volle Stunde ein feiner Strich durch den Balken, jede dritte kräftiger und mit Uhrzeit darunter; über dem laufenden Schritt steht „jetzt“, darunter seine Uhrzeit
+
 ## 0.23.1
 
 - Übersicht: Die Leiste der nächsten Stunden steht auf einer Zeitachse – die Uhrzeiten sitzen genau unter ihrer Stunde und laufen am Handy nicht mehr über den Rand; gleiche Betriebsarten hintereinander bilden einen durchgehenden Abschnitt
