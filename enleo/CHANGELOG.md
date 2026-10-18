@@ -1,5 +1,28 @@
 # Changelog
 
+## 0.23.0
+
+**Planen im Preisraster des Tarifs**
+- Neue Einstellung **Preisraster deines Tarifs** (Einstellungen › Strompreis): stündlich, halbstündlich oder viertelstündlich. Voreingestellt ist stündlich wie bisher; die Seite zeigt, in welchem Raster die Preisquelle liefert
+- Bei viertelstündlichen Preisen plant ENLEO-Energy in Viertelstunden: Laden nur in den günstigsten Viertelstunden, Halten z. B. 45 Minuten statt der ganzen Stunde
+- Die automatische Steuerung schaltet in denselben Schritten; die Betriebsart steht jeweils bis zum Ende des Schritts fest
+- Planung: Fahrplan, Zeitleiste, Preisdiagramm und Tabelle in den Schritten des Tarifs; „Warum dieser Plan?“ nennt Zeiten auf die Viertelstunde
+- Ersparnis und „Plan gegen Messung“ bleiben stündlich (die Messwerte werden stündlich gespeichert)
+
+**Steuerung**
+- Die Betriebsart steht für den ganzen Planschritt fest: Rechnet der Plan zwischendurch neu, wird erst zum nächsten Schritt umgeschaltet (vorher konnte der Speicher innerhalb weniger Minuten zwischen Laden und Normalbetrieb wechseln)
+- Neue Einstellung **Mindestnutzen eines Eingriffs** (Einstellungen › Batterie, voreingestellt 5 ct): Halten oder Laden wird nur geplant, wenn es über den ganzen Zeitraum mindestens so viel spart – bisher 1 ct, was Eingriffe mit kaum messbarem Nutzen zuließ
+- Übersicht: bei eingeschalteter Automatik steht unter der aktuellen Betriebsart die nächste geplante Schaltung
+
+**Oberfläche**
+- Einstellungen in Gruppen (Anlage, Prognose & Preis, Steuerung, App & System); auf breiten Bildschirmen als Menü an der Seite
+- Diagnose-Export enthält den Zustand der Steuerung und den Lizenzstatus (siehe 0.22.1)
+- Demo: auch Netz- und Akkuwerte, damit die Seite Kosten und der Wirkungsgrad gefüllt sind
+
+## 0.22.1
+
+- Diagnose-Export: enthält jetzt auch den Zustand der Steuerung mit den letzten Schaltungen und den Lizenzstatus (ohne Schlüssel) gut lesbar in state.json; das vollständige Protokoll der Schaltungen steht wie bisher in der Datenbank
+
 ## 0.22.0
 
 **Seite Steuerung übersichtlicher**

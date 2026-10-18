@@ -165,7 +165,9 @@ der bekannten Strompreise (die Preise für morgen erscheinen gegen 13 Uhr). **�
 jede Entscheidung aus dem aktuellen Plan: was ohne Eingriff passieren würde (wann der Akku leer wäre und was
 Netzstrom danach kostet), für welche Stunden gehaltene oder gekaufte Energie aufgehoben wird und was das je
 kWh bringt – oder, wenn der Akku im Normalbetrieb bleibt, warum sich kein Eingriff lohnt. Im Stundenplan
-steht die Begründung beim Überfahren einer Stunde. Für jede Stunde gibt es drei Möglichkeiten:
+steht die Begründung beim Überfahren einer Stunde. Geplant wird im **Preisraster des Tarifs**
+(Einstellungen › Strompreis: stündlich, halbstündlich oder viertelstündlich, siehe [Strompreis](#strompreis)).
+Für jeden Planschritt gibt es drei Möglichkeiten:
 
 | Modus | Bedeutung |
 |---|---|
@@ -176,7 +178,9 @@ steht die Begründung beim Überfahren einer Stunde. Für jede Stunde gibt es dr
 Grundlage sind die genaueste PV-Prognose, die Verbrauchsprognose (ohne E-Auto und Heizstab), der
 aktuelle Ladezustand, die Akku-Daten (Einstellungen › Batterie) und die Strompreise. Energie, die am
 Ende noch im Akku ist, wird mit einem vorsichtigen Preis bewertet, damit der Plan den Akku nicht
-künstlich leerfährt. Umgeschaltet wird nur, wenn es über den ganzen Zeitraum mindestens 1 ct spart.
+künstlich leerfährt. Umgeschaltet wird nur, wenn es über den ganzen Zeitraum mindestens den **Mindestnutzen eines
+Eingriffs** spart (Einstellungen › Batterie, voreingestellt 5 ct). Kleinere Vorteile liegen innerhalb der
+Prognoseungenauigkeit; der Akku bleibt dann im Normalbetrieb. Wer weniger Eingriffe möchte, stellt den Wert höher.
 
 Mit der Einstellung **Vorsicht beim PV-Ertrag** (Einstellungen › Batterie) rechnet der Planer mit weniger Sonne, als die eigene
 Prognose sagt. Wie viel, lernt ENLEO-Energy aus ganzen Tagen: „Hoch“ nimmt den Tagesertrag an, der nur an einem
@@ -189,8 +193,8 @@ Akku eher für den Abend gefüllt, wenn der Tag trüber wird als erwartet.
 Die **Reichweite** zeigt, wie lange der Akku beim aktuellen Hausverbrauch bis zum Mindest-Ladestand reicht, und
 wann er laut Prognose (mit PV-Erzeugung) leer bzw. wieder voll ist.
 
-ENLEO-Energy **steuert den Akku noch nicht** – der Plan ist eine Empfehlung, die du in der Oberfläche siehst.
-Entitäten in Home Assistant legt ENLEO-Energy nicht an.
+Ohne Lizenz ist der Plan eine Empfehlung, die du in der Oberfläche siehst; mit Lizenz kann ENLEO-Energy den Akku
+danach schalten (siehe [Automatisch steuern](#automatisch-steuern)). Entitäten in Home Assistant legt ENLEO-Energy nicht an.
 
 ## Kosten
 
@@ -343,6 +347,15 @@ Endpreis = (Börsenpreis + Aufschlag netto) × (1 + MwSt)
 Der Aufschlag netto ist die Summe aus Netzentgelt, Umlagen, Stromsteuer und dem Aufschlag des
 Anbieters, jeweils in ct/kWh ohne Mehrwertsteuer. Die Werte stehen im Vertrag bzw. auf der Rechnung.
 
+**Preisraster deines Tarifs:** wie oft sich dein Strompreis laut Vertrag ändert – stündlich, halbstündlich oder
+viertelstündlich (voreingestellt: stündlich). Viele Anbieter geben die Viertelstundenpreise nur mit Smart Meter
+weiter. Planung und Steuerung arbeiten in diesen Schritten: Bei viertelstündlichen Preisen lädt ENLEO-Energy z. B.
+nur in den günstigsten Viertelstunden einer Stunde oder hält den Akku 45 Minuten statt der ganzen Stunde. Bei
+stündlichen Preisen wird der Mittelwert der Viertelstunden einer Stunde verwendet. Unter der Auswahl steht, in welchem
+Raster die Preisquelle gerade liefert. PV- und Verbrauchsprognose sind stündlich und werden gleichmäßig auf die
+Schritte einer Stunde verteilt. Ersparnis und „Plan gegen Messung“ rechnen weiter in ganzen Stunden, weil die
+Messwerte stündlich gespeichert werden.
+
 Einfacher geht es mit **„Aufschlag aus einem Preis berechnen“**: einen oder mehrere Gesamtpreise aus der
 App des Stromanbieters (viertelstündlicher Preis) mit Tag und Uhrzeit eintragen. ENLEO-Energy
 rechnet `Preis ÷ (1 + MwSt) − Börsenpreis` für jede Viertelstunde aus und übernimmt den Mittelwert.
@@ -427,9 +440,12 @@ Assistant gerade als „unavailable“ meldet, ist rot markiert und wird nicht g
 
 Mit **Akku automatisch nach Plan schalten** übernimmt ENLEO-Energy:
 
-- Zu Beginn jeder Planstunde wird die Betriebsart des Plans ausgeführt. Die Befehle von „Akku halten“ und „Aus dem
-  Netz laden“ werden alle 5 Minuten wiederholt – manche Speicher setzen Vorgaben nach kurzer Zeit zurück.
-- Ist beim Laden der geplante Zielladestand erreicht, wird bis zum Ende der Stunde gehalten.
+- Zu Beginn jedes Planschritts (je nach Preisraster des Tarifs jede Stunde, halbe oder Viertelstunde) wird die
+  Betriebsart des Plans ausgeführt. Die Befehle von „Akku halten“ und „Aus dem Netz laden“ werden alle 5 Minuten
+  wiederholt – manche Speicher setzen Vorgaben nach kurzer Zeit zurück.
+- Die Betriebsart steht fest, sobald der Schritt beginnt. Rechnet der Plan zwischendurch neu (alle 5 Minuten), wird
+  erst zum nächsten Schritt umgeschaltet – der Speicher springt nicht hin und her.
+- Ist beim Laden der geplante Zielladestand erreicht, wird bis zum Ende des Schritts gehalten.
 - „Akku halten“ hält den Ladestand vom Beginn des Haltens (steigt er durch PV, den höheren).
 - Beim Ausschalten, ohne gültige Lizenz, wenn der Hersteller die Steuerung abschaltet, ohne aktuellen Plan und beim
   Beenden des Add-ons wird einmal **Normalbetrieb** ausgeführt.
@@ -437,7 +453,8 @@ Mit **Akku automatisch nach Plan schalten** übernimmt ENLEO-Energy:
   besten ein, zwei Tage so laufen lassen und das **Protokoll der Schaltungen** ansehen, bevor der Probebetrieb
   ausgeschaltet wird.
 
-In der Übersicht steht dann „Geschaltet jetzt“ (bzw. „Probebetrieb“) statt „Empfehlung jetzt“.
+In der Übersicht steht dann „Geschaltet jetzt“ (bzw. „Probebetrieb“) statt „Empfehlung jetzt“, darunter die nächste
+geplante Schaltung („ab 16:00 Uhr wird auf Akku halten geschaltet“).
 
 ### Anleitung: Welche Entitäten in welche Betriebsart?
 
