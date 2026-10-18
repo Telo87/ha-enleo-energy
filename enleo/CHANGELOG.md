@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.23.1
+
+- Übersicht: Die Leiste der nächsten Stunden steht auf einer Zeitachse – die Uhrzeiten sitzen genau unter ihrer Stunde und laufen am Handy nicht mehr über den Rand; gleiche Betriebsarten hintereinander bilden einen durchgehenden Abschnitt
+- Der aktuelle Planschritt pulsiert
+- „Nächste Schaltung“ bricht am Handy als normaler Text um; bei eingeschalteter Automatik entfällt der doppelte Hinweis „unverändert in den nächsten Stunden“
+
 ## 0.23.0
 
 **Planen im Preisraster des Tarifs**
