@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.23.4
+
+- Übersicht: Die Uhrzeiten unter der Leiste der nächsten Stunden überlappen am Handy nicht mehr – der Abstand richtet sich nach der tatsächlichen Breite von Leiste und Uhrzeit (manche Handys vergrößern kleine Schrift)
+- Am Anfang der Leiste kein eigener dicker Strich mehr – dort beginnt die Leiste selbst, die Uhrzeit darunter genügt
+- Abstand zwischen der Leiste und den Knöpfen darunter, wenn sich nichts ändert
+
 ## 0.23.3
 
 - Übersicht: Ein Abschnitt der Leiste der nächsten Stunden zeigt beim Überfahren mit der Maus bzw. beim Antippen seine Details – Zeitraum, Betriebsart, Durchschnittspreis und Akku-Ladestand am Ende. Nochmal antippen schließt sie
