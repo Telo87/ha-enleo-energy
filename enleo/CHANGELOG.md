@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.20.0
+
+**Steuerung einrichten (nur mit Lizenz)**
+- Neuer Bereich Einstellungen › Steuerung: Für Normalbetrieb, Akku halten und Aus dem Netz laden wird festgelegt, was in Home Assistant geschaltet wird – Option wählen, Wert setzen (fest, aktueller Ladestand oder Ladeleistung), Knopf drücken, ein- oder ausschalten
+- Jede Betriebsart lässt sich mit „Jetzt ausführen“ von Hand testen; das Ergebnis jeder Aktion wird angezeigt
+- Ohne gültige Lizenz ist der Bereich nicht sichtbar, und das Add-on nimmt weder Einstellungen noch Schaltbefehle dafür an
+- Automatisch nach Plan geschaltet wird noch nicht – das ist der nächste Schritt
+
 ## 0.19.1
 
 **Lizenz für die Steuerung (vorbereitet)**

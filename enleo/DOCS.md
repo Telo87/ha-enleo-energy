@@ -398,6 +398,25 @@ Planung und Empfehlungen bleiben ohne Lizenz unverändert.
   entfernen – oder den Support bitten, das Gerät zurückzusetzen.
 - Der Diagnose-Export enthält den Lizenzschlüssel nicht.
 
+### Steuerung einrichten (nur mit Lizenz)
+
+Unter Einstellungen › **Steuerung** wird für jede Betriebsart festgelegt, was ENLEO-Energy in Home Assistant
+schaltet – mit den Entitäten des eigenen Speichers, denn jeder Speicher wird anders gesteuert:
+
+| Betriebsart | Bedeutung | typische Aktionen |
+|---|---|---|
+| Normalbetrieb | Der Speicher regelt selbst | erzwungenes Laden/Entladen zurücksetzen, Betriebsmodus „automatisch“, Reserve auf den üblichen Wert |
+| Akku halten | Der Akku gibt nichts ab, darf aber aus PV-Überschuss laden | Reserve bzw. Entladegrenze auf den **aktuellen Ladestand** |
+| Aus dem Netz laden | Der Akku lädt aus dem Netz | „Laden erzwingen“ auf die **Ladeleistung** |
+
+Eine Aktion wählt eine Option (Auswahl-Entitäten), setzt einen Wert (fest, aktueller Ladestand in %, Ladeleistung
+in W aus Einstellungen › Batterie), drückt einen Knopf oder schaltet ein bzw. aus. Bis zu acht Aktionen je
+Betriebsart laufen der Reihe nach ab; schlägt eine fehl, laufen die übrigen trotzdem.
+
+Mit **Jetzt ausführen** lässt sich jede Betriebsart von Hand testen – danach in der App des Speichers prüfen, ob
+er sich wie erwartet verhält, und zum Schluss **Normalbetrieb** ausführen. Wichtig: Was „Akku halten“ verstellt
+(z. B. die Reserve), muss „Normalbetrieb“ wieder zurückstellen. Automatisch nach Plan geschaltet wird noch nicht.
+
 ## Datensicherung und Umzug
 
 Unter Einstellungen › **System** lässt sich der gesamte Bestand einer Installation als eine Datei
