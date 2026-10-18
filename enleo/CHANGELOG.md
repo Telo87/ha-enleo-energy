@@ -1,5 +1,28 @@
 # Changelog
 
+## 0.24.1
+
+- Ersparnis: neue Spalte **Akkuladung** – was die Energie, die um Mitternacht noch im Akku steckt, danach an Netzbezug spart. Damit geht jede Zeile auf: gespart = ohne − mit + Akkuladung. An Ladetagen ist die Tagesrechnung „mit ENLEO“ höher als „ohne“, die Ersparnis kommt am nächsten Morgen
+- Die Tabellen der Seiten Ersparnis, Kosten und Planung passen auch am Desktop und mit breiteren Systemschriften (z. B. Roboto auf Android): weniger Abstand zwischen den Spalten, Spaltenköpfe dürfen zweizeilig werden, kürzere Bezeichnungen
+
+## 0.24.0
+
+**Am Handy besser lesbar**
+- Die Erklärungen unter den Kennzahlen enden nicht mehr mit „…“: bis zu drei Zeilen, lange Texte gekürzt
+- Seite Ersparnis: die Tage am Handy als Karten statt einer Tabelle zum Seitwärtsschieben
+- Seite Kosten: die Tabellen Tage und Monate passen aufs Handy (Ø-Preis und Einspeisung stehen in den Kennzahlen darüber)
+- Planung: der Plan je Stunde bzw. Viertelstunde passt aufs Handy – kurze Namen der Betriebsarten, nur die Uhrzeit mit einer Zeile je Tag; PV und Grundverbrauch stehen im Diagramm darüber
+
+**Bedienung**
+- Die Abschnitte der Leiste der nächsten Stunden lassen sich auch mit der Tastatur wählen (Tab, Enter, Escape) und werden von Vorlesefunktionen angesagt
+- Ein einheitlicher, sichtbarer Rahmen zeigt überall, welches Element die Tastatur gerade gewählt hat
+
+**Sparsamer**
+- Die wandernden Punkte im Energiefluss der Übersicht bewegen sich jetzt mit wenig Rechenaufwand – die Übersicht braucht im Leerlauf etwa ein Fünftel der bisherigen Rechenzeit (schont den Akku von Handy und Tablet)
+
+**Steuerung**
+- Protokoll der Schaltungen: die erste Schaltung nach dem Start des Add-ons (z. B. nach einem Update) ist als „Start des Add-ons“ gekennzeichnet
+
 ## 0.23.4
 
 - Übersicht: Die Uhrzeiten unter der Leiste der nächsten Stunden überlappen am Handy nicht mehr – der Abstand richtet sich nach der tatsächlichen Breite von Leiste und Uhrzeit (manche Handys vergrößern kleine Schrift)
