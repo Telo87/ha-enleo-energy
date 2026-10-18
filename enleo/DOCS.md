@@ -410,12 +410,204 @@ schaltet – mit den Entitäten des eigenen Speichers, denn jeder Speicher wird 
 | Aus dem Netz laden | Der Akku lädt aus dem Netz | „Laden erzwingen“ auf die **Ladeleistung** |
 
 Eine Aktion wählt eine Option (Auswahl-Entitäten), setzt einen Wert (fest, aktueller Ladestand in %, Ladeleistung
-in W aus Einstellungen › Batterie), drückt einen Knopf oder schaltet ein bzw. aus. Bis zu acht Aktionen je
+in W aus Einstellungen › Batterie), drückt einen Knopf oder schaltet ein bzw. aus. Bis zu 16 Aktionen je
 Betriebsart laufen der Reihe nach ab; schlägt eine fehl, laufen die übrigen trotzdem.
 
 Mit **Jetzt ausführen** lässt sich jede Betriebsart von Hand testen – danach in der App des Speichers prüfen, ob
-er sich wie erwartet verhält, und zum Schluss **Normalbetrieb** ausführen. Wichtig: Was „Akku halten“ verstellt
-(z. B. die Reserve), muss „Normalbetrieb“ wieder zurückstellen. Automatisch nach Plan geschaltet wird noch nicht.
+er sich wie erwartet verhält, und zum Schluss **Normalbetrieb** ausführen.
+
+**Jede Betriebsart muss den Speicher vollständig in ihren Zustand bringen**, egal aus welcher Betriebsart sie kommt:
+ENLEO-Energy wechselt auch direkt von „Laden“ auf „Halten“. Was „Laden“ setzt (z. B. eine erzwungene Ladeleistung
+oder einen manuellen Betriebsmodus), müssen „Halten“ und „Normalbetrieb“ zurücknehmen. Eine Entität, die Home
+Assistant gerade als „unavailable“ meldet, ist rot markiert und wird nicht geschaltet.
+
+### Automatisch steuern
+
+Mit **Akku automatisch nach Plan schalten** übernimmt ENLEO-Energy:
+
+- Zu Beginn jeder Planstunde wird die Betriebsart des Plans ausgeführt. Die Befehle von „Akku halten“ und „Aus dem
+  Netz laden“ werden alle 5 Minuten wiederholt – manche Speicher setzen Vorgaben nach kurzer Zeit zurück.
+- Ist beim Laden der geplante Zielladestand erreicht, wird bis zum Ende der Stunde gehalten.
+- „Akku halten“ hält den Ladestand vom Beginn des Haltens (steigt er durch PV, den höheren).
+- Beim Ausschalten, ohne gültige Lizenz, wenn der Hersteller die Steuerung abschaltet, ohne aktuellen Plan und beim
+  Beenden des Add-ons wird einmal **Normalbetrieb** ausgeführt.
+- **Probebetrieb** (beim Einschalten voreingestellt): ENLEO-Energy schreibt nur auf, was es geschaltet hätte. Am
+  besten ein, zwei Tage so laufen lassen und das **Protokoll der Schaltungen** ansehen, bevor der Probebetrieb
+  ausgeschaltet wird.
+
+In der Übersicht steht dann „Geschaltet jetzt“ (bzw. „Probebetrieb“) statt „Empfehlung jetzt“.
+
+### Anleitung: Welche Entitäten in welche Betriebsart?
+
+Jeder Speicher wird anders gesteuert. Die Grundregel ist aber immer gleich:
+
+| Betriebsart | Ziel | was die Aktionen tun müssen |
+|---|---|---|
+| **Normalbetrieb** | Der Speicher regelt selbst wie ohne ENLEO-Energy | **alles zurücknehmen**, was Halten und Laden setzen: erzwungenes Laden/Entladen beenden, Betriebsmodus auf den normalen Eigenverbrauch, Reserve bzw. Entladegrenze auf den üblichen Wert |
+| **Akku halten** | Der Akku gibt nichts ab; PV-Überschuss darf ihn weiter laden | erzwungenes Laden beenden, Eigenverbrauch einstellen, dann die **Entladung sperren**: Reserve auf den **aktuellen Ladestand** oder Entladeleistung auf 0 oder einen Modus „Entladen sperren“ |
+| **Aus dem Netz laden** | Der Akku lädt aus dem Netz | ggf. den Modus wechseln, der Vorgaben zulässt, dann **Laden erzwingen** mit der **Ladeleistung** |
+
+Tipps:
+
+- Die Namen der Entitäten hängen von der Integration und der Sprache von Home Assistant ab. Unten stehen die
+  englischen Namen aus den Integrationen; in der Suche der Steuerung findet man sie auch über die Entitäts-ID.
+- Viele Integrationen legen Steuer-Entitäten erst an, wenn in ihren Optionen der **Schreibzugriff** eingeschaltet
+  ist (siehe jeweils „Voraussetzung“).
+- Zuerst den Modus setzen, dann die Werte – manche Speicher nehmen Werte nur im passenden Modus an.
+- Jede Betriebsart mit **Jetzt ausführen** testen und in der App des Speichers prüfen; zum Schluss Normalbetrieb.
+- Gibt es doppelte Entitäten, die richtige nehmen: die andere ist rot markiert („unavailable“).
+- ENLEO-Energy sendet bei Halten und Laden alle 5 Minuten nur das erneut, was der Speicher zurückgestellt hat –
+  Einstellungen, die der Speicher dauerhaft speichert, werden also nicht ständig neu geschrieben.
+
+Die folgenden Beispiele stammen aus den Quelltexten und Anleitungen der Integrationen (Stand Oktober 2026). Mit
+einem echten Speicher geprüft ist bisher nur die sonnenBatterie; die anderen sind Vorschläge, die vor dem
+automatischen Betrieb mit „Jetzt ausführen“ und im Probebetrieb geprüft werden sollten.
+
+#### sonnenBatterie (Integration „sonnenbatterie“ von weltmeyer) – geprüft
+
+Voraussetzung: In der sonnenBatterie ist der Schreibzugriff der JSON-API eingeschaltet. Erzwungenes Laden wirkt
+nur im Modus **manual** – im Modus automatic übernimmt die eigene Regelung nach etwa 30 Sekunden wieder.
+
+| Betriebsart | Aktionen |
+|---|---|
+| Normalbetrieb | „Reset charge/discharge“ → Drücken · „Operating mode“ → `automatic` · „Set battery reserve (%)“ → fester Wert (üblicher Wert, z. B. 0) |
+| Akku halten | „Reset charge/discharge“ → Drücken · „Operating mode“ → `automatic` · „Set battery reserve (%)“ → aktueller Ladestand |
+| Aus dem Netz laden | „Operating mode“ → `manual` · „Force charge (W)“ → Ladeleistung |
+
+#### Fronius GEN24 / Symo GEN24 mit Speicher, z. B. BYD (Integration „fronius_modbus“ von redpomodoro)
+
+Voraussetzung: Modbus TCP im Wechselrichter freigegeben; zeitgesteuertes Laden in der Fronius-Weboberfläche
+ausschalten. Laut Anleitung ist Netzladen hardwareseitig auf etwa die Hälfte der Ladeleistung begrenzt.
+
+| Betriebsart | Aktionen |
+|---|---|
+| Normalbetrieb | „Storage Control Mode“ → `Auto` |
+| Akku halten | „Storage Control Mode“ → `Block Discharging` |
+| Aus dem Netz laden | „Storage Control Mode“ → `Charge from Grid` · „Grid charge power“ → Ladeleistung (erst den Modus, dann die Leistung – der Wert wird beim Moduswechsel auf 0 gesetzt) |
+
+„Minimum reserve“ nicht zum Halten verwenden: Fällt der Ladestand darunter, lädt der Speicher aus dem Netz nach.
+
+#### SolarEdge mit Speicher (Integration „SolarEdge Modbus Multi“)
+
+Voraussetzung: In den Optionen der Integration „Storage Control“ einschalten (sonst gibt es die Entitäten nicht).
+
+| Betriebsart | Aktionen |
+|---|---|
+| Normalbetrieb | „Storage Control Mode“ → `Maximize Self Consumption` |
+| Akku halten | „Storage Control Mode“ → `Remote Control` · „Storage Command Timeout“ → fester Wert, z. B. 3600 · „Storage Command Mode“ → `Charge from Solar Power` |
+| Aus dem Netz laden | „AC Charge Policy“ → `Always Allowed` · „Storage Control Mode“ → `Remote Control` · „Storage Command Timeout“ → fester Wert, z. B. 3600 · „Storage Command Mode“ → `Charge from Solar Power and Grid` · „Storage Charge Limit“ → Ladeleistung |
+
+Nach Ablauf des Timeouts fällt der Speicher auf den „Storage Default Mode“ zurück – deshalb den Timeout länger als
+5 Minuten wählen.
+
+#### SolaX Gen4/Gen5 (Integration „SolaX Inverter Modbus“ von wills106)
+
+Diese Werte sind für häufiges Schreiben gedacht (sie landen nicht im dauerhaften Speicher). **Nicht** „Charger Use
+Mode“ / „Manual Mode Select“ verwenden: Die werden dauerhaft gespeichert und sollen nicht oft geändert werden.
+
+| Betriebsart | Aktionen |
+|---|---|
+| Normalbetrieb | „Remotecontrol Power Control (mode 1)“ → `Disabled` · „Remotecontrol Trigger (mode 1-7)“ → Drücken |
+| Akku halten | „Remotecontrol Power Control (mode 1)“ → `Enabled No Discharge` · „Remotecontrol Autorepeat Duration (mode 1-9)“ → fester Wert, z. B. 3600 · „Remotecontrol Trigger (mode 1-7)“ → Drücken |
+| Aus dem Netz laden | „Remotecontrol Power Control (mode 1)“ → `Enabled Grid Control` · „Remotecontrol Active Power (mode 1)“ → Ladeleistung · „Remotecontrol Import Limit (mode 1-9)“ → fester Wert über der Ladeleistung · „Remotecontrol Autorepeat Duration (mode 1-9)“ → fester Wert, z. B. 3600 · „Remotecontrol Trigger (mode 1-7)“ → Drücken |
+
+Hinweis: Der Trigger-Knopf wird bei der Wiederholung alle 5 Minuten nicht erneut gedrückt; die Autorepeat-Dauer hält
+die Vorgabe. Die Anleitung der Integration gilt ausdrücklich für Gen4-Hybride.
+
+#### Huawei LUNA2000 (Integration „Huawei Solar“ von wlcrs)
+
+Voraussetzung: Beim Einrichten „Elevate permissions“ ankreuzen.
+
+| Betriebsart | Aktionen |
+|---|---|
+| Normalbetrieb | „Working Mode“ → `Maximise self consumption` · „Maximum discharging power“ → fester Wert (die volle Entladeleistung) |
+| Akku halten | „Working Mode“ → `Maximise self consumption` · „Maximum discharging power“ → fester Wert 0 |
+| Aus dem Netz laden | **nicht mit Entitäten möglich** – das erzwungene Laden gibt es in dieser Integration nur als Dienst (`huawei_solar.forcible_charge_soc`), nicht als Entität. ENLEO-Energy kann bisher nur Entitäten schalten. |
+
+Diese Einstellungen schreibt der Wechselrichter dauerhaft; ENLEO-Energy sendet sie nur, wenn sie abweichen.
+
+#### GoodWe ET/EH/BT (Integration „GoodWe“ von Home Assistant)
+
+| Betriebsart | Aktionen |
+|---|---|
+| Normalbetrieb | „Inverter operation mode“ → `General mode` |
+| Aus dem Netz laden | „Inverter operation mode“ → `Eco charge mode` |
+| Akku halten | **keine passende Entität** in der Integration von Home Assistant (es gibt nur „Depth of discharge (on-grid)“; dafür müsste ENLEO-Energy „100 % minus Ladestand“ senden können). Halten deshalb leer lassen oder wie Normalbetrieb. |
+
+Leistung und Zielladestand des Eco-Lademodus lassen sich in dieser Integration nicht einstellen.
+
+#### Tesla Powerwall (Integration „Tesla Fleet“ bzw. „Teslemetry“)
+
+Voraussetzung: Zugriff mit der Berechtigung für Energiebefehle. Befehle laufen über die Tesla-Cloud und wirken
+mit etwas Verzögerung.
+
+| Betriebsart | Aktionen |
+|---|---|
+| Normalbetrieb | „Operation mode“ → `Self-consumption` · „Backup reserve“ → fester Wert (üblicher Wert, z. B. 20) |
+| Akku halten | „Allow charging from grid“ → Ausschalten · „Operation mode“ → `Self-consumption` · „Backup reserve“ → aktueller Ladestand |
+| Aus dem Netz laden | „Allow charging from grid“ → Einschalten · „Backup reserve“ → fester Wert 100 |
+
+Die Ladeleistung bestimmt die Powerwall selbst. Wenn dauerhaft nicht aus dem Netz geladen werden soll, in
+Normalbetrieb und Halten zusätzlich „Allow charging from grid“ → Ausschalten.
+
+#### Victron mit ESS (Integration „Victron GX modbusTCP“ von sfstar)
+
+Voraussetzung: In den Optionen der Integration die erweiterten Schreib-Optionen einschalten; im GX-Gerät Modbus TCP
+aktivieren. Ungeprüft – Victron bietet viele Wege, hier der einfachste:
+
+| Betriebsart | Aktionen |
+|---|---|
+| Normalbetrieb | „settings ess mode“ → `SELF_CONSUMPTION_WITH_BATTERY_LIFE` (oder `SELF_CONSUMPTION`) · „settings ess acpowersetpoint“ → fester Wert (üblicher Netz-Sollwert, z. B. 0) |
+| Akku halten | „settings ess maxdischargepower“ → fester Wert 0 – in Normalbetrieb wieder auf den üblichen Wert setzen |
+| Aus dem Netz laden | „settings ess mode“ → `KEEP_CHARGED` (lädt bis voll) **oder** „settings ess acpowersetpoint“ → Ladeleistung (positiver Sollwert = Bezug aus dem Netz) |
+
+#### SMA Sunny Tripower Smart Energy / Sunny Boy Storage (Integration „Opti Akku“ von Optic00)
+
+Die SMA-Integration von Home Assistant liest nur Werte; „SMA Devices Plus“ schreibt nur über einen Dienst und nicht
+für den Akku. Entitäten zum Steuern bringt die Integration **„Opti Akku“** (HACS) mit, die den Akku über Modbus
+steuert (laut Anleitung für SMA STP x.0-3SE-40, Home Assistant ab 2026.9.1).
+
+Voraussetzungen: In Opti Akku „Schreibzugriffe freigeben“ einschalten und „Strategie berechnen“ **ausschalten** –
+sonst planen zwei Programme gleichzeitig. Die prognosebasierte Akkusteuerung des SMA Home Managers bzw. im Sunny
+Portal ausschalten, sonst überschreibt sie die Vorgaben etwa alle 4 Minuten. Opti Akku erneuert seine Vorgaben
+selbst (etwa alle 2 Minuten). Ungeprüft – bitte im Probebetrieb kontrollieren.
+
+| Betriebsart | Aktionen |
+|---|---|
+| Normalbetrieb | „Betriebsart“ → `Akku Automatisch` |
+| Akku halten | „Betriebsart“ → `Akku nur Laden` (lädt aus PV, entlädt nicht) |
+| Aus dem Netz laden | „Betriebsart“ → `Akku Netzladen` |
+
+Die Ladeleistung beim Netzladen legt Opti Akku fest. Wer SMA direkt über die Modbus-Integration von Home Assistant
+steuert: Die Register für die Vorgaben (z. B. 40149/40151) lassen sich nur schreiben, nicht lesen – Entitäten
+dafür zeigen nicht den wirklichen Zustand, und ENLEO-Energy kann nicht prüfen, ob der Speicher eine Vorgabe
+zurückgesetzt hat.
+
+#### Deye Hybrid (SUN-…-SG0xLP1, SG04LP3, SG01HP3; Integration „Solarman“ von davidrapan)
+
+Deye lädt aus dem Netz und begrenzt die Entladung über seine sechs **Zeitprogramme** („Time of Use“): In jedem
+Programm steht ein Ladestand („Program N SOC“), unter den der Akku nicht entladen wird, und ob er bis dahin aus dem
+Netz geladen wird („Program N Charging“). ENLEO-Energy setzt deshalb alle sechs Programme gleich.
+
+Einmalig einrichten (in der Deye-App oder über die Entitäten): „Time of Use“ → `Week`, die sechs „Program N Time“
+über den Tag verteilt (z. B. 00:00, 04:00, 08:00, 12:00, 16:00, 20:00), „Program N Power“ auf die gewünschte
+Ladeleistung, „Battery Grid Charging“ → Einschalten. Ungeprüft – bitte im Probebetrieb kontrollieren.
+
+| Betriebsart | Aktionen (je für Program 1 bis 6) |
+|---|---|
+| Normalbetrieb | „Program N Charging“ → `Disabled` · „Program N SOC“ → fester Wert (übliche Untergrenze, z. B. 15) |
+| Akku halten | „Program N Charging“ → `Disabled` · „Program N SOC“ → aktueller Ladestand |
+| Aus dem Netz laden | „Program N Charging“ → `Grid` · „Program N SOC“ → fester Wert 100 |
+
+Das sind 12 Aktionen je Betriebsart (möglich sind bis zu 16). Einfacher, aber von der Integration nicht beschrieben:
+Halten mit „Battery Max Discharging Current“ → fester Wert 0 (in Normalbetrieb wieder auf den üblichen Wert).
+
+#### BYD Battery-Box
+
+Eine BYD Battery-Box wird nicht selbst gesteuert, sondern über den Wechselrichter, an dem sie hängt – z. B. Fronius
+(siehe oben), Kostal, SMA oder GoodWe. Die Integration für die Battery-Box (redpomodoro) liest nur Werte. Die
+Aktionen kommen also von der Integration des Wechselrichters.
+
 
 ## Datensicherung und Umzug
 

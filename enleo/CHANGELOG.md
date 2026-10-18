@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.21.0
+
+**Automatisch steuern (nur mit Lizenz)**
+- Einstellungen › Steuerung: „Akku automatisch nach Plan schalten“. Zu Beginn jeder Planstunde wird die Betriebsart des Plans ausgeführt; Halten und Laden werden alle 5 Minuten wiederholt, falls der Speicher Vorgaben zurücksetzt
+- Ist der Zielladestand erreicht, wird bis zum Ende der Stunde gehalten; Halten hält den Ladestand vom Beginn des Haltens
+- Probebetrieb (voreingestellt): nur aufschreiben, was geschaltet würde – mit Protokoll der Schaltungen
+- Rückkehr in den Normalbetrieb beim Ausschalten, ohne gültige Lizenz, bei abgeschalteter Steuerung durch den Hersteller, ohne aktuellen Plan und beim Beenden des Add-ons
+- Übersicht: „Geschaltet jetzt“ bzw. „Probebetrieb“ statt „Empfehlung jetzt“
+
+**Einrichten**
+- Aktionen lassen sich mit Pfeilen verschieben
+- Entitäten, die Home Assistant als „unavailable“ meldet, sind rot markiert und werden nicht geschaltet – bisher meldete Home Assistant dabei keinen Fehler, und es passierte nichts
+- Bei Halten und Laden sendet ENLEO-Energy alle 5 Minuten nur das erneut, was der Speicher zurückgestellt hat (Knöpfe nicht) – Einstellungen, die manche Speicher dauerhaft speichern, werden so nicht ständig neu geschrieben
+- Bis zu 16 Aktionen je Betriebsart (Deye braucht 12)
+- Anleitung in der Dokumentation: welche Entitäten in welche Betriebsart, mit Beispielen für sonnenBatterie, Fronius, SolarEdge, SolaX, Huawei, GoodWe, Tesla Powerwall, Victron, SMA, Deye und BYD
+
 ## 0.20.0
 
 **Steuerung einrichten (nur mit Lizenz)**
