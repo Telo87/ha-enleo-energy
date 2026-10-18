@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.22.0
+
+**Seite Steuerung übersichtlicher**
+- Oben der Zustand der Automatik auf einen Blick: was gerade geschaltet ist (oder im Probebetrieb geschaltet würde), seit wann und warum, dazu die Schalter „Nach Plan schalten“ und „Probebetrieb“
+- Die drei Betriebsarten als Reiter statt drei langer Karten untereinander; jeder Reiter zeigt die Zahl seiner Aktionen, rot bei einer nicht erreichbaren Entität
+- Aktionen nummeriert, „Jetzt ausführen“ direkt unter den Aktionen
+- Die Erklärung der Automatik und das Protokoll der Schaltungen eingeklappt
+- Neuer Knopf **Anleitung für Speicher**: Speicher in einer Auswahlliste wählen (sonnenBatterie, Fronius, SolarEdge, SolaX, Huawei, GoodWe, Tesla Powerwall, Victron, SMA, Deye, BYD) und die Aktionen je Betriebsart samt Voraussetzungen direkt auf der Seite lesen
+- Am Handy kurze Reiternamen; ein Wechsel des Reiters zählt nicht mehr als ungespeicherte Änderung
+
 ## 0.21.0
 
 **Automatisch steuern (nur mit Lizenz)**

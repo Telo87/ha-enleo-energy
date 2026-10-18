@@ -401,7 +401,9 @@ Planung und Empfehlungen bleiben ohne Lizenz unverändert.
 ### Steuerung einrichten (nur mit Lizenz)
 
 Unter Einstellungen › **Steuerung** wird für jede Betriebsart festgelegt, was ENLEO-Energy in Home Assistant
-schaltet – mit den Entitäten des eigenen Speichers, denn jeder Speicher wird anders gesteuert:
+schaltet – mit den Entitäten des eigenen Speichers, denn jeder Speicher wird anders gesteuert. Die drei
+Betriebsarten stehen dort als Reiter; der Knopf **Anleitung für Speicher** zeigt die Beispiele unten für den
+ausgewählten Speicher direkt auf der Seite:
 
 | Betriebsart | Bedeutung | typische Aktionen |
 |---|---|---|
