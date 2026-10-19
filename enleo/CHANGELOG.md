@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.26.0
+
+**Steuerung**
+- Neu: **Bei Fehlern benachrichtigen** (Einstellungen › Steuerung) – schlägt ein Befehl an den Speicher fehl oder ist eine Entität nicht erreichbar, kommt eine Nachricht an die Benachrichtigungen von Home Assistant oder aufs Handy (Home-Assistant-App). Derselbe Fehler höchstens einmal pro Stunde, mit Knopf für eine Testnachricht
+
+**Planung**
+- Bei halb- und viertelstündlichen Preisen folgt die PV-Erzeugung innerhalb der Stunde dem Sonnenstand statt gleich verteilt zu sein – morgens und abends wird genauer geplant. Das gilt für jede Anlage, es braucht nur den Standort
+- Der Planer rechnet etwa 2,7-mal so schnell (gleiches Ergebnis) – wichtig für den Raspberry Pi bei Plänen in Viertelstunden
+- Systemprüfung: zeigt, wie lange der Plan auf diesem Gerät rechnet, und rät bei langer Rechenzeit zu einem gröberen Preisraster
+
 ## 0.25.0
 
 **Tabellen**

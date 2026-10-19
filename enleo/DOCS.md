@@ -352,8 +352,10 @@ viertelstündlich (voreingestellt: stündlich). Viele Anbieter geben die Viertel
 weiter. Planung und Steuerung arbeiten in diesen Schritten: Bei viertelstündlichen Preisen lädt ENLEO-Energy z. B.
 nur in den günstigsten Viertelstunden einer Stunde oder hält den Akku 45 Minuten statt der ganzen Stunde. Bei
 stündlichen Preisen wird der Mittelwert der Viertelstunden einer Stunde verwendet. Unter der Auswahl steht, in welchem
-Raster die Preisquelle gerade liefert. PV- und Verbrauchsprognose sind stündlich und werden gleichmäßig auf die
-Schritte einer Stunde verteilt. Ersparnis und „Plan gegen Messung“ rechnen weiter in ganzen Stunden, weil die
+Raster die Preisquelle gerade liefert. PV- und Verbrauchsprognose sind stündlich: Der Verbrauch wird gleichmäßig auf
+die Schritte einer Stunde verteilt, die PV-Erzeugung nach dem Sonnenstand (morgens bekommt die letzte Viertelstunde
+einer Stunde mehr als die erste, abends umgekehrt). Wie lange die Rechnung des Plans auf deinem Gerät dauert, zeigt
+die Systemprüfung. Ersparnis und „Plan gegen Messung“ rechnen weiter in ganzen Stunden, weil die
 Messwerte stündlich gespeichert werden.
 
 Einfacher geht es mit **„Aufschlag aus einem Preis berechnen“**: einen oder mehrere Gesamtpreise aus der
@@ -452,6 +454,12 @@ Mit **Akku automatisch nach Plan schalten** übernimmt ENLEO-Energy:
 - **Probebetrieb** (beim Einschalten voreingestellt): ENLEO-Energy schreibt nur auf, was es geschaltet hätte. Am
   besten ein, zwei Tage so laufen lassen und das **Protokoll der Schaltungen** ansehen, bevor der Probebetrieb
   ausgeschaltet wird.
+
+**Bei Fehlern benachrichtigen:** Schlägt ein Befehl an den Speicher fehl oder ist eine Entität nicht erreichbar,
+schickt ENLEO-Energy eine Nachricht – an die Benachrichtigungen von Home Assistant oder über einen Benachrichtigungsdienst
+aufs Handy (die Home-Assistant-App muss dort eingerichtet sein). Derselbe Fehler wird höchstens einmal pro Stunde
+gemeldet; im Probebetrieb wird nichts geschaltet und deshalb nichts gemeldet. Mit „Testnachricht“ lässt sich das Ziel
+ausprobieren. ENLEO-Energy legt dafür keine Entitäten an.
 
 In der Übersicht steht dann „Geschaltet jetzt“ (bzw. „Probebetrieb“) statt „Empfehlung jetzt“, darunter die nächste
 geplante Schaltung („ab 16:00 Uhr wird auf Akku halten geschaltet“).
