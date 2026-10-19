@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.27.2
+
+- **Leiste der nächsten Stunden am Handy:** Kurze Abschnitte (etwa eine Stunde Laden) sind jetzt auch mit dem Finger zu treffen – eine unsichtbare Fläche von 44 px nimmt den Tipp an, die Nachbarn behalten ihre Breite. Ebenso der Hinweis „Probebetrieb“ / „automatisch“ in der Übersicht
+- Enthält 0.27.1 (Vorlagen für Speicher mit Namen in der Sprache von Home Assistant)
+
+## 0.27.1
+
+- **Vorlagen für Speicher:** finden die Entitäten jetzt auch, wenn die Integration sie in der Sprache von Home Assistant benennt (z. B. „Betriebsmodus“, „Laden erzwingen (W)“, „Reset Laden/Entladen“ bei der sonnenBatterie) – auch über den Schlüssel in der Entitäts-ID. Bisher blieben dort Aktionen ohne Entität. Hinweise auf mehrere passende Entitäten (z. B. ein Gerät doppelt eingebunden) erscheinen nur noch einmal
+
 ## 0.27.0
 
 - **Benachrichtigungen als eigene Seite** (im Menü unter Verwaltung, mit Lizenz): Meldungen gehen jetzt an **mehrere Geräte** gleichzeitig – mehrere Handys mit der Home-Assistant-App, weitere Benachrichtigungsdienste und die Benachrichtigungen von Home Assistant, einzeln an- und abwählbar. Ein Gerät, das nicht erreichbar ist, hält die Meldung an die anderen nicht auf; die Testnachricht sagt, welche Geräte nicht erreicht wurden. Ein gewähltes Gerät, das Home Assistant nicht mehr anbietet, bleibt markiert sichtbar. Die bisherige Auswahl wird übernommen
