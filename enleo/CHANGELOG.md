@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.27.0
+
+- **Benachrichtigungen als eigene Seite** (im Menü unter Verwaltung, mit Lizenz): Meldungen gehen jetzt an **mehrere Geräte** gleichzeitig – mehrere Handys mit der Home-Assistant-App, weitere Benachrichtigungsdienste und die Benachrichtigungen von Home Assistant, einzeln an- und abwählbar. Ein Gerät, das nicht erreichbar ist, hält die Meldung an die anderen nicht auf; die Testnachricht sagt, welche Geräte nicht erreicht wurden. Ein gewähltes Gerät, das Home Assistant nicht mehr anbietet, bleibt markiert sichtbar. Die bisherige Auswahl wird übernommen
+- **Systemprüfung prüft die Steuerung** (mit Lizenz): ob die Automatik läuft oder im Probebetrieb ist, ob jede benötigte Betriebsart Aktionen hat, ob die Entitäten der Aktionen existieren und erreichbar sind, ob die gewählte Option bzw. der Wert zur Entität passt (Optionen, Mindest- und Höchstwert, Ladeleistung in W statt kW), ob Schaltungen der letzten 24 Stunden fehlgeschlagen sind und ob Fehler an ein Gerät gemeldet werden
+- **Prüfung, ob der Akku folgt:** Einige Minuten nach dem Schalten prüft ENLEO-Energy, ob der Akku tut, was geschaltet wurde – entlädt er trotz „Akku halten“ oder lädt er nicht, obwohl „Aus dem Netz laden“ geschaltet ist (gemessen an der Akku-Leistung, ohne diesen Sensor am Ladestand), steht das nach zehn Minuten im Protokoll, auf der Seite Steuerung und in der Systemprüfung und wird gemeldet. Bisher wurde nur geprüft, ob der Befehl angenommen wurde
+- **Weitere Anlässe für Benachrichtigungen**, jeder einzeln abschaltbar: Akku folgt nicht, seit einer Stunde kein Plan, um 15 Uhr keine Preise für morgen, Ladestand-Sensor seit 30 Minuten ohne Wert, Lizenz in der Kulanzzeit oder abgelaufen bzw. Steuerung abgeschaltet. Ein anhaltendes Problem wird einmal am Tag wiederholt
+- **Vorlagen für gängige Speicher:** In der „Anleitung für Speicher“ übernimmt „Als Vorlage übernehmen“ die Aktionen aller drei Betriebsarten (sonnenBatterie, Fronius, SolarEdge, SolaX, Huawei, GoodWe, Tesla, Victron, SMA, Deye) und sucht die Entitäten über die Namen der Integration. Was nicht gefunden wird, bleibt offen, mit dem Namen, nach dem gesucht wurde. Gespeichert wird erst mit „Speichern“
+- **Ersparnis in Viertelstunden:** Bei Tarifen mit Viertel- oder Halbstundenpreisen rechnen die Rechnungen ohne / mit ENLEO-Energy und optimal in Viertelstunden mit dem Preis jeder Viertelstunde – wo Hausverbrauch und PV je Viertelstunde gemessen sind. Dafür holt ENLEO-Energy auch deren 5-Minuten-Werte aus Home Assistant
+- **Oberfläche:** auf der Seite Steuerung größere Tippfläche für „Alle Einstellungen“, besserer Kontrast für Lade-Kennzeichnung, Schritt-Nummern und Fehler-Markierungen, und das Protokoll der Schaltungen passt aufs Handy
+- **Prognose bei Schnee:** Liegt laut Wetterdienst Schnee und liefert die Anlage in hellen Stunden kaum etwas, wird die PV-Prognose gesenkt, bis die Module wieder liefern oder der Schnee geschmolzen ist. Die Stunden unter Schnee lernen die eigenen Prognosen nicht – sie lagen danach sonst tagelang zu tief
+- **Viertelstunden der Wetterprognose:** Bei Viertelstunden-Tarifen verteilen die 15-Minuten-Werte von Open-Meteo die PV-Erzeugung einer Stunde – wenn sie die gemessenen Viertelstunden der Anlage genauer treffen als der Sonnenstand
+- **Live-Korrektur lernt dazu:** ob die letzte Viertelstunde oder die letzte Stunde besser vorhersagt und wie stark die nächsten Stunden folgen sollen – je Anlage aus den eigenen Messwerten
+- **Verbrauchsprognose:** Profil je Wochentag und die Temperatur jeder Stunde (z. B. Wärmepumpe) werden je Installation ausprobiert und nur genutzt, wenn sie genauer sind; außerdem folgen die nächsten Stunden der Abweichung der letzten drei – so stark, wie es an den vergangenen Tagen geholfen hätte
+- **Preise schätzen, solange die von morgen fehlen** (Einstellungen › Strompreis, voreingestellt an): Vor etwa 13 Uhr rechnet der Plan mit geschätzten Preisen bis zum Ende von morgen weiter, statt um Mitternacht zu enden; in der Planung mit „≈“ gekennzeichnet
+- **Systemprüfung:** zeigt, welche Verfeinerungen der Prognosen bei dieser Installation genutzt werden, und vermuteten Schnee
+
 ## 0.26.2
 
 Ergebnisse einer Prüfung aller Berechnungen:

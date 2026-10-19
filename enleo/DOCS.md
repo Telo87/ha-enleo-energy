@@ -38,6 +38,10 @@ passenden Einstellung. Geprüft werden unter anderem:
 - ob die **Energiebilanz** der letzten 14 Tage aufgeht: PV + Netzbezug − Einspeisung − Hausverbrauch muss
   ungefähr dem entsprechen, was in den Akku ging, plus dessen Verluste – im Mittel also leicht positiv.
   Geht sie nicht auf, misst ein Sensor zu viel oder zu wenig oder hat Lücken.
+- mit Lizenz die **Steuerung**: ob die Automatik eingeschaltet ist oder im Probebetrieb läuft, ob jede Betriebsart,
+  die der Plan braucht, Aktionen hat, ob deren Entitäten existieren und erreichbar sind, ob Option oder Wert zur
+  Entität passen (Auswahlmöglichkeiten, Mindest- und Höchstwert, Ladeleistung in W, nicht kW), ob Schaltungen der
+  letzten 24 Stunden fehlgeschlagen sind und ob Fehler an ein Gerät gemeldet werden.
 
 Gibt es Probleme, zeigt das Menü deren Anzahl und die Übersicht einen Hinweis.
 
@@ -120,10 +124,21 @@ tritt sie daher fair gegen die Wetterdienste an.
 
 ### Live-Korrektur
 
-Die gemessene PV-Leistung der letzten Stunde wird mit der Prognose verglichen. Die Abweichung korrigiert
-die laufende Stunde (40 %), die nächste (20 %) und die übernächste (10 %). Stärkere Gewichte reagieren an
-echten Daten zu sehr auf einzelne Wolken und machen die Prognose schlechter. In der Prognosegüte erscheint
-sie unter „kurz vorher“ als „ENLEO-Energy (live korrigiert)“; der Planer rechnet damit.
+Die gemessene PV-Leistung wird mit der Prognose verglichen. Die Abweichung korrigiert die laufende Stunde
+(40 %), die nächste (20 %) und die übernächste (10 %). Für jede Anlage wird aus ihren eigenen Messwerten gelernt,
+ob die **letzte Viertelstunde** oder die **letzte Stunde** besser vorhersagt und wie stark die nächsten Stunden
+folgen sollen (halb bis doppelt so stark – oder gar nicht, wenn Abweichungen dort nicht lange anhalten). Ohne
+genug gemessene Stunden bleibt es bei den Werten oben. Die Systemprüfung zeigt, was gilt. In der Prognosegüte
+erscheint sie unter „kurz vorher“ als „ENLEO-Energy (live korrigiert)“; der Planer rechnet damit.
+
+### Schnee auf den Modulen
+
+Liegt laut Wetterdienst Schnee (oder ist in den letzten zwei Tagen welcher gefallen) und liefert die Anlage in
+mindestens zwei hellen Stunden weniger als ein Viertel der Prognose, nimmt ENLEO-Energy an, dass die Module bedeckt
+sind: Die PV-Prognose wird auf das gemessene Verhältnis gesenkt – für heute und für die Stunden, in denen laut
+Wetterdienst noch Schnee liegt. Sobald eine Stunde wieder mehr als 60 % liefert, gilt die Prognose wieder. Die
+Planung und die Seite Übersicht zeigen das an. Die Stunden unter Schnee lernen die eigenen Prognosen nicht – sonst
+hielten sie den Schnee für einen Fehler der Wetterdienste und lägen danach tagelang zu tief.
 
 ### Ausrichtung prüfen
 
@@ -154,7 +169,16 @@ Aus Hausverbrauch minus E-Auto minus Heizstab (Einstellungen › Sensoren) ergib
 **Grundverbrauch**. Er wird nach Uhrzeit für Werktage und für Wochenenden/Feiertage gelernt (bundesweite
 Feiertage des in Home Assistant eingestellten Landes), jüngere Wochen zählen mehr; hängt der Verbrauch
 erkennbar von der Außentemperatur ab, wird das berücksichtigt. Zusätzlich folgt die Prognose zur Hälfte dem
-Verbrauchsniveau der letzten drei Tage – etwa wenn Besuch da ist oder ein neues Gerät läuft. E-Auto und
+Verbrauchsniveau der letzten drei Tage – etwa wenn Besuch da ist oder ein neues Gerät läuft.
+
+Drei Verfeinerungen probiert ENLEO-Energy für jede Installation an den eigenen Messwerten aus und nutzt sie nur, wenn
+sie die Prognose dort genauer gemacht hätten (die Systemprüfung zeigt, welche):
+
+- ein **Profil je Wochentag** statt nur Werktag / Wochenende – etwa bei einem festen Waschtag,
+- die **Temperatur jeder Stunde** statt des Tagesmittels – etwa eine Wärmepumpe, die in der frostigen Nacht mehr
+  braucht als am milden Nachmittag,
+- das **Nachführen im Tagesverlauf**: Liegen die letzten drei gemessenen Stunden über oder unter der Prognose, folgen
+  die nächsten sechs Stunden abnehmend – so stark, wie es an den vergangenen Tagen geholfen hätte. E-Auto und
 Heizstab sind steuerbar und werden später gezielt eingeplant. Vergleichsmaßstab in der Prognosegüte
 (Auswahl „Grundverbrauch“) ist „Wie vor einer Woche“.
 
@@ -359,9 +383,20 @@ nur in den günstigsten Viertelstunden einer Stunde oder hält den Akku 45 Minut
 stündlichen Preisen wird der Mittelwert der Viertelstunden einer Stunde verwendet. Unter der Auswahl steht, in welchem
 Raster die Preisquelle gerade liefert. PV- und Verbrauchsprognose sind stündlich: Der Verbrauch wird gleichmäßig auf
 die Schritte einer Stunde verteilt, die PV-Erzeugung nach dem Sonnenstand (morgens bekommt die letzte Viertelstunde
-einer Stunde mehr als die erste, abends umgekehrt). Wie lange die Rechnung des Plans auf deinem Gerät dauert, zeigt
-die Systemprüfung. Ersparnis und „Plan gegen Messung“ rechnen weiter in ganzen Stunden, weil die
-Messwerte stündlich gespeichert werden.
+einer Stunde mehr als die erste, abends umgekehrt) – oder nach den **Viertelstunden der Wetterprognose**
+(Open-Meteo, in Mitteleuropa echte 15-Minuten-Werte), wenn diese die gemessenen Viertelstunden der Anlage genauer
+getroffen haben.
+
+**Preise schätzen, solange die von morgen fehlen** (voreingestellt an): Vor etwa 13 Uhr sind die Preise für morgen
+nicht veröffentlicht, der Plan würde um Mitternacht enden. Mit dieser Einstellung rechnet er bis zum Ende von morgen
+mit geschätzten Preisen: der Median derselben Stunde an den letzten Tagen gleicher Art (Werktag / Wochenende),
+verschoben um das Preisniveau des letzten Tages – wie weit, wird an den vergangenen Tagen geprüft. Geschätzte Preise
+stehen in der Planung mit „≈“; sobald die echten Preise da sind, rechnet der Plan neu. Geschaltet wird immer zum
+echten Preis der laufenden Stunde. Wie lange die Rechnung des Plans auf deinem Gerät dauert, zeigt
+die Systemprüfung. Die Kosten rechnen je Viertelstunde mit ihrem Preis, ebenso die Rechnungen auf der Seite
+Ersparnis, wo Hausverbrauch und PV je Viertelstunde gemessen sind (aus der 5-Minuten-Statistik von Home Assistant,
+die es etwa zehn Tage hält – ENLEO-Energy speichert sie laufend); die Betriebsart einer Viertelstunde ist dabei die
+ihrer Stunde im Plan-Protokoll. „Plan gegen Messung“ rechnet in ganzen Stunden.
 
 Einfacher geht es mit **„Aufschlag aus einem Preis berechnen“**: einen oder mehrere Gesamtpreise aus der
 App des Stromanbieters (viertelstündlicher Preis) mit Tag und Uhrzeit eintragen. ENLEO-Energy
@@ -423,7 +458,10 @@ Planung und Empfehlungen bleiben ohne Lizenz unverändert.
 Unter Einstellungen › **Steuerung** wird für jede Betriebsart festgelegt, was ENLEO-Energy in Home Assistant
 schaltet – mit den Entitäten des eigenen Speichers, denn jeder Speicher wird anders gesteuert. Die drei
 Betriebsarten stehen dort als Reiter; der Knopf **Anleitung für Speicher** zeigt die Beispiele unten für den
-ausgewählten Speicher direkt auf der Seite:
+ausgewählten Speicher direkt auf der Seite. Mit **Als Vorlage übernehmen** füllt ENLEO-Energy die drei Betriebsarten mit
+diesen Aktionen und sucht die Entitäten über die Namen, die ihnen die Integration gibt. Was nicht gefunden wird,
+bleibt ohne Entität und zeigt, wonach gesucht wurde. Gespeichert wird erst mit „Speichern“ – danach jede Betriebsart
+mit „Jetzt ausführen“ testen und zuerst im Probebetrieb laufen lassen:
 
 | Betriebsart | Bedeutung | typische Aktionen |
 |---|---|---|
@@ -454,17 +492,39 @@ Mit **Akku automatisch nach Plan schalten** übernimmt ENLEO-Energy:
   erst zum nächsten Schritt umgeschaltet – der Speicher springt nicht hin und her.
 - Ist beim Laden der geplante Zielladestand erreicht, wird bis zum Ende des Schritts gehalten.
 - „Akku halten“ hält den Ladestand vom Beginn des Haltens (steigt er durch PV, den höheren).
+- **Folgt der Akku?** Drei Minuten nach dem Schalten prüft ENLEO-Energy, ob der Akku tut, was geschaltet wurde: Bei
+  „Akku halten“ darf er nicht nennenswert entladen, bei „Aus dem Netz laden“ muss er laden (bis kurz vor dem
+  Zielladestand). Gemessen wird an der Akku-Leistung; ohne diesen Sensor am Ladestand, der beim Laden innerhalb von
+  15 Minuten steigen bzw. beim Halten nicht um mehr als 3 Punkte fallen darf. Bleibt es zehn Minuten so, steht
+  „Akku folgt nicht“ im Protokoll, auf der Seite Steuerung und in der Systemprüfung und wird gemeldet – einmal je
+  Schaltung.
 - Beim Ausschalten, ohne gültige Lizenz, wenn der Hersteller die Steuerung abschaltet, ohne aktuellen Plan und beim
   Beenden des Add-ons wird einmal **Normalbetrieb** ausgeführt.
 - **Probebetrieb** (beim Einschalten voreingestellt): ENLEO-Energy schreibt nur auf, was es geschaltet hätte. Am
   besten ein, zwei Tage so laufen lassen und das **Protokoll der Schaltungen** ansehen, bevor der Probebetrieb
   ausgeschaltet wird.
 
-**Bei Fehlern benachrichtigen:** Schlägt ein Befehl an den Speicher fehl oder ist eine Entität nicht erreichbar,
-schickt ENLEO-Energy eine Nachricht – an die Benachrichtigungen von Home Assistant oder über einen Benachrichtigungsdienst
-aufs Handy (die Home-Assistant-App muss dort eingerichtet sein). Derselbe Fehler wird höchstens einmal pro Stunde
-gemeldet; im Probebetrieb wird nichts geschaltet und deshalb nichts gemeldet. Mit „Testnachricht“ lässt sich das Ziel
-ausprobieren. ENLEO-Energy legt dafür keine Entitäten an.
+**Benachrichtigungen** (eigene Seite im Menü unter Verwaltung, nur mit Lizenz): Schlägt ein Befehl an den Speicher
+fehl oder ist eine Entität nicht erreichbar, schickt ENLEO-Energy eine Nachricht an **alle gewählten Geräte** – die
+Benachrichtigungen von Home Assistant, jedes Handy mit der Home-Assistant-App und weitere Benachrichtigungsdienste,
+bis zu zehn auf einmal. Handys erscheinen dort, sobald die App darauf eingerichtet ist. Ist ein Gerät nicht
+erreichbar, bekommen die anderen die Nachricht trotzdem. Derselbe Fehler wird höchstens einmal pro Stunde gemeldet;
+im Probebetrieb wird nichts geschaltet und deshalb nichts gemeldet. „Testnachricht an die gewählten Geräte“ zeigt, ob
+alle erreicht werden. Ein gewähltes Gerät, das Home Assistant nicht mehr anbietet (App entfernt oder umbenannt), ist
+markiert und lässt sich abwählen. ENLEO-Energy legt dafür keine Entitäten an.
+
+Unter **Was gemeldet wird** lässt sich jeder Anlass einzeln abschalten:
+
+| Anlass | wann |
+| --- | --- |
+| Steuerung fehlgeschlagen | ein Befehl an den Speicher schlägt fehl oder eine Entität ist nicht erreichbar (derselbe Fehler höchstens einmal pro Stunde) |
+| Akku folgt nicht | der Befehl kam an, aber der Akku entlädt trotz Halten oder lädt nicht (einmal je Schaltung) |
+| Kein Plan | seit einer Stunde gibt es keinen gültigen Plan |
+| Preise für morgen fehlen | um 15 Uhr sind die Börsenpreise für morgen noch nicht da |
+| Ladestand nicht verfügbar | der Sensor für den Ladestand liefert seit 30 Minuten keinen Wert |
+| Lizenz | Abo abgelaufen (Kulanzzeit), Freigabe abgelaufen oder Steuerung vom Hersteller abgeschaltet |
+
+Ein Problem, das anhält, wird einmal am Tag wiederholt; ist es vorbei, wird das nächste wieder sofort gemeldet.
 
 In der Übersicht steht dann „Geschaltet jetzt“ (bzw. „Probebetrieb“) statt „Empfehlung jetzt“, darunter die nächste
 geplante Schaltung („ab 16:00 Uhr wird auf Akku halten geschaltet“).
