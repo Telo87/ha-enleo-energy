@@ -198,9 +198,12 @@ danach schalten (siehe [Automatisch steuern](#automatisch-steuern)). Entitäten 
 
 ## Kosten
 
-Die Seite **Kosten** rechnet aus dem gemessenen Netzbezug jeder Stunde und dem Preis dieser Stunde (Mittel
-der Viertelstundenpreise) die tatsächlichen Stromkosten – pro Tag und Monat, plus anteilige Grundgebühr,
-abzüglich Einspeisevergütung (Einstellungen › Strompreis). Dazu:
+Die Seite **Kosten** rechnet aus dem gemessenen Netzbezug und den Preisen die tatsächlichen Stromkosten – pro Tag
+und Monat, plus anteilige Grundgebühr, abzüglich Einspeisevergütung (Einstellungen › Strompreis). Bei einem
+stündlichen Tarif gilt der Preis der Stunde. Bei einem **halb- oder viertelstündlichen Tarif** wird wie beim Anbieter
+jede Viertelstunde mit ihrem Preis abgerechnet: ENLEO-Energy holt dafür laufend die 5-Minuten-Werte der Netz-Zähler
+aus Home Assistant (dort bleiben sie etwa zehn Tage) und speichert sie. Was der Kauf in den günstigen Viertelstunden
+gegenüber dem Mittel der Stunde gespart hat, steht beim Ø bezahlten Preis. Dazu:
 
 - **Eigene Einspeisevergütung je Anlage** (bei der PV-Anlage, optional): Hängen Anlagen mit unterschiedlicher
   Vergütung an einem Zähler, wird die eingespeiste Energie aufgeteilt – nach Anlagenleistung (kWp, wie es
@@ -230,7 +233,9 @@ ab welchem Preisunterschied sich Laden aus dem Netz lohnt. Datenblätter nennen 
 liegt der Wert meist niedriger, weil der Speicher selbst Strom braucht.
 
 Ist ein Sensor für die Akku-Leistung eingetragen, misst ENLEO-Energy den Wert selbst: geladene gegen entladene
-Energie der letzten bis zu 90 Tage, sobald das 15-Fache der Kapazität durch den Akku gegangen ist. Das Ergebnis
+Energie der letzten bis zu 90 Tage, sobald das 15-Fache der Kapazität durch den Akku gegangen ist. Was am Ende mehr
+(oder weniger) im Akku ist als am Anfang, wird dabei mitgerechnet. Den Ladestand zur vollen Stunde nimmt
+ENLEO-Energy aus der Statistik von Home Assistant. Das Ergebnis
 steht unter Einstellungen › Batterie neben dem Feld und in der Systemprüfung. Übernommen wird es nicht von selbst.
 
 Genauso misst ENLEO-Energy die **nutzbare Kapazität**: wie viel Energie für 100 % Ladestand hineingeht und wie viel

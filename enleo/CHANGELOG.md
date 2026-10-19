@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.26.2
+
+Ergebnisse einer Prüfung aller Berechnungen:
+- **Kosten je Viertelstunde:** Bei halb- oder viertelstündlichem Tarif wird der Netzbezug wie beim Anbieter je Viertelstunde mit ihrem Preis abgerechnet (bisher mit dem Mittel der Stunde). Dafür holt ENLEO-Energy laufend die 5-Minuten-Werte der Netz-Zähler aus Home Assistant und speichert sie. Gilt auch für die gemessene Rechnung auf der Seite Ersparnis. Die Seite Kosten zeigt, was der Kauf in den günstigen Viertelstunden gespart hat
+- **Ladestand zur vollen Stunde:** Wirkungsgrad und nutzbare Kapazität nehmen den Ladestand jetzt genau zur vollen Stunde aus der Statistik von Home Assistant – bisher aus dem Moment, in dem der Plan der Stunde gerechnet wurde (nach einem Neustart bis zu einer Stunde später)
+- **Wirkungsgrad des Speichers:** berücksichtigt jetzt, wie voll der Akku zu Beginn und am Ende des Messzeitraums war – endete der Zeitraum mit vollerem Akku, wurde der Wirkungsgrad bisher um einige Prozentpunkte zu niedrig gemessen
+- **Autarkie und Eigenverbrauch** (Seite Kosten): Netzbezug und Verbrauch bzw. Einspeisung und Erzeugung werden über dieselben Stunden verglichen – fehlten Werte des Hausverbrauchs oder der PV, war die Autarkie zu niedrig
+- **Prognosegüte:** der ausgewertete Zeitraum beginnt auch über die Zeitumstellung hinweg genau um Mitternacht (bisher konnte ein Tag mit einer einzigen Stunde in die Tagesfehler eingehen)
+- **Planer:** eine Planstunde, die kurz vor dem Mindest-Ladestand von „Akku halten“ auf „Normalbetrieb“ wechselt, zeigt jetzt auch die Werte des Normalbetriebs
+- **Systemprüfung:** Hinweise, wo die Daten nur eine Näherung zulassen – Kosten aus einem einzelnen Sensor für die Netzleistung (Bezug und Einspeisung derselben Stunde heben sich auf), ob die Viertelstunden-Werte schon da sind, unvollständiger Vergleichstarif
+
 ## 0.26.1
 
 **Besser lesbar und bedienbar**
