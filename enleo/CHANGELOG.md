@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.27.5
+
+- **Startbildschirm:** „enleo energy“ und „Energie- und Lade-Optimierer“ blenden jetzt gleichzeitig mit der Welle ein, statt erst nach ihr – der Name ist so länger zu lesen
+- **Startbildschirm:** Nach dem Landen pulsiert die Sonne zweimal, erst dann geht es zur Übersicht (etwa 3,5 Sekunden)
+
 ## 0.27.4
 
 - **Startbildschirm:** Beim Öffnen – in Home Assistant und in der App auf dem Handy – erscheint das Logo von ENLEO-Energy: Die Energiewelle zeichnet sich, die Sonne landet, dann folgen „enleo energy“ und „Energie- und Lade-Optimierer“. Er bleibt, bis die Übersicht geladen ist (mindestens so lange, bis das Logo fertig ist), und blendet dann in sie über. Bei „Bewegung reduzieren“ steht das Logo still und verschwindet, sobald die Seite da ist
