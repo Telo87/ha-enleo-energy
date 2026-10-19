@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.26.1
+
+**Besser lesbar und bedienbar**
+- Am Handy und Tablet sind alle Knöpfe, Felder, Spaltenköpfe und Menüeinträge mindestens 44 × 44 Pixel groß; die Abschnitte der Leiste der nächsten Stunden und die Legenden-Knöpfe haben eine größere unsichtbare Tippfläche. Mit der Maus bleibt alles so kompakt wie bisher
+- Schrift in Orange, Grün und Blau sowie die grauen Untertitel sind etwas dunkler und erreichen überall den empfohlenen Kontrast (WCAG AA, 4,5 : 1) – auch bei Sonne am Handy; im dunklen Design ist die Schrift auf blauen Knöpfen dunkel statt weiß
+
 ## 0.26.0
 
 **Steuerung**
