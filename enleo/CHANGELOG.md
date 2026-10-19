@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.27.4
+
+- **Startbildschirm:** Beim Öffnen – in Home Assistant und in der App auf dem Handy – erscheint das Logo von ENLEO-Energy: Die Energiewelle zeichnet sich, die Sonne landet, dann folgen „enleo energy“ und „Energie- und Lade-Optimierer“. Er bleibt, bis die Übersicht geladen ist (mindestens so lange, bis das Logo fertig ist), und blendet dann in sie über. Bei „Bewegung reduzieren“ steht das Logo still und verschwindet, sobald die Seite da ist
+- **Jedes Öffnen beginnt mit der Übersicht** – auch wenn zuletzt eine andere Seite offen war, und wenn die App nach mehr als zehn Minuten im Hintergrund wieder nach vorne kommt
+
 ## 0.27.3
 
 - **Rekorde des Jahres** (Seite Tagesverlauf, unten): höchste Leistung je PV-Anlage – auch kurze Spitzen am Wolkenrand, aus der Langzeitstatistik von Home Assistant –, beste PV-Stunde, bester PV-Tag, höchster Tagesverbrauch, günstigster und teuerster Strompreis
