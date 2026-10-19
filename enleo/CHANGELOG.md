@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.27.3
+
+- **Rekorde des Jahres** (Seite Tagesverlauf, unten): höchste Leistung je PV-Anlage – auch kurze Spitzen am Wolkenrand, aus der Langzeitstatistik von Home Assistant –, beste PV-Stunde, bester PV-Tag, höchster Tagesverbrauch, günstigster und teuerster Strompreis
+- **Wechselrichter-Grenze erkennen:** Stauen sich die höchsten Stundenwerte einer Anlage an derselben Leistung (an vielen Tagen bis auf 1,5 % gleich, mehr als knapp darunter), regelt dort der Wechselrichter oder eine Einspeisebegrenzung ab. Die Systemprüfung schlägt dann den Wert für „Wechselrichter AC“ vor, damit die Prognosen an klaren Tagen mit dieser Grenze rechnen
+- **Logo:** zeichnet sich beim Öffnen der App, danach leuchtet die Sonne ab und zu sanft auf (nicht bei „Bewegung reduzieren“)
+- **Viertelstunden-Werte von Energiezählern in kWh** (z. B. Heizstab) wurden 1000-fach zu groß gespeichert – Home Assistant liefert sie schon in Wh. Ohne Folgen für Rechnungen (dort zählen nur die Anteile innerhalb einer Stunde); die Werte werden einmal neu abgerufen
+
 ## 0.27.2
 
 - **Leiste der nächsten Stunden am Handy:** Kurze Abschnitte (etwa eine Stunde Laden) sind jetzt auch mit dem Finger zu treffen – eine unsichtbare Fläche von 44 px nimmt den Tipp an, die Nachbarn behalten ihre Breite. Ebenso der Hinweis „Probebetrieb“ / „automatisch“ in der Übersicht

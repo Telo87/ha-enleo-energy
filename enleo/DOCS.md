@@ -156,6 +156,12 @@ West – ändert eine Drehung die Tageskurve kaum, die Messwerte passen dann zu 
 diesem Fall steht dort „Ausrichtung aus den Messwerten nicht bestimmbar“; die eingetragenen Werte bleiben, und der
 Systemwirkungsgrad wird trotzdem verglichen.
 
+**Wechselrichter-Grenze:** Die Systemprüfung sieht sich die höchsten Stundenwerte des Jahres an (Home Assistant hält
+für jede Stunde den höchsten gemeldeten Wert). Stauen sie sich an einer Leistung – an mindestens zehn Stunden und vier
+Tagen bis auf 1,5 % gleich, und häufiger als knapp darunter –, regelt dort der Wechselrichter oder eine
+Einspeisebegrenzung ab. Ist unter „Wechselrichter AC“ nichts oder etwas anderes eingetragen, schlägt sie diesen Wert
+vor. Ohne Grenze werden die höchsten Werte nach oben hin seltener (Wolkenrand, Modultemperatur) – dann sagt sie nichts.
+
 Dieselbe Prüfung vergleicht den **Systemwirkungsgrad**: wie hoch die gemessene Kurve in klaren Stunden gegenüber
 der berechneten liegt. Der Wert fasst alle Verluste zwischen Modul und Zähler zusammen (Wechselrichter, Kabel,
 Verschmutzung, Alterung) – und auch Abweichungen der eingetragenen Leistung oder des Wettermodells. Er lässt sich
@@ -290,6 +296,14 @@ Strom aus Akku oder Netz – an den Empfehlungen für den Akku ändert er nichts
 ENLEO-Energy lernt aus den Messwerten der letzten zwei Wochen, welchen Anteil des Überschusses er zu welcher Tageszeit
 aufnimmt (bis zur eingetragenen maximalen Leistung), und zieht diesen Anteil im Plan von der Einspeisung ab. Wann
 der Pufferspeicher voll ist, steckt damit in den Messwerten; ein Temperaturfühler ist nicht nötig.
+
+## Rekorde
+
+Unten auf der Seite **Tagesverlauf** stehen die Rekorde des Jahres: die höchste Leistung jeder PV-Anlage (der höchste
+Wert, den der Sensor in einer Stunde gemeldet hat – kurze Spitzen am Wolkenrand eingeschlossen; „an der Grenze des
+Wechselrichters“, wenn er dort abregelt), die beste PV-Stunde und der beste PV-Tag, der höchste Verbrauch eines ganzen
+Tages sowie der günstigste und der teuerste Strompreis (seit ENLEO-Energy Preise sammelt). Grundlage ist die
+Langzeitstatistik von Home Assistant, im Demo-Modus das, was ENLEO-Energy selbst gespeichert hat.
 
 ## Plan gegen Messung
 
