@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.27.6
+
+- **Startbildschirm nur beim Öffnen:** Manche Apps auf dem Handy laden die ganze Seite neu, wenn in ENLEO-Energy eine andere Seite gewählt wird – dann kam jedes Mal der Startbildschirm, und es ging zurück zur Übersicht. Ein solches Neuladen kurz nach einem Seitenwechsel erkennt ENLEO-Energy jetzt: kein Startbildschirm, die gewählte Seite bleibt. Beim Öffnen gibt es weiter den Startbildschirm und die Übersicht
+
 ## 0.27.5
 
 - **Startbildschirm:** „enleo energy“ und „Energie- und Lade-Optimierer“ blenden jetzt gleichzeitig mit der Welle ein, statt erst nach ihr – der Name ist so länger zu lesen
