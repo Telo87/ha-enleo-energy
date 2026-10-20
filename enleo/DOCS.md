@@ -310,8 +310,10 @@ der Pufferspeicher voll ist, steckt damit in den Messwerten; ein Temperaturfühl
 Die Seite **Rekorde** (im Menü unter Rückblick) zeigt die Bestwerte eines Jahres – oben in der Auswahl jedes Jahr mit
 Messwerten oder **Insgesamt** über alle Jahre:
 
-- **Das Jahr in Zahlen:** PV-Ertrag, Verbrauch, Autarkie (Anteil des Verbrauchs, der nicht aus dem Netz kam) und die
-  Tage ohne Netzbezug (weniger als 0,2 kWh gekauft).
+- **Das Jahr in Zahlen:** PV-Ertrag, Verbrauch, Autarkie (Anteil des Verbrauchs, der nicht aus dem Netz kam – nur über
+  die Stunden, für die es Verbrauchs- und Netzwerte gibt) und die autarken Tage (höchstens 2 % des Verbrauchs gekauft;
+  fast jeder Speicher lässt beim Regeln ein wenig Netzbezug übrig). Kam ein Zähler erst im Lauf des Jahres dazu, steht
+  darunter, seit wann er misst.
 - **Erzeugung:** die höchste Leistung jeder PV-Anlage (der höchste Wert, den der Sensor in einer Stunde gemeldet hat –
   kurze Spitzen am Wolkenrand eingeschlossen; „Wechselrichter am Limit“, wenn er dort abregelt), beste Stunde, bester
   Tag, bester Monat.

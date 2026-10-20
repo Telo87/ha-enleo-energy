@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.27.10
+
+- **Rekorde, Autarkie:** zählt Netzbezug und Verbrauch nur über dieselben Stunden. Kam der Verbrauchszähler erst im Lauf eines Jahres dazu, wurde bisher der Netzbezug des ganzen Jahres gegen den Verbrauch weniger Wochen gerechnet – die Autarkie war viel zu niedrig. Unter dem Verbrauch steht dann, seit wann er gemessen wird
+- **Autarke Tage** statt „Tage ohne Netzbezug“: Tage, an denen höchstens 2 % des Verbrauchs aus dem Netz kamen. Fast jeder Speicher lässt beim Regeln ein wenig Netzbezug übrig – bisher stand dort deshalb meist 0
+
 ## 0.27.9
 
 - **Einrichtungsassistent:** führt Schritt für Schritt durch Sensoren und Standort, PV-Anlagen, Strompreis, Batterie und – mit Lizenz – die Steuerung. Jeder Schritt zeigt, was er braucht, erledigte Schritte sind abgehakt, „Weiter“ speichert, was geändert wurde, und zum Schluss stehen offene Punkte und das Ergebnis der Systemprüfung. Bei einer neuen Installation über „Einrichtung starten“ auf der Übersicht, sonst unter Einstellungen › System
