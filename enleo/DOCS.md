@@ -335,8 +335,9 @@ und wohin er ging (Haus, Akku, Netz) – für heute, gestern, die letzten 7 Tage
 Die Breite jedes Bandes entspricht der Energie. Darunter Autarkie, Eigenverbrauch, Einspeisung und Netzbezug.
 
 Gerechnet wird Stunde für Stunde: Der Hausverbrauch ist, was übrig bleibt (PV plus Bezug plus Entladung, minus
-Einspeisung und Ladung). PV deckt zuerst das Haus, dann den Akku, der Rest geht ins Netz; der Akku deckt das Haus, bevor
-er einspeist. Gebraucht werden Netzbezug und Einspeisung (oder die Netzleistung mit Vorzeichen), für den Akku der Sensor
+Einspeisung und Ladung). Netzbezug und Einspeisung zählen wie gemessen, auch wenn in einer Stunde beides vorkam: Gekauftes
+ging ins Haus, der Akku deckt das Haus, bevor er einspeist, und PV deckt den Rest des Hauses, dann den Akku, der Rest
+geht ins Netz. Gebraucht werden Netzbezug und Einspeisung (oder die Netzleistung mit Vorzeichen), für den Akku der Sensor
 der Batterie-Leistung. Die letzten Tage kommen aus den Messwerten von ENLEO-Energy, Jahr und Insgesamt aus der
 Langzeitstatistik von Home Assistant.
 

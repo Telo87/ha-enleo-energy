@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.28.1
+
+- **Energiefluss:** Netzbezug und Einspeisung zählen wie gemessen, auch in Stunden mit beidem (eine Wolke, der Backofen). Bisher wurden sie in solchen Stunden gegeneinander verrechnet – über ein Jahr fehlten so einige Prozent bei „Gekauft“ und „Eingespeist“, und die Autarkie lag etwas zu hoch. Jetzt passen die Summen zu den Rekorden und zur Kostenseite
+
 ## 0.28.0
 
 - **Energiefluss:** neue Seite unter Rückblick mit einem Sankey-Diagramm – woher der Strom kam (PV, Netz, Akku) und wohin er ging (Haus, Akku, Netz), für heute, gestern, 7 Tage, Monat, Jahr oder insgesamt. Darunter Autarkie, Eigenverbrauch, Einspeisung und Netzbezug
