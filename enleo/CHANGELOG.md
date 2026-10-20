@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.27.9
+
+- **Einrichtungsassistent:** führt Schritt für Schritt durch Sensoren und Standort, PV-Anlagen, Strompreis, Batterie und – mit Lizenz – die Steuerung. Jeder Schritt zeigt, was er braucht, erledigte Schritte sind abgehakt, „Weiter“ speichert, was geändert wurde, und zum Schluss stehen offene Punkte und das Ergebnis der Systemprüfung. Bei einer neuen Installation über „Einrichtung starten“ auf der Übersicht, sonst unter Einstellungen › System
+- Kleine Knöpfe (z. B. „Ausrichtung prüfen“ bei den PV-Anlagen) sind am Handy mindestens 44 px breit
+
 ## 0.27.8
 
 - **Rekorde als eigene Seite** im Menü unter Rückblick: je Jahr auswählbar (2026, 2025, …) oder **insgesamt** über alle Jahre. Oben das Jahr in Zahlen – PV-Ertrag, Verbrauch, Autarkie, Tage ohne Netzbezug –, darunter die Rekorde nach Erzeugung (Spitze je Anlage, beste Stunde, bester Tag, bester Monat), Verbrauch und Netz (höchster und niedrigster Verbrauch, autarkster Tag, meiste Einspeisung, höchster Netzbezug) und Strompreis (günstigster und teuerster Preis, Stunden mit negativem Börsenpreis)

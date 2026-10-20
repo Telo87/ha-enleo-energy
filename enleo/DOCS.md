@@ -11,6 +11,14 @@ nachgerechnet.
 
 ## Erste Schritte
 
+Am einfachsten mit dem **Einrichtungsassistenten**: Bei einer neuen Installation startet er über „Einrichtung starten“
+auf der Übersicht, später jederzeit unter Einstellungen › System. Er führt Schritt für Schritt durch Sensoren und
+Standort, PV-Anlagen, Strompreis, Batterie und – mit Lizenz – die Steuerung. Jeder Schritt ist die Einstellungsseite
+selbst, darüber steht, was dieser Schritt braucht; erledigte Schritte sind abgehakt, und „Weiter“ speichert, was
+geändert wurde. Zum Schluss zeigt er, was noch fehlt, und das Ergebnis der Systemprüfung.
+
+Von Hand geht es so:
+
 1. Add-on starten und **Web-UI öffnen**.
 2. Unter **Einstellungen › PV-Anlagen** für jeden Messsensor, meist einen Wechselrichter, eine Anlage anlegen:
    - **Messsensor:** Sensor des Wechselrichters, z. B. die AC-Leistung (W) oder der Energiezähler (kWh).
