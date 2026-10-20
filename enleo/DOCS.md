@@ -198,6 +198,9 @@ Heizstab sind steuerbar und werden später gezielt eingeplant. Vergleichsmaßsta
 
 ## Planung
 
+Unter der Zeitleiste der Übersicht zeigen kleine Symbole die Bewölkung laut Wetterprognose (Sonne, teils bewölkt,
+bedeckt, nachts Mond).
+
 Die Seite **Planung** rechnet alle 5 Minuten den günstigsten Fahrplan für den Heimspeicher bis zum Ende
 der bekannten Strompreise (die Preise für morgen erscheinen gegen 13 Uhr). **„Warum dieser Plan?“** erklärt
 jede Entscheidung aus dem aktuellen Plan: was ohne Eingriff passieren würde (wann der Akku leer wäre und was
@@ -324,6 +327,46 @@ Messwerten oder **Insgesamt** über alle Jahre:
 
 Grundlage ist die Langzeitstatistik von Home Assistant, die über Jahre zurückreicht; ohne sie das, was ENLEO-Energy
 selbst gespeichert hat.
+
+## Energiefluss
+
+Die Seite **Energiefluss** (im Menü unter Rückblick) zeigt als Sankey-Diagramm, woher der Strom kam (PV, Netz, Akku)
+und wohin er ging (Haus, Akku, Netz) – für heute, gestern, die letzten 7 Tage, den Monat, das Jahr oder insgesamt.
+Die Breite jedes Bandes entspricht der Energie. Darunter Autarkie, Eigenverbrauch, Einspeisung und Netzbezug.
+
+Gerechnet wird Stunde für Stunde: Der Hausverbrauch ist, was übrig bleibt (PV plus Bezug plus Entladung, minus
+Einspeisung und Ladung). PV deckt zuerst das Haus, dann den Akku, der Rest geht ins Netz; der Akku deckt das Haus, bevor
+er einspeist. Gebraucht werden Netzbezug und Einspeisung (oder die Netzleistung mit Vorzeichen), für den Akku der Sensor
+der Batterie-Leistung. Die letzten Tage kommen aus den Messwerten von ENLEO-Energy, Jahr und Insgesamt aus der
+Langzeitstatistik von Home Assistant.
+
+## Akku
+
+Die Seite **Akku** zeigt je Monat, wie viel geladen und entladen wurde, die Vollzyklen (Entladung geteilt durch die
+eingetragene Kapazität), den Wirkungsgrad (was herauskam gegen das, was hineinging – der Füllstand am Monatsanfang und
+-ende ist herausgerechnet) und die nutzbare Kapazität aus der Energie je Prozent Ladestand. So wird sichtbar, ob der
+Speicher über die Jahre nachlässt. Ein Monat ohne Wert hatte dafür zu wenig Bewegung.
+
+## Wirtschaftlichkeit
+
+Die Seite **Wirtschaftlichkeit** rechnet aus, was PV und Akku je Monat wert waren – gegenüber dem Fall, dass alles aus
+dem Netz gekauft worden wäre:
+
+- **Direkt genutzt:** PV-Strom, der gleich im Haus verbraucht wurde, zum Preis der jeweiligen Stunde.
+- **Durch den Akku:** was der Akku ins Haus abgegeben hat, zum Preis der Stunde, abzüglich dessen, was er aus dem Netz
+  geladen hat. Daneben steht, wie viel der in den Akku geladene PV-Strom als Einspeisung gebracht hätte.
+- **Einspeisung:** die Vergütung für den Strom, der ins Netz ging.
+
+Stunden ohne gespeicherten Preis werden mit dem Durchschnitt bewertet (≈ am Monat). Unter **Anschaffung** lassen sich
+die Kosten von PV-Anlage und Akku und das Datum der Inbetriebnahme eintragen; dann zeigt die Seite, wie viel schon
+zurückgekommen ist und – im Tempo der letzten zwölf Monate – wann sich die Anlage bezahlt hat.
+
+## Wann starten?
+
+Die Übersicht zeigt, wann ein großes Gerät am günstigsten läuft – Waschmaschine, Spülmaschine, Trockner oder ein
+eigenes Gerät mit Energie je Lauf und Laufzeit. Grundlage ist der aktuelle Plan: Strom, den der Plan einspeisen würde,
+zählt nur mit der Einspeisevergütung, der Rest mit dem Preis der Stunde. Daneben steht, was ein sofortiger Start kosten
+würde.
 
 ## Plan gegen Messung
 
@@ -547,7 +590,8 @@ im Probebetrieb wird nichts geschaltet und deshalb nichts gemeldet. „Testnachr
 alle erreicht werden. Ein gewähltes Gerät, das Home Assistant nicht mehr anbietet (App entfernt oder umbenannt), ist
 markiert und lässt sich abwählen. ENLEO-Energy legt dafür keine Entitäten an.
 
-Unter **Was gemeldet wird** lässt sich jeder Anlass einzeln abschalten:
+Unter **Zuletzt gemeldet** stehen die letzten Meldungen mit Uhrzeit und wie viele Ziele erreicht wurden – auch wenn sie
+auf dem Handy schon weggewischt sind. Unter **Was gemeldet wird** lässt sich jeder Anlass einzeln abschalten:
 
 | Anlass | wann |
 | --- | --- |
@@ -556,6 +600,7 @@ Unter **Was gemeldet wird** lässt sich jeder Anlass einzeln abschalten:
 | Kein Plan | seit einer Stunde gibt es keinen gültigen Plan |
 | Preise für morgen fehlen | um 15 Uhr sind die Börsenpreise für morgen noch nicht da |
 | Ladestand nicht verfügbar | der Sensor für den Ladestand liefert seit 30 Minuten keinen Wert |
+| Monatsbericht | am Monatsersten ab 8 Uhr: PV-Ertrag, Verbrauch, Autarkie, Einspeisung, Ersparnis durch ENLEO-Energy und bester Tag des Vormonats |
 | Lizenz | Abo abgelaufen (Kulanzzeit), Freigabe abgelaufen oder Steuerung vom Hersteller abgeschaltet |
 
 Ein Problem, das anhält, wird einmal am Tag wiederholt; ist es vorbei, wird das nächste wieder sofort gemeldet.

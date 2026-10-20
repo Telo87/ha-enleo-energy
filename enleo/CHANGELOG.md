@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.28.0
+
+- **Energiefluss:** neue Seite unter Rückblick mit einem Sankey-Diagramm – woher der Strom kam (PV, Netz, Akku) und wohin er ging (Haus, Akku, Netz), für heute, gestern, 7 Tage, Monat, Jahr oder insgesamt. Darunter Autarkie, Eigenverbrauch, Einspeisung und Netzbezug
+- **Akku:** neue Seite mit Ladung, Entladung, Vollzyklen, Wirkungsgrad und nutzbarer Kapazität je Monat – so wird sichtbar, ob der Speicher nachlässt
+- **Wirtschaftlichkeit:** neue Seite mit dem Wert von PV und Akku je Monat und Jahr (direkt genutzt, durch den Akku, Einspeisung), bewertet mit dem Preis jeder Stunde. Mit eingetragener Anschaffung: wie viel schon zurückgekommen ist und wann sich die Anlage bezahlt hat
+- **Wann starten?** Die Übersicht zeigt, wann Waschmaschine, Spülmaschine, Trockner oder ein eigenes Gerät nach dem Plan am günstigsten laufen – und was ein sofortiger Start kosten würde
+- **Monatsbericht:** am Monatsersten um 8 Uhr eine Meldung mit PV-Ertrag, Verbrauch, Autarkie, Einspeisung, Ersparnis und bestem Tag des Vormonats; unter Benachrichtigungen abschaltbar
+- **Wetter an der Zeitleiste:** unter den Zeiten der Übersicht zeigen Symbole die Bewölkung laut Wetterprognose
+
+## 0.27.11
+
+- **Ersparnis am Handy kompakter:** je Tag nur Datum, Empfehlungen und „gespart“ – alle Werte und die einzelnen Stunden zeigt ein Tippen auf den Tag. **Tage ohne Eingriff** (nur Normalbetrieb, nichts gespart) lassen sich ausblenden, voreingestellt ausgeblendet. Die Seite ist am Handy nur noch halb so lang
+- **Übersicht:** „Genaueste Prognosen“ und „Datenquellen“ sind eine Karte „Prognosen und Quellen“ mit einer Zeile wie „Am genauesten: … 93 % · alle 11 Quellen aktuell“ – am Handy eingeklappt, am Computer mit der Rangliste und eingeklappten Quellen. Bei einem Problem öffnet sie sich von selbst. Der Strompreis steht darunter in voller Breite
+- **Benachrichtigungen:** die zuletzt gesendeten Meldungen mit Uhrzeit und Zahl der erreichten Ziele – auch wenn sie auf dem Handy schon weggewischt sind
+- **Rekorde öffnen sofort:** die Statistik aller Jahre wird kurz nach dem Start im Hintergrund geholt
+
 ## 0.27.10
 
 - **Rekorde, Autarkie:** zählt Netzbezug und Verbrauch nur über dieselben Stunden. Kam der Verbrauchszähler erst im Lauf eines Jahres dazu, wurde bisher der Netzbezug des ganzen Jahres gegen den Verbrauch weniger Wochen gerechnet – die Autarkie war viel zu niedrig. Unter dem Verbrauch steht dann, seit wann er gemessen wird
