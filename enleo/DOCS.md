@@ -299,11 +299,21 @@ der Pufferspeicher voll ist, steckt damit in den Messwerten; ein Temperaturfühl
 
 ## Rekorde
 
-Unten auf der Seite **Tagesverlauf** stehen die Rekorde des Jahres: die höchste Leistung jeder PV-Anlage (der höchste
-Wert, den der Sensor in einer Stunde gemeldet hat – kurze Spitzen am Wolkenrand eingeschlossen; „an der Grenze des
-Wechselrichters“, wenn er dort abregelt), die beste PV-Stunde und der beste PV-Tag, der höchste Verbrauch eines ganzen
-Tages sowie der günstigste und der teuerste Strompreis (seit ENLEO-Energy Preise sammelt). Grundlage ist die
-Langzeitstatistik von Home Assistant, im Demo-Modus das, was ENLEO-Energy selbst gespeichert hat.
+Die Seite **Rekorde** (im Menü unter Rückblick) zeigt die Bestwerte eines Jahres – oben in der Auswahl jedes Jahr mit
+Messwerten oder **Insgesamt** über alle Jahre:
+
+- **Das Jahr in Zahlen:** PV-Ertrag, Verbrauch, Autarkie (Anteil des Verbrauchs, der nicht aus dem Netz kam) und die
+  Tage ohne Netzbezug (weniger als 0,2 kWh gekauft).
+- **Erzeugung:** die höchste Leistung jeder PV-Anlage (der höchste Wert, den der Sensor in einer Stunde gemeldet hat –
+  kurze Spitzen am Wolkenrand eingeschlossen; „Wechselrichter am Limit“, wenn er dort abregelt), beste Stunde, bester
+  Tag, bester Monat.
+- **Verbrauch und Netz:** höchster und niedrigster Verbrauch, autarkster Tag, meiste Einspeisung, höchster Netzbezug –
+  nur ganze Tage.
+- **Strompreis:** günstigster und teuerster Preis (inklusive Aufschlägen) und die Stunden mit negativem Börsenpreis,
+  seit ENLEO-Energy Preise sammelt.
+
+Grundlage ist die Langzeitstatistik von Home Assistant, die über Jahre zurückreicht; ohne sie das, was ENLEO-Energy
+selbst gespeichert hat.
 
 ## Plan gegen Messung
 

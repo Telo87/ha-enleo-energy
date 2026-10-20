@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.27.8
+
+- **Rekorde als eigene Seite** im Menü unter Rückblick: je Jahr auswählbar (2026, 2025, …) oder **insgesamt** über alle Jahre. Oben das Jahr in Zahlen – PV-Ertrag, Verbrauch, Autarkie, Tage ohne Netzbezug –, darunter die Rekorde nach Erzeugung (Spitze je Anlage, beste Stunde, bester Tag, bester Monat), Verbrauch und Netz (höchster und niedrigster Verbrauch, autarkster Tag, meiste Einspeisung, höchster Netzbezug) und Strompreis (günstigster und teuerster Preis, Stunden mit negativem Börsenpreis)
+- **Startbildschirm:** Beim Ausblenden wandert die Welle an ihren Platz – in die Seitenleiste, am Handy in die Kopfzeile – und wird dabei zum App-Logo
+
 ## 0.27.7
 
 - **Seitenwechsel ohne Neuladen:** ENLEO-Energy wechselt seine Seiten jetzt selbst, statt die Adresse über einen Link ändern zu lassen. Manche Apps auf dem Handy haben dabei die ganze Seite neu geladen – das Menü flackerte und rutschte bei jedem Wechsel kurz nach unten. Die Zurück-Taste funktioniert wie bisher
