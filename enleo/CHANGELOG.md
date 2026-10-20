@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.27.7
+
+- **Seitenwechsel ohne Neuladen:** ENLEO-Energy wechselt seine Seiten jetzt selbst, statt die Adresse über einen Link ändern zu lassen. Manche Apps auf dem Handy haben dabei die ganze Seite neu geladen – das Menü flackerte und rutschte bei jedem Wechsel kurz nach unten. Die Zurück-Taste funktioniert wie bisher
+- Beim ersten Aufbau einer Seite gleitet nichts mehr an seinen Platz (Markierung im Menü, Balken)
+- Seite Planung: kürzerer Hinweis unter „Akku reicht“, damit er am Handy nicht abgeschnitten wird
+
 ## 0.27.6
 
 - **Startbildschirm nur beim Öffnen:** Manche Apps auf dem Handy laden die ganze Seite neu, wenn in ENLEO-Energy eine andere Seite gewählt wird – dann kam jedes Mal der Startbildschirm, und es ging zurück zur Übersicht. Ein solches Neuladen kurz nach einem Seitenwechsel erkennt ENLEO-Energy jetzt: kein Startbildschirm, die gewählte Seite bleibt. Beim Öffnen gibt es weiter den Startbildschirm und die Übersicht
