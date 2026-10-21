@@ -198,6 +198,12 @@ Heizstab sind steuerbar und werden später gezielt eingeplant. Vergleichsmaßsta
 
 ## Planung
 
+Ganz oben auf der Übersicht steht der Tag auf einen Blick: wie viel PV heute noch erwartet wird (abends: morgen), wie
+lange der Akku reicht und wann der Strom in den nächsten 24 Stunden am günstigsten ist.
+
+Die vier Arten von Energie haben auf allen Seiten dieselbe Farbe: PV orange, Akku grün, Netz grau, Haus und Verbrauch
+violett.
+
 Unter der Zeitleiste der Übersicht zeigen kleine Symbole die Bewölkung laut Wetterprognose (Sonne, teils bewölkt,
 bedeckt, nachts Mond).
 
@@ -375,6 +381,19 @@ bewertet (≈ am Monat). Unter **Insgesamt** stehen die Jahre im Vergleich: Wert
 genutzt, Akku und Einspeisung, PV-Ertrag und Autarkie. Unter **Anschaffung** lassen sich
 die Kosten von PV-Anlage und Akku und das Datum der Inbetriebnahme eintragen; dann zeigt die Seite, wie viel schon
 zurückgekommen ist und – im Tempo der letzten zwölf Monate – wann sich die Anlage bezahlt hat.
+
+## Was wäre wenn
+
+Die Seite **Was wäre wenn** rechnet die letzten zwölf Monate mit den gemessenen Stunden von PV und Verbrauch neu durch:
+mit einem anderen Akku, mehr PV oder einem Festpreis statt des Preises der jeweiligen Stunde. Fertige Varianten (ohne
+Akku, Akku 5 und 10 kWh größer, PV +25 % und +50 %, der Festpreis der Kostenseite) stehen in einer Tabelle; eine eigene
+Variante lässt sich oben eintragen oder per Klick auf eine Zeile übernehmen.
+
+Jede Variante läuft gleich: Der Akku nimmt den Überschuss und gibt ihn ab, wenn das Haus mehr braucht, als die Sonne
+liefert – mit dem eingetragenen Wirkungsgrad und der Leistung des heutigen Akkus. „Wie heute“ ist deshalb gerechnet und
+nicht die tatsächliche Rechnung; die Planung von ENLEO-Energy steckt in keiner Variante. Die **Bilanz** ist die
+Einspeisevergütung minus die Kosten des Strombezugs, ohne Grundgebühren – positiv heißt: Die Einspeisung bringt mehr,
+als der Bezug kostet.
 
 ## Wann starten?
 

@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.30.0
+
+- **Was wäre wenn:** neue Seite, die die letzten zwölf Monate mit anderem Akku, mehr PV oder einem Festpreis neu durchrechnet – fertige Varianten im Vergleich und eine eigene Variante neben dem heutigen Stand, mit Bilanz, Netzbezug, Einspeisung und Autarkie
+- **Der Tag auf einen Blick:** Eine Zeile über der Empfehlung sagt, wie viel PV heute noch kommt, wie lange der Akku reicht und wann der Strom am günstigsten ist
+- **Einheitliche Farben:** PV orange, Akku grün, Netz grau, Haus und Verbrauch violett – im Energiefluss, in Plan, Planungs-Zeitleiste, Plan gegen Messung, Wirtschaftlichkeit und Akku. Bisher war das Netz im Live-Fluss blau wie das Haus und die Einspeisung grün wie der Akku
+- **Feinschliff:** „Wann starten?“ am Computer in einer Zeile, am Handy brechen die Geräte um statt abgeschnitten zu werden; im Tagesverlauf bleibt das Diagramm neben einer langen Rangliste kompakt und im Blick; die Legende der Planung zeigt die Farben der Balken
+
+## 0.29.5
+
+- **Akku, Wirtschaftlichkeit und Energiefluss (Jahr, Insgesamt) öffnen sofort:** Ist das Ergebnis älter als 15 Minuten, zeigt die Seite es gleich an und rechnet im Hintergrund neu. Die Wirtschaftlichkeit des laufenden Jahres und der Energiefluss des Jahres werden wie der Akku stündlich vorgerechnet
+- **Energiefluss heute am Morgen:** Statt „0,0 von 0,0 kWh PV“ steht beim Eigenverbrauch, dass heute noch keine volle Stunde mit PV-Ertrag vorliegt
+
 ## 0.29.4
 
 - **Logo oben links:** Statt eines kaum sichtbaren Schimmers schlägt der Punkt alle sechs Sekunden zweimal, jeweils mit einem Ring – wie auf dem Startbildschirm. Mit „Bewegung reduzieren“ im System bleibt das Logo still
