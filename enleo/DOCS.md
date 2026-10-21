@@ -352,8 +352,10 @@ Speicher über die Jahre nachlässt. Ein Monat ohne Wert hatte dafür zu wenig B
   einen Hinweis – mit Monat, Kapazität vorher und nachher. Die Systemprüfung nennt ihn ebenfalls, und auf Wunsch kommt
   eine Benachrichtigung (Anlass „Akku-Zustand“). Langsames Altern von Monat zu Monat ist kein Sprung.
 - **Angaben des Speichers:** Unter Einstellungen › Sensoren › Batterie lassen sich optional die Sensoren wählen, mit
-  denen der Speicher selbst meldet, wie es um ihn steht: Akkuzustand (SOH), verbleibende und installierte nutzbare
-  Kapazität, Ladezyklen. Die Seite Akku stellt sie neben die eigene Messung.
+  denen der Speicher selbst meldet, wie es um ihn steht: Akkuzustand (SOH), installierte nutzbare Kapazität und
+  Ladezyklen. Aus Akkuzustand und installierter Kapazität rechnet die Seite Akku die Kapazität von heute und stellt sie
+  neben die eigene Messung. Ein Sensor „verbleibende Kapazität“ ist bei vielen Speichern der aktuelle Energieinhalt –
+  er gehört nicht hierher.
 - **Bericht für den Hersteller:** fasst Zusammenfassung, Angaben des Speichers, die Kapazität als Verlauf, die Werte je
   Monat und die Methode auf einer Seite zusammen – zum Drucken oder als PDF; die Monate gibt es zusätzlich als CSV.
 

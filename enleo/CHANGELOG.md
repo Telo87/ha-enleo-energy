@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.29.1
+
+- **Akku, Angaben des Speichers:** Statt eines Sensors „verbleibende Kapazität“ – bei vielen Speichern der aktuelle Energieinhalt, nicht die Kapazität im Alter – rechnet die Seite die Kapazität von heute aus installierter Kapazität und Akkuzustand
+- **Kapazitätssprung:** Als Monat des Sprungs gilt der erste niedrige Monat. Bisher konnte ein späterer Monat genannt werden, wenn sein rechnerischer Abfall knapp größer war
+
 ## 0.29.0
 
 - **Akku: Kapazitätssprung erkennen.** Fällt die gemessene nutzbare Kapazität in einem Schritt um 5 % oder mehr und bestätigen das zwei Monate, zeigt die Seite Akku einen Hinweis mit Monat und Kapazität vorher und nachher. Die Systemprüfung nennt ihn auch; auf Wunsch kommt eine Benachrichtigung (neuer Anlass „Akku-Zustand“)
