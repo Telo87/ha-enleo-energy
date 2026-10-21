@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.29.2
+
+- **Start wieder in Sekunden:** Seit 0.29.0 die Börsenpreise aller Jahre nachlädt, brauchte das Aufräumen der Preistabelle beim Start auf einem Raspberry Pi mehrere Minuten – das Add-on schien nicht zu starten. Start und Speichern neuer Preise schauen jetzt nur noch auf die benachbarten Einträge; das Nachladen läuft neben den Seiten, ohne sie zu bremsen
+- **Bericht für den Hersteller:** Modell, Seriennummer und Inbetriebnahme lassen sich direkt im Bericht eintragen und bleiben für den nächsten gespeichert
+
 ## 0.29.1
 
 - **Akku, Angaben des Speichers:** Statt eines Sensors „verbleibende Kapazität“ – bei vielen Speichern der aktuelle Energieinhalt, nicht die Kapazität im Alter – rechnet die Seite die Kapazität von heute aus installierter Kapazität und Akkuzustand
