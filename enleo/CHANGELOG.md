@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.29.4
+
+- **Logo oben links:** Statt eines kaum sichtbaren Schimmers schlägt der Punkt alle sechs Sekunden zweimal, jeweils mit einem Ring – wie auf dem Startbildschirm. Mit „Bewegung reduzieren“ im System bleibt das Logo still
+
+## 0.29.3
+
+- **Systemprüfung an dunklen Tagen:** Ein Wechselrichter ohne Wert gilt auch tagsüber als „aus, weil zu wenig Licht“, wenn die anderen Anlagen zusammen weniger als 2 % ihrer Spitzenleistung liefern – oder, bei nur einer Anlage, der Wetterdienst kaum Einstrahlung meldet. Bisher erschien dann der Hinweis „Messsensor gerade nicht verfügbar“, obwohl ein kleinerer oder ungünstiger ausgerichteter Wechselrichter bei trübem Wetter einfach später startet. Liefern die anderen Anlagen gut, bleibt der Hinweis
+
 ## 0.29.2
 
 - **Start wieder in Sekunden:** Seit 0.29.0 die Börsenpreise aller Jahre nachlädt, brauchte das Aufräumen der Preistabelle beim Start auf einem Raspberry Pi mehrere Minuten – das Add-on schien nicht zu starten. Start und Speichern neuer Preise schauen jetzt nur noch auf die benachbarten Einträge; das Nachladen läuft neben den Seiten, ohne sie zu bremsen
