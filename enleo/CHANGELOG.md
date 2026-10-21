@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.30.1
+
+- **Akku leer:** Ist der Akku schon auf dem Mindest-Ladestand, steht das so in der Übersicht, im Energiefluss und unter „Akku reicht“ der Planung – statt einer Uhrzeit, die schon vorbei ist („reicht bis heute 18:08 Uhr“ um 18:16)
+- **Der Tag auf einen Blick:** Die PV, die heute noch kommt, rechnet ENLEO-Energy aus den Prognosestunden ab jetzt. Bisher war es Tagesprognose minus Gemessenes, und weil nur volle Stunden gemessen sind, standen bei Sonnenuntergang noch „~0,7 kWh“ da
+
 ## 0.30.0
 
 - **Was wäre wenn:** neue Seite, die die letzten zwölf Monate mit anderem Akku, mehr PV oder einem Festpreis neu durchrechnet – fertige Varianten im Vergleich und eine eigene Variante neben dem heutigen Stand, mit Bilanz, Netzbezug, Einspeisung und Autarkie
