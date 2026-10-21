@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.29.0
+
+- **Akku: Kapazitätssprung erkennen.** Fällt die gemessene nutzbare Kapazität in einem Schritt um 5 % oder mehr und bestätigen das zwei Monate, zeigt die Seite Akku einen Hinweis mit Monat und Kapazität vorher und nachher. Die Systemprüfung nennt ihn auch; auf Wunsch kommt eine Benachrichtigung (neuer Anlass „Akku-Zustand“)
+- **Akku: Angaben des Speichers.** Optional lassen sich die Sensoren wählen, mit denen der Speicher selbst Akkuzustand, verbleibende und installierte Kapazität und Ladezyklen meldet. Die Seite Akku stellt sie neben die eigene Messung, dazu die Kapazität je Monat als Verlauf
+- **Bericht für den Hersteller:** Die Seite Akku fasst die Messung auf einer Seite zusammen – zum Drucken oder als PDF, die Monate zusätzlich als CSV
+- **Wirtschaftlichkeit:** Die Börsenpreise aller Jahre mit Messwerten werden im Hintergrund nachgeladen, damit jede Stunde mit ihrem echten Preis bewertet wird statt mit dem Durchschnitt. Unter „Insgesamt“ stehen die Jahre im Vergleich: Wert, PV-Ertrag und Autarkie
+- Energiefluss (Jahr, Insgesamt), Akku und Wirtschaftlichkeit rechnen alle Stunden aller Jahre durch und werden deshalb 15 Minuten zwischengespeichert – die Seiten öffnen schneller
+
 ## 0.28.1
 
 - **Energiefluss:** Netzbezug und Einspeisung zählen wie gemessen, auch in Stunden mit beidem (eine Wolke, der Backofen). Bisher wurden sie in solchen Stunden gegeneinander verrechnet – über ein Jahr fehlten so einige Prozent bei „Gekauft“ und „Eingespeist“, und die Autarkie lag etwas zu hoch. Jetzt passen die Summen zu den Rekorden und zur Kostenseite

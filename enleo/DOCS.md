@@ -348,6 +348,15 @@ eingetragene Kapazität), den Wirkungsgrad (was herauskam gegen das, was hineing
 -ende ist herausgerechnet) und die nutzbare Kapazität aus der Energie je Prozent Ladestand. So wird sichtbar, ob der
 Speicher über die Jahre nachlässt. Ein Monat ohne Wert hatte dafür zu wenig Bewegung.
 
+- **Kapazitätssprung:** Liegen zwei Monate in Folge 5 % oder mehr unter dem Mittel der sechs Monate davor, zeigt die Seite
+  einen Hinweis – mit Monat, Kapazität vorher und nachher. Die Systemprüfung nennt ihn ebenfalls, und auf Wunsch kommt
+  eine Benachrichtigung (Anlass „Akku-Zustand“). Langsames Altern von Monat zu Monat ist kein Sprung.
+- **Angaben des Speichers:** Unter Einstellungen › Sensoren › Batterie lassen sich optional die Sensoren wählen, mit
+  denen der Speicher selbst meldet, wie es um ihn steht: Akkuzustand (SOH), verbleibende und installierte nutzbare
+  Kapazität, Ladezyklen. Die Seite Akku stellt sie neben die eigene Messung.
+- **Bericht für den Hersteller:** fasst Zusammenfassung, Angaben des Speichers, die Kapazität als Verlauf, die Werte je
+  Monat und die Methode auf einer Seite zusammen – zum Drucken oder als PDF; die Monate gibt es zusätzlich als CSV.
+
 ## Wirtschaftlichkeit
 
 Die Seite **Wirtschaftlichkeit** rechnet aus, was PV und Akku je Monat wert waren – gegenüber dem Fall, dass alles aus
@@ -358,7 +367,10 @@ dem Netz gekauft worden wäre:
   geladen hat. Daneben steht, wie viel der in den Akku geladene PV-Strom als Einspeisung gebracht hätte.
 - **Einspeisung:** die Vergütung für den Strom, der ins Netz ging.
 
-Stunden ohne gespeicherten Preis werden mit dem Durchschnitt bewertet (≈ am Monat). Unter **Anschaffung** lassen sich
+Die Börsenpreise aller Jahre mit Messwerten holt ENLEO-Energy nach und nach im Hintergrund nach (Energy-Charts);
+für die Aufschläge gilt der heute eingetragene Tarif. Stunden ohne gespeicherten Preis werden mit dem Durchschnitt
+bewertet (≈ am Monat). Unter **Insgesamt** stehen die Jahre im Vergleich: Wert der Anlage, aufgeteilt nach direkt
+genutzt, Akku und Einspeisung, PV-Ertrag und Autarkie. Unter **Anschaffung** lassen sich
 die Kosten von PV-Anlage und Akku und das Datum der Inbetriebnahme eintragen; dann zeigt die Seite, wie viel schon
 zurückgekommen ist und – im Tempo der letzten zwölf Monate – wann sich die Anlage bezahlt hat.
 
@@ -602,6 +614,7 @@ auf dem Handy schon weggewischt sind. Unter **Was gemeldet wird** lässt sich je
 | Preise für morgen fehlen | um 15 Uhr sind die Börsenpreise für morgen noch nicht da |
 | Ladestand nicht verfügbar | der Sensor für den Ladestand liefert seit 30 Minuten keinen Wert |
 | Monatsbericht | am Monatsersten ab 8 Uhr: PV-Ertrag, Verbrauch, Autarkie, Einspeisung, Ersparnis durch ENLEO-Energy und bester Tag des Vormonats |
+| Akku-Zustand | die gemessene nutzbare Kapazität ist in einem Schritt um 5 % oder mehr gesunken (einmal je Ereignis) |
 | Lizenz | Abo abgelaufen (Kulanzzeit), Freigabe abgelaufen oder Steuerung vom Hersteller abgeschaltet |
 
 Ein Problem, das anhält, wird einmal am Tag wiederholt; ist es vorbei, wird das nächste wieder sofort gemeldet.
