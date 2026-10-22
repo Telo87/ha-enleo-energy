@@ -243,6 +243,16 @@ wann er laut Prognose (mit PV-Erzeugung) leer bzw. wieder voll ist.
 Ohne Lizenz ist der Plan eine Empfehlung, die du in der Oberfläche siehst; mit Lizenz kann ENLEO-Energy den Akku
 danach schalten (siehe [Automatisch steuern](#automatisch-steuern)). Entitäten in Home Assistant legt ENLEO-Energy nicht an.
 
+### Eingriffe bei unsicherer Prognose
+
+Ob sich Halten oder Laden lohnt, hängt an der Prognose von Verbrauch und PV – und die liegt über ein paar Stunden
+typisch um einige Prozent daneben. Wie weit, lernt ENLEO-Energy aus den eigenen Messwerten der letzten Wochen (der
+Fehler der Summe über vier Stunden, das 75-%-Quantil). Jeder geplante Eingriff wird zusätzlich mit weniger Bedarf
+(weniger Verbrauch, mehr PV) und mehr Bedarf durchgerechnet; er bleibt nur, wenn er den Mindestnutzen im Mittel über
+alle drei Fälle bringt. Ein Halten, das nur aufgeht, wenn der Abend genau wie vorhergesagt kommt, entfällt so – eine
+Ladung mit großem Preisabstand bleibt. Vor einer Woche mit Messwerten plant ENLEO-Energy wie bisher nur mit der
+Prognose. Die gelernten Werte stehen in der Systemprüfung, weggelassene Eingriffe unter „Warum?“ in der Planung.
+
 ## Kosten
 
 Die Seite **Kosten** rechnet aus dem gemessenen Netzbezug und den Preisen die tatsächlichen Stromkosten – pro Tag

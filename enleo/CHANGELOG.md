@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.31.0
+
+- **Eingriffe bei unsicherer Prognose:** Jedes geplante Halten oder Laden wird zusätzlich mit weniger und mehr Bedarf durchgerechnet – so weit, wie Verbrauch und PV über ein paar Stunden typisch danebenliegen (an den eigenen Messwerten gelernt). Es bleibt nur, wenn es den Mindestnutzen im Mittel über alle drei Fälle bringt. Ein Halten, das nur aufgeht, wenn der Abend genau wie vorhergesagt kommt, entfällt; eine Ladung mit großem Preisabstand bleibt. Die gelernten Werte zeigt die Systemprüfung, weggelassene Eingriffe stehen unter „Warum?“
+
 ## 0.30.1
 
 - **Akku leer:** Ist der Akku schon auf dem Mindest-Ladestand, steht das so in der Übersicht, im Energiefluss und unter „Akku reicht“ der Planung – statt einer Uhrzeit, die schon vorbei ist („reicht bis heute 18:08 Uhr“ um 18:16)
