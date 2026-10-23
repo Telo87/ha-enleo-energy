@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.32.2
+
+- **Menü:** Die eigene Reihenfolge gilt jetzt gleich beim Öffnen. Bisher erschien sie erst, nachdem man einmal die Einstellungen geöffnet hatte
+
+## 0.32.1
+
+- **Rekorde wechseln sofort:** Die Rekorde jedes Jahres werden einmal ausgewertet und wie Akku und Wirtschaftlichkeit zwischengespeichert und stündlich vorgerechnet. „Insgesamt“ nutzt die schon fertigen Jahre. Bisher brauchte jeder Wechsel bis zu 3 Sekunden
+
 ## 0.32.0
 
 - **Status-Sensor des Wechselrichters (optional, je PV-Anlage):** ENLEO-Energy ordnet gängige Zustände vieler Hersteller vorab ein – auch Ein/Aus-Sensoren von Balkonkraftwerken (OpenDTU, AhoyDTU, Anker Solix) – und lernt an der gemessenen Leistung, was jeder Zustand an der eigenen Anlage bedeutet. Meldet ein Wechselrichter eine Störung, zeigen Übersicht und Systemprüfung das; nach 10 Minuten kommt auf Wunsch eine Benachrichtigung (neuer Anlass „Wechselrichter-Störung“). Ein ruhender Wechselrichter gilt nicht mehr als Problem, auch wenn er an trüben Tagen spät startet
