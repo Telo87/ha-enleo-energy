@@ -68,6 +68,19 @@ ohne Statistik markiert. Unterstützt werden:
 - Leistung in W oder kW (ENLEO-Energy nutzt den Stundenmittelwert),
 - Energie in Wh oder kWh (Zählerstand, ENLEO-Energy nutzt die Änderung pro Stunde).
 
+### Status-Sensor des Wechselrichters (optional)
+
+Je PV-Anlage lässt sich zusätzlich der Sensor wählen, mit dem der Wechselrichter meldet, wie es ihm geht – etwa
+„In Betrieb“, „Standby“ oder „Fehler“ (Fronius, SolarEdge, Huawei, SMA, GoodWe, Kostal …), bei Balkonkraftwerken über
+OpenDTU, AhoyDTU oder Anker Solix oft ein Ein/Aus-Sensor wie „Producing“. Jeder Hersteller nutzt eigene Worte;
+ENLEO-Energy ordnet gängige Worte vorab ein und lernt an der gleichzeitig gemessenen Leistung, was jeder Zustand an
+dieser Anlage bedeutet: Zeigt der Wechselrichter einen Zustand nur ohne Leistung, ruht er; mit Leistung läuft er.
+Störungen und Warnungen werden nur an ihren Worten erkannt und nie weggelernt. Dann:
+
+- zeigt die Übersicht einen Hinweis und die Systemprüfung einen Fehler, solange ein Wechselrichter eine Störung meldet;
+- kommt nach 10 Minuten auf Wunsch eine Benachrichtigung (Anlass „Wechselrichter-Störung“);
+- gilt ein ruhender Wechselrichter nicht als Problem – auch an trüben Tagen, an denen er erst spät startet.
+
 ### Ost-West-Anlagen und mehrere Ausrichtungen an einem Wechselrichter
 
 Zeigt ein String nach Osten und einer nach Westen, der Wechselrichter meldet aber nur einen
@@ -523,6 +536,14 @@ Einfacher geht es mit **„Aufschlag aus einem Preis berechnen“**: einen oder 
 App des Stromanbieters (viertelstündlicher Preis) mit Tag und Uhrzeit eintragen. ENLEO-Energy
 rechnet `Preis ÷ (1 + MwSt) − Börsenpreis` für jede Viertelstunde aus und übernimmt den Mittelwert.
 
+## Menü sortieren
+
+Unter Einstellungen › Darstellung › **Menü** lässt sich jeder Eintrag mit den Pfeilen innerhalb seines Bereichs (Heute,
+Rückblick, Verwaltung) nach oben oder unten schieben; „Standard“ stellt die ursprüngliche Reihenfolge wieder her. Die
+Reihenfolge gilt auf allen Geräten. Die Liste zeigt nur die Seiten, die man öffnen darf – Seiten mit Lizenz nur mit
+aktiver Lizenz. Ihre Position bleibt gespeichert, auch wenn sie gerade nicht angezeigt werden. Die Leiste unten am
+Handy zeigt weiter Übersicht, Planung, Strompreise und Tagesverlauf.
+
 ## Als App auf dem Handy (Direktzugriff)
 
 Über Home Assistant bleibt dessen Kopfzeile mit dem Menü immer sichtbar. Wer ENLEO-Energy wie eine eigene
@@ -817,6 +838,29 @@ Ladeleistung, „Battery Grid Charging“ → Einschalten. Ungeprüft – bitte 
 
 Das sind 12 Aktionen je Betriebsart (möglich sind bis zu 16). Einfacher, aber von der Integration nicht beschrieben:
 Halten mit „Battery Max Discharging Current“ → fester Wert 0 (in Normalbetrieb wieder auf den üblichen Wert).
+
+#### Anker SOLIX Solarbank (Balkonspeicher; Integration „Anker Solix“ von thomluther)
+
+| Betriebsart | Aktionen |
+|---|---|
+| Normalbetrieb | „Benutzermodus“ → `smartmeter`, „Aktiviere Notstrom SoC“ → Ausschalten, „Notladeplan“ → Ausschalten |
+| Akku halten | „Benutzermodus“ → `smartmeter`, „Notstrom SoC“ → aktueller Ladestand, „Aktiviere Notstrom SoC“ → Einschalten |
+| Aus dem Netz laden | „Notstrom SoC“ → 100, „Aktiviere Notstrom SoC“ → Einschalten, „Notladeplan“ → Einschalten |
+
+Die Integration braucht den Steuerzugriff; Laden aus dem Netz geht nur mit AC-Anschluss (Solarbank 2 AC, Solarbank 3).
+Diese Vorlage ist aus den Quelltexten der Integration abgeleitet und noch nicht an einer Anlage erprobt – bitte nach
+dem ersten Schalten in der Anker-App prüfen.
+
+#### Zendure SolarFlow (Balkonspeicher; Integration „Zendure Home Assistant“)
+
+| Betriebsart | Aktionen |
+|---|---|
+| Normalbetrieb | „Betriebsmodus“ → `smart` (Smarte Leistungsregelung) |
+| Akku halten | „Betriebsmodus“ → `smart_charging` (Smartes nur Laden) |
+| Aus dem Netz laden | „Betriebsmodus“ → `manual`, „AC-Betriebsmodus“ → `input`, „AC-Eingangsgrenze“ → Ladeleistung |
+
+HEMS in der Zendure-App ausschalten. Laden aus dem Netz nur bei Modellen mit AC-Eingang. Auch diese Vorlage ist aus den
+Quelltexten abgeleitet und noch nicht an einer Anlage erprobt.
 
 #### BYD Battery-Box
 

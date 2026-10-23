@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.32.0
+
+- **Status-Sensor des Wechselrichters (optional, je PV-Anlage):** ENLEO-Energy ordnet gängige Zustände vieler Hersteller vorab ein – auch Ein/Aus-Sensoren von Balkonkraftwerken (OpenDTU, AhoyDTU, Anker Solix) – und lernt an der gemessenen Leistung, was jeder Zustand an der eigenen Anlage bedeutet. Meldet ein Wechselrichter eine Störung, zeigen Übersicht und Systemprüfung das; nach 10 Minuten kommt auf Wunsch eine Benachrichtigung (neuer Anlass „Wechselrichter-Störung“). Ein ruhender Wechselrichter gilt nicht mehr als Problem, auch wenn er an trüben Tagen spät startet
+- **Vorlagen für Balkonspeicher:** Anker SOLIX Solarbank und Zendure SolarFlow für Normalbetrieb, Halten und Laden – aus den Quelltexten der Integrationen abgeleitet, noch nicht an einer Anlage erprobt
+
+## 0.31.1
+
+- **Menü sortieren:** Unter Einstellungen › Darstellung lässt sich die Reihenfolge der Menüeinträge innerhalb von Heute, Rückblick und Verwaltung ändern – gespeichert für alle Geräte, „Standard“ stellt sie zurück. Die Liste zeigt nur die Seiten, die man öffnen darf
+- Läuft die Lizenz ab, während eine Seite mit Lizenz offen ist, wechselt ENLEO-Energy jetzt bei allen diesen Seiten in die Einstellungen – bisher nur bei Benachrichtigungen und Rekorden
+
 ## 0.31.0
 
 - **Eingriffe bei unsicherer Prognose:** Jedes geplante Halten oder Laden wird zusätzlich mit weniger und mehr Bedarf durchgerechnet – so weit, wie Verbrauch und PV über ein paar Stunden typisch danebenliegen (an den eigenen Messwerten gelernt). Es bleibt nur, wenn es den Mindestnutzen im Mittel über alle drei Fälle bringt. Ein Halten, das nur aufgeht, wenn der Abend genau wie vorhergesagt kommt, entfällt; eine Ladung mit großem Preisabstand bleibt. Die gelernten Werte zeigt die Systemprüfung, weggelassene Eingriffe stehen unter „Warum?“
