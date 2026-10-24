@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.32.3
+
+- **Probebetrieb ausschalten wirkt sofort:** Die Betriebsart von jetzt wird gleich echt geschaltet, und Übersicht und Seite Steuerung zeigen sofort „automatisch“ bzw. „aktiv“. Bisher blieb „Probebetrieb“ stehen, solange der Plan im Normalbetrieb blieb – geschaltet wurde dann erst beim nächsten Halten oder Laden, dann aber echt
+
 ## 0.32.2
 
 - **Menü:** Die eigene Reihenfolge gilt jetzt gleich beim Öffnen. Bisher erschien sie erst, nachdem man einmal die Einstellungen geöffnet hatte
