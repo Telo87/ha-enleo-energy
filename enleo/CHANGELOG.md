@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.34.0
+
+- **Übersicht:** „Jetzt“ zeigt aktuelle Energieflüsse, Strompreis und Steuerungsstatus. „Heute“ enthält bisherige Tageswerte und Prognosen für heute. Morgen, Reichweite und geplanter Akku-Betrieb stehen unter „Ausblick“, Diagramme und Quellen unter „Verlauf und Daten“. Der Akku zeigt Leistung und Ladestand zusammen. Bei durchgehendem Normalbetrieb sind Zeitleiste und Wetter aufklappbar
+- **Planung und Auswertungen:** Reichweite mit erwarteter PV und Dauer bei gleichbleibender Entladung sind getrennt bezeichnet. Geplante, nachgerechnete und gemessene Werte sind gekennzeichnet. Zusammenhängende Betriebsarten erscheinen als ruhige Flächen
+- **Zeiträume und Reihenfolge:** Nachgerechnete Empfehlungen und gemessene Stromkosten stehen getrennt. Langfristige Prognoseentwicklung und Amortisation benennen ihren eigenen Zeitraum. Simulationen verwenden „Ausgangslage“ und zeigen die tatsächlich ausgewerteten Stunden. Grundlegende Sensoren stehen vor optionalen Angaben
+- **Diagramme und Vergleiche:** Eigene Prognosen sind stärker hervorgehoben, Unsicherheitsbereiche erläutert, Monatsbalken auch auf dem Handy mit Legende versehen. Kapazitätsmessung und Speicherangabe stehen direkt nebeneinander. Die Rekorde nutzen ein ausgewogenes Raster
+- **Tagesverlauf:** Ohne aussagekräftige Vergleichsstunden werden keine Rangplätze vergeben; gleich gute Quellen teilen sich einen Platz
+- **Bedienung:** Filter bleiben mit ihrer Beschriftung zusammen. Quellenranglisten zeigen zunächst drei Quellen, weitere Quellen und Lerndetails sind aufklappbar. Günstige Preisfenster stehen vor dem Preisdiagramm
+- **Einstellungen und Meldungen:** Gewählte Benachrichtigungsziele stehen zuerst, weitere Ziele lassen sich suchen. Wiederholte Meldungen sind gruppiert. Eingerichtete Sensorgruppen sind aufklappbar, Einstellungsbereiche klar benannt. Die Systemprüfung unterscheidet Probleme, Warnungen und optionale Optimierungen
+- **Lesbarkeit und Tastatur:** Erläuterungen in Kennzahlen werden vollständig angezeigt, Diagrammachsen sind besser lesbar. Dialoge führen den Tastaturfokus und geben ihn beim Schließen zurück
+
 ## 0.33.0
 
 - **Eigener PV-Leistungssensor für die Übersicht:** Unter Einstellungen › Sensoren & Standort lässt sich optional ein Gesamtleistungssensor auswählen, etwa ein schneller meldender Erzeugungszähler. Er liefert ausschließlich die aktuelle PV-Leistung im Energiefluss der Übersicht. Tagesertrag, Prognosen und Batterieplanung verwenden weiterhin die Anlagensensoren. Bei fehlenden oder ungültigen Werten wird wieder deren Summe angezeigt

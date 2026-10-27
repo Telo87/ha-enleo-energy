@@ -1,8 +1,7 @@
 # ENLEO-Energy – Dokumentation
 
-> 🧪 **Testphase:** ENLEO-Energy prognostiziert, plant und empfiehlt – es **steuert den Speicher noch nicht**.
-> Die automatische Steuerung folgt, sobald die Auswertungen über einen längeren Zeitraum zeigen, dass Prognose
-> und Planung verlässlich sind. Bis dahin ändert das Add-on nichts an deiner Anlage.
+ENLEO-Energy prognostiziert, plant und empfiehlt. Mit einer aktiven Lizenz kann die eingerichtete automatische
+Steuerung den Speicher nach dem Plan schalten; im Probebetrieb werden die Schaltungen nur protokolliert.
 
 ENLEO-Energy sammelt PV-Prognosen mehrerer Wetterdienste, vergleicht sie mit der tatsächlichen Erzeugung deiner
 Anlagen und lernt daraus eine eigene Prognose. Zusammen mit der Verbrauchsprognose und den dynamischen
@@ -10,6 +9,26 @@ Strompreisen entsteht ein Fahrplan für den Heimspeicher; jede Empfehlung wird f
 nachgerechnet.
 
 ## Erste Schritte
+
+Die Übersicht trennt **Jetzt** (aktuelle Leistungen, Strompreis und Steuerungsstatus), **Heute** (bisherige
+Tagesmesswerte und Prognosen für den heutigen Tag) und **Ausblick** (morgen, Reichweite und geplanter
+Akku-Betrieb). Diagramme und Quellen folgen unter **Verlauf und Daten**. Beim Akku stehen aktuelle Leistung
+und Ladestand zusammen. Die Versorgung mit erwarteter PV
+berücksichtigt künftige Erzeugung und Verbrauch; die Dauer bei gleichbleibender Entladung beschreibt den
+momentanen Zustand ohne Nachladen.
+
+Unter **Auswertung › Ersparnis** ist die Ersparnis laut Empfehlungen nachgerechnet: Sie zeigt, was das Befolgen
+aller Empfehlungen gebracht hätte. Gemessene Stromkosten sind getrennt gekennzeichnet. **Was wäre wenn**
+vergleicht simulierte Varianten mit einer ebenfalls simulierten Ausgangslage.
+
+Filterbeschriftungen bleiben bei ihrer Auswahl. Ranglisten zeigen zunächst die wichtigsten Quellen; weitere
+Quellen und Lerndetails sind aufklappbar. Vor den ersten aussagekräftigen Messstunden erhält eine Quelle
+keinen Rangplatz. Gleiche Abweichungen teilen sich einen Platz.
+
+Eingerichtete Sensorgruppen lassen sich zum Bearbeiten aufklappen. Bei Benachrichtigungen stehen gewählte
+Ziele zuerst; über **Ziel hinzufügen** werden weitere Geräte und Dienste gesucht. Änderungen werden mit
+**Speichern** übernommen. Die Systemprüfung unterscheidet Probleme, Warnungen, optionale Optimierungen und
+Informationen; **Ansehen** öffnet eine optionale Verbesserung.
 
 Am einfachsten mit dem **Einrichtungsassistenten**: Bei einer neuen Installation startet er über „Einrichtung starten“
 auf der Übersicht, später jederzeit unter Einstellungen › System. Er führt Schritt für Schritt durch Sensoren und
@@ -227,8 +246,8 @@ Heizstab sind steuerbar und werden später gezielt eingeplant. Vergleichsmaßsta
 
 ## Planung
 
-Ganz oben auf der Übersicht steht der Tag auf einen Blick: wie viel PV heute noch erwartet wird (abends: morgen), wie
-lange der Akku reicht und wann der Strom in den nächsten 24 Stunden am günstigsten ist.
+Unter **Ausblick** stehen die verbleibende PV-Erzeugung heute, die Prognosen für morgen, die erwartete
+Akku-Reichweite und der günstigste Strompreis innerhalb der nächsten 24 Stunden.
 
 Die vier Arten von Energie haben auf allen Seiten dieselbe Farbe: PV orange, Akku grün, Netz grau, Haus und Verbrauch
 violett.
