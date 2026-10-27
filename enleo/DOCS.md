@@ -68,6 +68,22 @@ ohne Statistik markiert. Unterstützt werden:
 - Leistung in W oder kW (ENLEO-Energy nutzt den Stundenmittelwert),
 - Energie in Wh oder kWh (Zählerstand, ENLEO-Energy nutzt die Änderung pro Stunde).
 
+Die Übersicht liest die aktuellen Sensorwerte alle 15 Sekunden. Wie oft neue Werte vorliegen,
+bestimmt die Integration in Home Assistant: Ein Leistungssensor des Wechselrichters kann seltener
+melden als ein Power-Flow-Sensor. Ein alter `last_updated`-Zeitpunkt allein bedeutet bei unverändertem
+Wert keine Störung; `last_reported` zeigt auch erneute Meldungen desselben Werts.
+Ein schnellerer Sensor muss genau die jeweilige Anlage messen. Einen Gesamt-PV-Sensor für mehrere
+Wechselrichter nicht mehreren Anlagen zuordnen, sonst wird die Erzeugung mehrfach gezählt.
+
+Unter **Einstellungen › Sensoren & Standort › PV-Anzeige** lässt sich optional ein separater
+**PV-Leistungssensor für die Übersicht** wählen, etwa ein schneller meldender Erzeugungszähler
+für alle Anlagen zusammen. Er muss die gesamte PV-Erzeugung in W oder kW messen, nicht den
+Netzbezug oder die Einspeisung. Nur die aktuelle PV-Leistung im Energiefluss der Übersicht
+kommt dann von diesem Sensor. Tagesertrag, Messhistorie, Prognosen und Batterieplanung
+verwenden weiterhin die Sensoren der einzelnen PV-Anlagen. Ohne Zusatzsensor oder bei einem
+fehlenden, negativen oder nicht als Leistung gelieferten Wert nutzt die Übersicht wieder die
+Anlagensensoren. Ein gültiger Wert von 0 W wird übernommen.
+
 ### Status-Sensor des Wechselrichters (optional)
 
 Je PV-Anlage lässt sich zusätzlich der Sensor wählen, mit dem der Wechselrichter meldet, wie es ihm geht – etwa

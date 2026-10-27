@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.33.0
+
+- **Eigener PV-Leistungssensor für die Übersicht:** Unter Einstellungen › Sensoren & Standort lässt sich optional ein Gesamtleistungssensor auswählen, etwa ein schneller meldender Erzeugungszähler. Er liefert ausschließlich die aktuelle PV-Leistung im Energiefluss der Übersicht. Tagesertrag, Prognosen und Batterieplanung verwenden weiterhin die Anlagensensoren. Bei fehlenden oder ungültigen Werten wird wieder deren Summe angezeigt
+- **Grundverbrauch heute:** Die Kachel zeigt den bisher gemessenen Verbrauch groß und die Prognosen für heute und morgen darunter
+- **Energiebilanz bei Zeitumstellung:** Der Auswertungszeitraum umfasst vollständige Kalendertage mit 23, 24 oder 25 Stunden. Tage mit fehlenden Messstunden werden ausgeschlossen
+
 ## 0.32.3
 
 - **Probebetrieb ausschalten wirkt sofort:** Die Betriebsart von jetzt wird gleich echt geschaltet, und Übersicht und Seite Steuerung zeigen sofort „automatisch“ bzw. „aktiv“. Bisher blieb „Probebetrieb“ stehen, solange der Plan im Normalbetrieb blieb – geschaltet wurde dann erst beim nächsten Halten oder Laden, dann aber echt
