@@ -1,7 +1,8 @@
 # ENLEO-Energy – Dokumentation
 
-ENLEO-Energy prognostiziert, plant und empfiehlt. Mit einer aktiven Lizenz kann die eingerichtete automatische
-Steuerung den Speicher nach dem Plan schalten; im Probebetrieb werden die Schaltungen nur protokolliert.
+> 🧪 **Testphase:** ENLEO-Energy prognostiziert, plant und empfiehlt – es **steuert den Speicher noch nicht**.
+> Die automatische Steuerung folgt, sobald die Auswertungen über einen längeren Zeitraum zeigen, dass Prognose
+> und Planung verlässlich sind. Bis dahin ändert das Add-on nichts an deiner Anlage.
 
 ENLEO-Energy sammelt PV-Prognosen mehrerer Wetterdienste, vergleicht sie mit der tatsächlichen Erzeugung deiner
 Anlagen und lernt daraus eine eigene Prognose. Zusammen mit der Verbrauchsprognose und den dynamischen
@@ -9,26 +10,6 @@ Strompreisen entsteht ein Fahrplan für den Heimspeicher; jede Empfehlung wird f
 nachgerechnet.
 
 ## Erste Schritte
-
-Die Übersicht trennt **Jetzt** (aktuelle Leistungen, Strompreis und Steuerungsstatus), **Heute** (bisherige
-Tagesmesswerte und Prognosen für den heutigen Tag) und **Ausblick** (morgen, Reichweite und geplanter
-Akku-Betrieb). Diagramme und Quellen folgen unter **Verlauf und Daten**. Beim Akku stehen aktuelle Leistung
-und Ladestand zusammen. Die Versorgung mit erwarteter PV
-berücksichtigt künftige Erzeugung und Verbrauch; die Dauer bei gleichbleibender Entladung beschreibt den
-momentanen Zustand ohne Nachladen.
-
-Unter **Auswertung › Ersparnis** ist die Ersparnis laut Empfehlungen nachgerechnet: Sie zeigt, was das Befolgen
-aller Empfehlungen gebracht hätte. Gemessene Stromkosten sind getrennt gekennzeichnet. **Was wäre wenn**
-vergleicht simulierte Varianten mit einer ebenfalls simulierten Ausgangslage.
-
-Filterbeschriftungen bleiben bei ihrer Auswahl. Ranglisten zeigen zunächst die wichtigsten Quellen; weitere
-Quellen und Lerndetails sind aufklappbar. Vor den ersten aussagekräftigen Messstunden erhält eine Quelle
-keinen Rangplatz. Gleiche Abweichungen teilen sich einen Platz.
-
-Eingerichtete Sensorgruppen lassen sich zum Bearbeiten aufklappen. Bei Benachrichtigungen stehen gewählte
-Ziele zuerst; über **Ziel hinzufügen** werden weitere Geräte und Dienste gesucht. Änderungen werden mit
-**Speichern** übernommen. Die Systemprüfung unterscheidet Probleme, Warnungen, optionale Optimierungen und
-Informationen; **Ansehen** öffnet eine optionale Verbesserung.
 
 Am einfachsten mit dem **Einrichtungsassistenten**: Bei einer neuen Installation startet er über „Einrichtung starten“
 auf der Übersicht, später jederzeit unter Einstellungen › System. Er führt Schritt für Schritt durch Sensoren und
@@ -86,22 +67,6 @@ ohne Statistik markiert. Unterstützt werden:
 
 - Leistung in W oder kW (ENLEO-Energy nutzt den Stundenmittelwert),
 - Energie in Wh oder kWh (Zählerstand, ENLEO-Energy nutzt die Änderung pro Stunde).
-
-Die Übersicht liest die aktuellen Sensorwerte alle 15 Sekunden. Wie oft neue Werte vorliegen,
-bestimmt die Integration in Home Assistant: Ein Leistungssensor des Wechselrichters kann seltener
-melden als ein Power-Flow-Sensor. Ein alter `last_updated`-Zeitpunkt allein bedeutet bei unverändertem
-Wert keine Störung; `last_reported` zeigt auch erneute Meldungen desselben Werts.
-Ein schnellerer Sensor muss genau die jeweilige Anlage messen. Einen Gesamt-PV-Sensor für mehrere
-Wechselrichter nicht mehreren Anlagen zuordnen, sonst wird die Erzeugung mehrfach gezählt.
-
-Unter **Einstellungen › Sensoren & Standort › PV-Anzeige** lässt sich optional ein separater
-**PV-Leistungssensor für die Übersicht** wählen, etwa ein schneller meldender Erzeugungszähler
-für alle Anlagen zusammen. Er muss die gesamte PV-Erzeugung in W oder kW messen, nicht den
-Netzbezug oder die Einspeisung. Nur die aktuelle PV-Leistung im Energiefluss der Übersicht
-kommt dann von diesem Sensor. Tagesertrag, Messhistorie, Prognosen und Batterieplanung
-verwenden weiterhin die Sensoren der einzelnen PV-Anlagen. Ohne Zusatzsensor oder bei einem
-fehlenden, negativen oder nicht als Leistung gelieferten Wert nutzt die Übersicht wieder die
-Anlagensensoren. Ein gültiger Wert von 0 W wird übernommen.
 
 ### Status-Sensor des Wechselrichters (optional)
 
@@ -246,8 +211,8 @@ Heizstab sind steuerbar und werden später gezielt eingeplant. Vergleichsmaßsta
 
 ## Planung
 
-Unter **Ausblick** stehen die verbleibende PV-Erzeugung heute, die Prognosen für morgen, die erwartete
-Akku-Reichweite und der günstigste Strompreis innerhalb der nächsten 24 Stunden.
+Ganz oben auf der Übersicht steht der Tag auf einen Blick: wie viel PV heute noch erwartet wird (abends: morgen), wie
+lange der Akku reicht und wann der Strom in den nächsten 24 Stunden am günstigsten ist.
 
 Die vier Arten von Energie haben auf allen Seiten dieselbe Farbe: PV orange, Akku grün, Netz grau, Haus und Verbrauch
 violett.

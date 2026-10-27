@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.34.1
+
+- **Zurück auf den Stand von 0.32.3:** Die Änderungen aus 0.33.0 und 0.34.0 sind zurückgenommen. Übersicht, Einstellungen und Auswertungen entsprechen wieder 0.32.3. Ein in 0.33.0 gewählter PV-Leistungssensor für die Übersicht wird nicht mehr verwendet
+- **Energiebilanz bei Zeitumstellung:** Bleibt aus 0.33.0 erhalten – ausgewertet werden vollständige Kalendertage mit 23, 24 oder 25 Stunden, Tage mit fehlenden Messstunden werden ausgeschlossen
+
 ## 0.34.0
 
 - **Übersicht:** „Jetzt“ zeigt aktuelle Energieflüsse, Strompreis und Steuerungsstatus. „Heute“ enthält bisherige Tageswerte und Prognosen für heute. Morgen, Reichweite und geplanter Akku-Betrieb stehen unter „Ausblick“, Diagramme und Quellen unter „Verlauf und Daten“. Der Akku zeigt Leistung und Ladestand zusammen. Bei durchgehendem Normalbetrieb sind Zeitleiste und Wetter aufklappbar
