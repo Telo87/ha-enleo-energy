@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.35.0
+
+- **Grundverbrauch heute:** Die Kachel zeigt wie die anderen groß den bisher gemessenen Wert und klein die Prognose für heute und morgen
+- **Eigener Sensor für den PV-Kreis:** Unter Einstellungen › Sensoren & Standort › PV-Anzeige lässt sich optional ein schneller meldender Sensor der gesamten PV-Leistung wählen. Er gilt nur für den PV-Kreis im Energiefluss der Übersicht. Die Zeilen je Anlage daneben, Tagesertrag, Prognosen und Planung nutzen weiter die Sensoren der Anlagen. Ohne gültigen Wert zeigt der Kreis wieder deren Summe
+
 ## 0.34.1
 
 - **Zurück auf den Stand von 0.32.3:** Die Änderungen aus 0.33.0 und 0.34.0 sind zurückgenommen. Übersicht, Einstellungen und Auswertungen entsprechen wieder 0.32.3. Ein in 0.33.0 gewählter PV-Leistungssensor für die Übersicht wird nicht mehr verwendet

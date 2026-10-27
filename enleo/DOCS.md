@@ -25,6 +25,9 @@ Von Hand geht es so:
    - **Teilflächen:** eine Zeile pro Ausrichtung mit Leistung (kWp), Neigung (0° = flach, 90° = senkrecht) und Ausrichtung (Ost, Süd, West … oder genau in Grad, 90° = Ost, 180° = Süd, 270° = West).
 3. Unter **Strompreis** die festen Preisbestandteile deines Tarifs eintragen (siehe unten).
 4. Optional unter **Sensoren & Standort** Hausverbrauch, Netzleistung und Batterie auswählen.
+   Meldet ein Wechselrichter seine Leistung nur selten, lässt sich unter **PV-Anzeige** ein schneller meldender
+   Sensor der gesamten PV-Leistung wählen. Er gilt nur für den PV-Kreis im Energiefluss der Übersicht; die Zeilen
+   daneben, Tagesertrag, Prognosen und Planung nutzen weiter die Sensoren der Anlagen.
 
 Nach dem Speichern lädt ENLEO-Energy im Hintergrund:
 
