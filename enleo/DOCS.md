@@ -471,6 +471,11 @@ einschließlich E-Auto. Ein Heizstab, der nur mit PV-Überschuss läuft (Einstel
 nimmt in der Nachrechnung nur auf, was sonst eingespeist würde. Zur Kontrolle steht daneben die gemessene
 Rechnung aus Netzbezug und Einspeisung.
 
+Die gemessene Rechnung liegt meist etwas neben der gerechneten – auch an Tagen, an denen ENLEO-Energy gar nicht
+eingegriffen hat. Das ist ein Unterschied der Rechnung (etwa Verluste und Eigenverbrauch des Speichers), kein
+Effekt von ENLEO-Energy; die Kachel nennt ihn, sobald es genug solche Tage gibt. Die Ersparnis vergleicht deshalb
+nur Gerechnetes mit Gerechnetem. Solange die Steuerung im Probebetrieb läuft, ist sie ausdrücklich ein „wäre“.
+
 ## Prognosegüte
 
 *Zu finden unter **Auswertung** – die vier Reiter Prognosegüte, Plan gegen Messung, Ersparnis und Kosten stehen dort unter der Kopfzeile.*

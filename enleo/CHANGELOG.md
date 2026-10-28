@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.39.0
+
+- **Geldbeträge einheitlich:** Stromkosten sind überall Bezug minus Einspeisung – positiv heißt bezahlt. „Was wäre wenn“ zeigt Stromkosten statt einer Bilanz mit umgekehrtem Vorzeichen und sagt beim Vergleich „günstiger“ oder „teurer“. Die Ersparnis gegenüber dem Vergleichstarif steht in der Monatstabelle so wie in der Kachel. Überall dasselbe Minuszeichen
+- **Wirtschaftlichkeit:** „Nutzen der Anlage“ statt „Wert der Anlage“; Beträge ab 100 € ohne Cent
+- **Ersparnis:** Die Kachel „Stromkosten gemessen“ erklärt, dass Messung und Rechnung auch an Tagen ohne Eingriff auseinanderliegen – der Unterschied kommt aus der Rechnung, nicht von ENLEO-Energy. Die Tagestabelle zeigt zuerst Empfehlung, Akkuladung, Möglich und Gespart, die einzelnen Rechnungen über „Alle Spalten“
+- **Plan gegen Messung:** Ohne vollständige Stunde ein Hinweis statt fünf leerer Kacheln
+- **Prognosegüte:** Die Entwicklung über die Zeit hat eine Achse, auf der die Unterschiede zu sehen sind. Reihenfolge nach den Fragen: Rangliste, Entwicklung, Wetterlage, Tageserträge, zuletzt die Gewichte der eigenen Prognose
+- **Systemprüfung:** Probleme und Hinweise stehen offen, was in Ordnung ist, ist je Bereich eingeklappt; die Bereiche schließen ohne Lücken aneinander an
+- **Steuerung:** Meldungen erscheinen über der Leiste mit ungespeicherten Änderungen, die Aktion einer Zeile ist nicht mehr abgeschnitten
+- **Übersicht:** Mit Lizenz zeigt die Kurzinfo, was ENLEO-Energy in diesem Monat gespart hat und welcher Anteil des Möglichen das ist
+
 ## 0.38.1
 
 - **Strompreis auf schmalen Bildschirmen:** Die Zeile zum Berechnen des Aufschlags (Tag, Uhrzeit, Preis) passt mit den größeren Eingabefeldern wieder auf schmale Handys – auch mit breiteren Systemschriften
