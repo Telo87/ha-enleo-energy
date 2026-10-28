@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.37.0
+
+- **Die ersten Tage:** Solange es noch keine eigene Prognose und keine Rangliste gibt, erklärt die Übersicht, was schon läuft und was mit der Zeit dazukommt. Der Hinweis verschwindet mit „Verstanden“
+- **Kennzahlen ruhiger:** Statt eines farbigen Quadrats steht ein kleines Symbol in der Farbe der Messgröße vor der Bezeichnung, die Zahl ist größer
+- **Verständliche Fehlermeldungen:** Statt eines Fehlercodes steht da, was passiert ist und was hilft – etwa wenn das Add-on gerade neu startet. Seiten, die nicht laden, bieten „Erneut versuchen“
+- **„Jetzt abrufen“** zeigt, dass gerade abgerufen wird, bis die neuen Daten da sind, und bestätigt danach
+- **Zeitpunkte um Mitternacht:** Wann der Akku leer oder voll ist, steht als „morgen Mitternacht“ statt „Fr 00:00“
+- **Barrierefreiheit:** Diagramme haben eine Beschreibung für Screenreader (was gezeigt wird, Zeitraum, kleinster und größter Wert). Suchfelder zeigen den Tastaturfokus, das Datumsfeld im Tagesverlauf hat eine Beschriftung
+- **Einheitlich „Akku“** auch im Einrichtungsassistenten
+
 ## 0.36.0
 
 - **Übersicht aufgeräumt:** Die Rangliste der Prognosequellen steht auf der Seite Auswertung. Unter dem PV-Diagramm bleibt eine Zeile mit der genauesten Quelle und dem Zustand der Datenquellen, bei Problemen klappt sie von selbst auf. Beim ersten Öffnen zeigt das Diagramm die genaueste Quelle, weitere über „Quellen vergleichen“. Die Zeile „Haus“ erscheint nur noch, wenn E-Auto oder Heizstab erfasst sind. Auf dem Handy folgen die Kennzahlen direkt auf die Empfehlung
