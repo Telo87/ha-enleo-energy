@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.35.1
+
+- **„Akku reicht bis“ folgt dem Plan:** Die Reichweite nutzt jetzt den Ladeverlauf des Plans selbst, in dessen Zeitschritten. Bisher wurde sie stündlich getrennt gerechnet und konnte einen kurzen Moment am Mindest-Ladestand übersehen – dann nannte sie einen späteren Zeitpunkt als der Plan. Haltephasen des Plans sind jetzt mit eingerechnet
+- **Systemprüfung:** Ein Vergleichstarif ohne monatliche Gebühr gilt als vollständig. Hinweise gibt es nur noch, wenn der Preis je kWh fehlt oder ein Flat-Tarif Freistrom ohne Gebühr enthält
+- **Planung:** Lohnt sich kein Eingriff, steht bei der Ersparnis „Kein Eingriff nötig – Normalbetrieb ist am günstigsten“ statt eines Kostenvergleichs mit zweimal demselben Betrag
+- **Übersicht:** Die Zeile „Haus“ neben dem Energiefluss zeigt, was E-Auto und Heizstab gerade beziehen, statt die Verbrauchsprognose aus der Kachel darunter zu wiederholen
+- **Strompreise:** Veralteten Hinweistext ersetzt
+
 ## 0.35.0
 
 - **Grundverbrauch heute:** Die Kachel zeigt wie die anderen groß den bisher gemessenen Wert und klein die Prognose für heute und morgen
