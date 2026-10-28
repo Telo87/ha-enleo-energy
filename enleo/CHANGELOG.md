@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.36.0
+
+- **Übersicht aufgeräumt:** Die Rangliste der Prognosequellen steht auf der Seite Auswertung. Unter dem PV-Diagramm bleibt eine Zeile mit der genauesten Quelle und dem Zustand der Datenquellen, bei Problemen klappt sie von selbst auf. Beim ersten Öffnen zeigt das Diagramm die genaueste Quelle, weitere über „Quellen vergleichen“. Die Zeile „Haus“ erscheint nur noch, wenn E-Auto oder Heizstab erfasst sind. Auf dem Handy folgen die Kennzahlen direkt auf die Empfehlung
+- **Preisdiagramme zeigen den Plan:** Die Balken sind nach dem jeweiligen Tag eingefärbt – günstigstes Drittel grün, teuerstes rot. Zeiten, in denen der Plan den Akku hält oder aus dem Netz lädt, sind hinterlegt. Eine Legende unter dem Diagramm erklärt beides, der Tooltip nennt es je Zeitschritt
+- **Tagesverlauf:** Plätze in der Rangliste gibt es erst, wenn mindestens zwei Stunden mit Erzeugung gemessen sind; gleich große Abweichungen teilen sich einen Platz. Das Preisdiagramm steht unter dem PV-Diagramm
+- **Schrift und Bezeichnungen:** Klarere Größenstufen, keine Schrift unter 11 px, Gruppen- und Tabellenüberschriften in normaler Schreibweise. Lange Namen werden umbrochen statt abgeschnitten, Sensoren der PV-Anlagen erscheinen mit ihrem Namen aus Home Assistant. Durchgängig „Akku“ statt „Batterie“; die Steuerung steht in den Einstellungen bei der Anlage
+- **Feinschliff:** Erklärungen zur Berechnung sind unter „Wie wird gerechnet?“ aufklappbar. Das Kapazitätsdiagramm des Akkus hat eine Legende. Symbole bewegen sich ruhiger. Die Anmeldeseite ist im dunklen Design besser lesbar
+
+## 0.35.2
+
+- **Systemprüfung:** Ein Flat-Tarif mit Freistrom und ohne monatliche Gebühr gilt jetzt als vollständig – solche Tarife gibt es, etwa wenn der Freistrom zum Speicher gehört. „Vergleichstarif unvollständig“ erscheint nur noch, wenn der Preis je kWh fehlt
+
 ## 0.35.1
 
 - **„Akku reicht bis“ folgt dem Plan:** Die Reichweite nutzt jetzt den Ladeverlauf des Plans selbst, in dessen Zeitschritten. Bisher wurde sie stündlich getrennt gerechnet und konnte einen kurzen Moment am Mindest-Ladestand übersehen – dann nannte sie einen späteren Zeitpunkt als der Plan. Haltephasen des Plans sind jetzt mit eingerechnet

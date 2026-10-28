@@ -239,13 +239,13 @@ Für jeden Planschritt gibt es drei Möglichkeiten:
 | Aus dem Netz laden | Günstiger Netzstrom wird eingespeichert, weil er später teureren Netzstrom ersetzt |
 
 Grundlage sind die genaueste PV-Prognose, die Verbrauchsprognose (ohne E-Auto und Heizstab), der
-aktuelle Ladezustand, die Akku-Daten (Einstellungen › Batterie) und die Strompreise. Energie, die am
+aktuelle Ladezustand, die Akku-Daten (Einstellungen › Akku) und die Strompreise. Energie, die am
 Ende noch im Akku ist, wird mit einem vorsichtigen Preis bewertet, damit der Plan den Akku nicht
 künstlich leerfährt. Umgeschaltet wird nur, wenn es über den ganzen Zeitraum mindestens den **Mindestnutzen eines
-Eingriffs** spart (Einstellungen › Batterie, voreingestellt 5 ct). Kleinere Vorteile liegen innerhalb der
+Eingriffs** spart (Einstellungen › Akku, voreingestellt 5 ct). Kleinere Vorteile liegen innerhalb der
 Prognoseungenauigkeit; der Akku bleibt dann im Normalbetrieb. Wer weniger Eingriffe möchte, stellt den Wert höher.
 
-Mit der Einstellung **Vorsicht beim PV-Ertrag** (Einstellungen › Batterie) rechnet der Planer mit weniger Sonne, als die eigene
+Mit der Einstellung **Vorsicht beim PV-Ertrag** (Einstellungen › Akku) rechnet der Planer mit weniger Sonne, als die eigene
 Prognose sagt. Wie viel, lernt ENLEO-Energy aus ganzen Tagen: „Hoch“ nimmt den Tagesertrag an, der nur an einem
 von zehn Tagen unterschritten wird, „Mittel“ die Hälfte dieses Abschlags. Der Abschlag gilt für den ganzen Tag, weil
 sich Abweichungen einzelner Stunden über den Tag weitgehend ausgleichen – die Summe der unteren Stundengrenzen wäre
@@ -309,7 +309,7 @@ Ist ein Sensor für die Akku-Leistung eingetragen, misst ENLEO-Energy den Wert s
 Energie der letzten bis zu 90 Tage, sobald das 15-Fache der Kapazität durch den Akku gegangen ist. Was am Ende mehr
 (oder weniger) im Akku ist als am Anfang, wird dabei mitgerechnet. Den Ladestand zur vollen Stunde nimmt
 ENLEO-Energy aus der Statistik von Home Assistant. Das Ergebnis
-steht unter Einstellungen › Batterie neben dem Feld und in der Systemprüfung. Übernommen wird es nicht von selbst.
+steht unter Einstellungen › Akku neben dem Feld und in der Systemprüfung. Übernommen wird es nicht von selbst.
 
 Genauso misst ENLEO-Energy die **nutzbare Kapazität**: wie viel Energie für 100 % Ladestand hineingeht und wie viel
 wieder herauskommt, aus den Stunden, in denen sich der Ladestand deutlich bewegt hat. Der Wert erscheint, sobald der
@@ -502,6 +502,10 @@ ist noch nicht vergleichbar. Auch der Plan wählt seine PV-Prognose nur unter de
 
 ## Strompreis
 
+In den Preisdiagrammen (Übersicht, Strompreise, Tagesverlauf) sind die Balken nach dem jeweiligen Tag eingefärbt:
+grün das günstigste Drittel, rot das teuerste, dazwischen hell. Hinterlegt sind die Zeiten, in denen der Plan
+den Akku hält oder aus dem Netz lädt.
+
 Dynamische Stromtarife geben den Börsenpreis (EPEX Day-Ahead, seit Oktober
 2025 in Viertelstunden) weiter. ENLEO-Energy lädt ihn von Energy-Charts (Fraunhofer ISE) mit
 aWATTar als Ersatzquelle und rechnet den Endpreis so:
@@ -615,7 +619,7 @@ mit „Jetzt ausführen“ testen und zuerst im Probebetrieb laufen lassen:
 | Aus dem Netz laden | Der Akku lädt aus dem Netz | „Laden erzwingen“ auf die **Ladeleistung** |
 
 Eine Aktion wählt eine Option (Auswahl-Entitäten), setzt einen Wert (fest, aktueller Ladestand in %, Ladeleistung
-in W aus Einstellungen › Batterie), drückt einen Knopf oder schaltet ein bzw. aus. Bis zu 16 Aktionen je
+in W aus Einstellungen › Akku), drückt einen Knopf oder schaltet ein bzw. aus. Bis zu 16 Aktionen je
 Betriebsart laufen der Reihe nach ab; schlägt eine fehl, laufen die übrigen trotzdem.
 
 Mit **Jetzt ausführen** lässt sich jede Betriebsart von Hand testen – danach in der App des Speichers prüfen, ob
