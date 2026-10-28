@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.38.1
+
+- **Strompreis auf schmalen Bildschirmen:** Die Zeile zum Berechnen des Aufschlags (Tag, Uhrzeit, Preis) passt mit den größeren Eingabefeldern wieder auf schmale Handys – auch mit breiteren Systemschriften
+
+## 0.38.0
+
+- **Startbildschirm:** Die volle Animation läuft beim ersten Öffnen des Tages und nach einem Update. Bei jedem weiteren Öffnen gibt es eine Kurzfassung – die Übersicht ist nach knapp einer Sekunde da statt nach dreieinhalb. Die Sonne landet sanfter, das Logo fliegt schneller an seinen Platz
+- **Auf Handy und Tablet:** Kein grauer Blitz mehr beim Antippen, dafür eine eigene Rückmeldung beim Drücken. Hervorhebungen beim Überfahren gibt es nur noch mit Maus – sie bleiben nach dem Antippen nicht mehr stehen. Kennzahlen heben sich nicht mehr an. Eingabefelder sind auf Touch-Geräten groß genug, dass iPhone und iPad beim Antippen nicht mehr in die Seite zoomen
+
 ## 0.37.0
 
 - **Die ersten Tage:** Solange es noch keine eigene Prognose und keine Rangliste gibt, erklärt die Übersicht, was schon läuft und was mit der Zeit dazukommt. Der Hinweis verschwindet mit „Verstanden“
