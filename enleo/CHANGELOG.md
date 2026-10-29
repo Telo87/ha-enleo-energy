@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.40.0
+
+- **Eigenverbrauch des Speichers:** ENLEO-Energy lernt aus den Tagen ohne Eingriff, wie viel der Speicher selbst braucht, ohne dass der Hauszähler es sieht (Elektronik, Bereitschaft, Selbstentladung). Verwendet wird der Wert nur, wenn er an den jüngsten Tagen nachweislich besser zum Netzzähler passt als keiner. Plan, Reichweite und Nachrechnung rechnen dann damit, die Systemprüfung zeigt den gelernten Wert
+- **Warum nicht mehr gespart?** Das Tagesdetail der Ersparnis erklärt, woher der Abstand zum Möglichen kommt: aus der Prognose (etwa weniger PV als vorhergesagt) oder aus den Regeln des Plans – ein Eingriff hätte weniger als den Mindestnutzen gebracht oder wäre bei der üblichen Prognoseabweichung nicht sicher genug gewesen. Dazu, was im Nachhinein am besten gewesen wäre. Auf dem Handy zeigt das Tagesdetail nur die wichtigsten Spalten
+- **PV-Prognose an trüben Tagen:** Trübe Stunden bekommen eine eigene Gewichtung der Wettermodelle und ein eigenes Niveau – nur bei Anlagen, bei denen das die trüben Stunden der letzten Woche genauer getroffen hat. Zu sehen unter Prognosegüte › „So rechnet die eigene Prognose“
+- **Probezeit:** Die Steuerung lässt sich, sobald sie angeboten wird, einmal je Installation kostenlos testen (Einstellungen › System)
+- **Neue Speicher-Anleitungen und Vorlagen:** Sungrow SH (Modbus-Vorlage von mkaiser), SENEC.Home V2/V3 (lokale Verbindung) und E3/DC. Die Steuerung kann jetzt Skripte von Home Assistant ausführen – damit lassen sich auch Speicher steuern, deren Integration nur Dienste anbietet. Bei Huawei geht so auch das Laden aus dem Netz
+- **Akku folgt nicht:** ENLEO-Energy schaltet die Betriebsart zuerst einmal neu. Folgt der Akku dann immer noch nicht, läuft er bis zum nächsten Abschnitt des Plans im Normalbetrieb, und es kommt eine Meldung
+- **Support-Export:** Der Diagnose-Export lässt sich anonymisiert herunterladen – Standort auf etwa 10 km gerundet, Namen von Anlagen, Sensoren und Benachrichtigungszielen ersetzt, ohne Seriennummer
+- **Kleinigkeiten:** Die Reichweite auf der Seite Planung wiederholt die Überschrift nicht mehr; das Dateifeld beim Import ist auf dem Handy groß genug zum Antippen
+
 ## 0.39.0
 
 - **Geldbeträge einheitlich:** Stromkosten sind überall Bezug minus Einspeisung – positiv heißt bezahlt. „Was wäre wenn“ zeigt Stromkosten statt einer Bilanz mit umgekehrtem Vorzeichen und sagt beim Vergleich „günstiger“ oder „teurer“. Die Ersparnis gegenüber dem Vergleichstarif steht in der Monatstabelle so wie in der Kachel. Überall dasselbe Minuszeichen

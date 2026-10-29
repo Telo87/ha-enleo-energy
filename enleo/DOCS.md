@@ -59,8 +59,10 @@ Gibt es Probleme, zeigt das Menü deren Anzahl und die Übersicht einen Hinweis.
 **Diagnose-Export** (oben auf der Seite Systemprüfung) lädt eine ZIP-Datei herunter: die Datenbank des
 Add-ons (alle Prognosen, Messwerte, Preise und die festgehaltenen Empfehlungen), die Einstellungen ohne Solcast-Schlüssel und
 den aktuellen Zustand (Plan mit Erklärung, Live-Werte, gelernte Gewichte, Status der Datenquellen). Damit lässt
-sich alles außerhalb von Home Assistant nachrechnen, etwa für eine ausführliche Fehlersuche. Die Datei enthält
-den Standort und stündliche Verbrauchs- und Erzeugungswerte – nur weitergeben, wem du das anvertraust.
+sich alles außerhalb von Home Assistant nachrechnen, etwa für eine ausführliche Fehlersuche. Es gibt ihn in zwei
+Fassungen: **anonymisiert – für den Support** (Standort auf etwa 10 km gerundet, Namen der Anlagen, Sensoren und
+Benachrichtigungsziele ersetzt, ohne Seriennummer) und **vollständig**. Beide enthalten stündliche Verbrauchs- und
+Erzeugungswerte – die vollständige Fassung auch den genauen Standort; nur weitergeben, wem du das anvertraust.
 
 ## Messsensor
 
@@ -140,7 +142,10 @@ ENLEO-Energy baut aus allen Quellen eine eigene Prognose je Anlage:
    Zu sehen unter Prognosegüte › „So rechnet die eigene Prognose“. Einstellen muss man nichts.
 3. **Korrektur je Uhrzeit, getrennt für Sonne und Wolken:** was danach noch systematisch abweicht –
    Fehler der Wettermodelle zeigen sich auch bei Bewölkung, Abregelung oder Verschmutzung nur bei Sonne.
-4. **Spanne (80 %):** aus der Verteilung der bisherigen Fehler in derselben Wetterlage – so eingestellt, dass
+4. **Trübe Stunden:** Viele Wettermodelle liegen an trüben Tagen auf ihre eigene Weise daneben. Trübe Stunden
+   bekommen deshalb eine eigene Gewichtung der Quellen und ein eigenes Niveau – genutzt nur, wenn das die trüben
+   Stunden der letzten Woche genauer getroffen hätte als die Korrektur, die für alle Stunden ohne Sonne gilt.
+5. **Spanne (80 %):** aus der Verteilung der bisherigen Fehler in derselben Wetterlage – so eingestellt, dass
    die Erzeugung in 8 von 10 Stunden innerhalb des grauen Bandes liegt (an echten Daten nachgeprüft).
 
 Gelernt wird **jede Stunde neu** und rückwirkend Tag für Tag nur aus den Tagen davor. In der Prognosegüte
@@ -332,6 +337,18 @@ Seite Ersparnis. An den Empfehlungen ändert es nichts, weil es mit und ohne Pla
 weniger als 5 Wh pro Stunde oder gibt es weniger als zwölf passende Stunden, nimmt ENLEO-Energy nichts an –
 einstellen muss man dafür nichts.
 
+## Eigenverbrauch des Speichers
+
+Viele Speicher brauchen selbst etwas Strom – Elektronik, Bereitschaft, Selbstentladung –, den der Hauszähler nicht
+sieht. Dann ist der Akku früher leer, als die Rechnung erwartet, und der Netzzähler zeigt etwas mehr Bezug.
+
+ENLEO-Energy lernt diesen Eigenverbrauch aus den Tagen der letzten vier Wochen, an denen der Plan nicht eingegriffen
+hat: Es rechnet den Normalbetrieb mit den gemessenen Werten von PV und Verbrauch nach und probiert dabei 0 bis 200 W
+Eigenverbrauch. Der Wert, der an den älteren Tagen am besten zum Netzzähler passt, wird nur verwendet, wenn er auch
+die jüngsten Tage besser trifft als gar keiner – sonst bleibt es bei 0. Dafür braucht es mindestens sechs Tage ohne
+Eingriff. Plan, Reichweite und die Nachrechnung auf der Seite Ersparnis rechnen dann damit; die Systemprüfung zeigt den
+gelernten Wert. Einstellen muss man nichts.
+
 ## Heizstab mit Überschuss-Regelung
 
 Ein Heizstab mit eigener Regelung, der nur PV-Überschuss nutzt (Einstellungen › Sensoren & Standort), nimmt nie
@@ -472,8 +489,19 @@ nimmt in der Nachrechnung nur auf, was sonst eingespeist würde. Zur Kontrolle s
 Rechnung aus Netzbezug und Einspeisung.
 
 Die gemessene Rechnung liegt meist etwas neben der gerechneten – auch an Tagen, an denen ENLEO-Energy gar nicht
-eingegriffen hat. Das ist ein Unterschied der Rechnung (etwa Verluste und Eigenverbrauch des Speichers), kein
-Effekt von ENLEO-Energy; die Kachel nennt ihn, sobald es genug solche Tage gibt. Die Ersparnis vergleicht deshalb
+eingegriffen hat. Das ist ein Unterschied der Rechnung (etwa Verluste des Speichers), kein Effekt von ENLEO-Energy;
+die Kachel nennt ihn, sobald es genug solche Tage gibt. Den Eigenverbrauch des Speichers rechnet ENLEO-Energy mit,
+sobald es ihn gelernt hat (siehe „Eigenverbrauch des Speichers“).
+
+**Warum nicht mehr gespart?** Das Tagesdetail (Tag antippen) erklärt den Abstand zwischen „gespart“ und „möglich“.
+Dafür plant ENLEO-Energy den Tag noch einmal nur mit der Prognose, die es damals hatte, und ohne Mindestnutzen:
+
+- Hätte auch dieser Plan nicht mehr gespart, lag es an der **Prognose** – etwa weniger PV als vorhergesagt oder ein
+  E-Auto, das keine Prognose kennt.
+- Hätte er mehr gespart, lag es an den **Regeln des Plans**: Der Eingriff hätte laut Prognose weniger als den
+  Mindestnutzen gebracht, oder er hätte sich bei der üblichen Abweichung von Verbrauch und PV nicht sicher gelohnt.
+
+Dazu steht, was im Nachhinein am besten gewesen wäre (z. B. „3 Std. aus dem Netz laden“). Die Ersparnis vergleicht deshalb
 nur Gerechnetes mit Gerechnetem. Solange die Steuerung im Probebetrieb läuft, ist sie ausdrücklich ein „wäre“.
 
 ## Prognosegüte
@@ -606,6 +634,10 @@ Planung und Empfehlungen bleiben ohne Lizenz unverändert.
 - Eine Lizenz gilt für eine Installation. Für den Umzug auf einen neuen Rechner die Lizenz auf dem alten Gerät
   entfernen – oder den Support bitten, das Gerät zurückzusetzen.
 - Der Diagnose-Export enthält den Lizenzschlüssel nicht.
+- **Probezeit:** Wird sie angeboten, steht unter Einstellungen › System ein Knopf, mit dem sich die Steuerung einige
+  Tage kostenlos testen lässt – einmal je Installation. Dafür wird eine zufällige Kennung dieser Installation
+  gesendet; der Lizenzdienst behält davon nur einen Prüfwert. Ein Lizenzschlüssel ersetzt die Probezeit ohne
+  Unterbrechung.
 
 ### Steuerung einrichten (nur mit Lizenz)
 
@@ -624,7 +656,10 @@ mit „Jetzt ausführen“ testen und zuerst im Probebetrieb laufen lassen:
 | Aus dem Netz laden | Der Akku lädt aus dem Netz | „Laden erzwingen“ auf die **Ladeleistung** |
 
 Eine Aktion wählt eine Option (Auswahl-Entitäten), setzt einen Wert (fest, aktueller Ladestand in %, Ladeleistung
-in W aus Einstellungen › Akku), drückt einen Knopf oder schaltet ein bzw. aus. Bis zu 16 Aktionen je
+in W aus Einstellungen › Akku), drückt einen Knopf, schaltet ein bzw. aus oder führt ein **Skript** von Home
+Assistant aus. Skripte helfen bei Speichern, deren Integration nur Dienste anbietet (z. B. E3/DC): Das Skript ruft
+den Dienst auf, ENLEO-Energy führt das Skript aus. Knöpfe und Skripte werden bei der Wiederholung alle 5 Minuten
+nicht erneut ausgelöst. Bis zu 16 Aktionen je
 Betriebsart laufen der Reihe nach ab; schlägt eine fehl, laufen die übrigen trotzdem.
 
 Mit **Jetzt ausführen** lässt sich jede Betriebsart von Hand testen – danach in der App des Speichers prüfen, ob
@@ -649,9 +684,12 @@ Mit **Akku automatisch nach Plan schalten** übernimmt ENLEO-Energy:
 - **Folgt der Akku?** Drei Minuten nach dem Schalten prüft ENLEO-Energy, ob der Akku tut, was geschaltet wurde: Bei
   „Akku halten“ darf er nicht nennenswert entladen, bei „Aus dem Netz laden“ muss er laden (bis kurz vor dem
   Zielladestand). Gemessen wird an der Akku-Leistung; ohne diesen Sensor am Ladestand, der beim Laden innerhalb von
-  15 Minuten steigen bzw. beim Halten nicht um mehr als 3 Punkte fallen darf. Bleibt es zehn Minuten so, steht
-  „Akku folgt nicht“ im Protokoll, auf der Seite Steuerung und in der Systemprüfung und wird gemeldet – einmal je
-  Schaltung.
+  15 Minuten steigen bzw. beim Halten nicht um mehr als 3 Punkte fallen darf. Bleibt es zehn Minuten so, schaltet
+  ENLEO-Energy die Betriebsart **einmal neu** (mit allen Aktionen, auch Knöpfen und Skripten) – ein Befehl kann
+  verloren gegangen sein. Folgt der Akku weitere zehn Minuten nicht, läuft er im **Normalbetrieb**, bis der Plan
+  etwas anderes vorsieht (höchstens vier Stunden); ein späterer Abschnitt mit derselben Betriebsart wird wieder
+  versucht. Das steht als „Akku folgt nicht“ im Protokoll, auf der Seite Steuerung und in der Systemprüfung und wird
+  gemeldet – einmal je Schaltung.
 - Beim Ausschalten, ohne gültige Lizenz, wenn der Hersteller die Steuerung abschaltet, ohne aktuellen Plan und beim
   Beenden des Add-ons wird einmal **Normalbetrieb** ausgeführt.
 - **Probebetrieb** (beim Einschalten voreingestellt): ENLEO-Energy schreibt nur auf, was es geschaltet hätte. Am
@@ -673,7 +711,7 @@ auf dem Handy schon weggewischt sind. Unter **Was gemeldet wird** lässt sich je
 | Anlass | wann |
 | --- | --- |
 | Steuerung fehlgeschlagen | ein Befehl an den Speicher schlägt fehl oder eine Entität ist nicht erreichbar (derselbe Fehler höchstens einmal pro Stunde) |
-| Akku folgt nicht | der Befehl kam an, aber der Akku entlädt trotz Halten oder lädt nicht (einmal je Schaltung) |
+| Akku folgt nicht | der Befehl kam an, aber der Akku entlädt trotz Halten oder lädt nicht – auch nach erneutem Schalten; er läuft dann im Normalbetrieb (einmal je Schaltung) |
 | Kein Plan | seit einer Stunde gibt es keinen gültigen Plan |
 | Preise für morgen fehlen | um 15 Uhr sind die Börsenpreise für morgen noch nicht da |
 | Ladestand nicht verfügbar | der Sensor für den Ladestand liefert seit 30 Minuten keinen Wert |
@@ -771,9 +809,54 @@ Voraussetzung: Beim Einrichten „Elevate permissions“ ankreuzen.
 |---|---|
 | Normalbetrieb | „Working Mode“ → `Maximise self consumption` · „Maximum discharging power“ → fester Wert (die volle Entladeleistung) |
 | Akku halten | „Working Mode“ → `Maximise self consumption` · „Maximum discharging power“ → fester Wert 0 |
-| Aus dem Netz laden | **nicht mit Entitäten möglich** – das erzwungene Laden gibt es in dieser Integration nur als Dienst (`huawei_solar.forcible_charge_soc`), nicht als Entität. ENLEO-Energy kann bisher nur Entitäten schalten. |
+| Aus dem Netz laden | Skript „ENLEO Laden“ → Ausführen |
 
-Diese Einstellungen schreibt der Wechselrichter dauerhaft; ENLEO-Energy sendet sie nur, wenn sie abweichen.
+Das erzwungene Laden gibt es in dieser Integration nur als Dienst. Dafür in Home Assistant zwei Skripte anlegen:
+„ENLEO Laden“ ruft `huawei_solar.forcible_charge_soc` mit Ziel-Ladestand und Ladeleistung auf, „ENLEO Normal“ ruft
+`huawei_solar.stop_forcible_charge` auf und gehört zusätzlich in den Normalbetrieb. Die übrigen Einstellungen schreibt
+der Wechselrichter dauerhaft; ENLEO-Energy sendet sie nur, wenn sie abweichen.
+
+#### Sungrow SH (Modbus-Vorlage „Sungrow SHx Inverter Modbus“ von mkaiser)
+
+Die Steuer-Entitäten stammen aus der YAML-Vorlage `modbus_sungrow.yaml` (Auswahl- und Zahl-Entitäten).
+
+| Betriebsart | Aktionen |
+|---|---|
+| Normalbetrieb | „EMS mode“ → `Self-consumption mode (default)` · „Battery forced charge discharge“ → `Stop (default)` · „Battery max discharge power“ → fester Wert (volle Entladeleistung) |
+| Akku halten | „EMS mode“ → `Self-consumption mode (default)` · „Battery forced charge discharge“ → `Stop (default)` · „Battery max discharge power“ → fester Wert 10 (der kleinste Wert) |
+| Aus dem Netz laden | „EMS mode“ → `Forced mode` · „Battery forced charge discharge“ → `Forced charge` · „Battery forced charge discharge power“ → Ladeleistung |
+
+#### SENEC.Home V2/V3 (Integration „SENEC.Home“ von marq24, lokale Verbindung)
+
+Nur mit der lokalen Verbindung gibt es einen Schalter zum Laden; über die Web-API und bei V4/P4 nicht.
+
+| Betriebsart | Aktionen |
+|---|---|
+| Normalbetrieb | „Akku Volladung“ (Load Battery) → Ausschalten |
+| Akku halten | **keine passende Entität** – leer lassen |
+| Aus dem Netz laden | „Akku Volladung“ → Einschalten |
+
+Leistung und Ziel-Ladestand der Volladung bestimmt der Speicher selbst.
+
+#### E3/DC (Integration „E3DC Remote Storage Control“ von torbennehmer)
+
+Die Integration steuert den Speicher nur über den Dienst `e3dc_rscp.set_power_mode`. Dafür in Home Assistant drei
+Skripte anlegen (Einstellungen › Automationen & Szenen › Skripte), jeweils mit dieser Aktion und dem Gerät:
+
+| Skript | `power_mode` | `power_value` |
+|---|---|---|
+| ENLEO Normal | `0` (Normalbetrieb) | – |
+| ENLEO Halten | `3` (lädt, entlädt nicht) | höchste Ladeleistung in W |
+| ENLEO Laden | `4` (lädt aus dem Netz) | Ladeleistung in W |
+
+| Betriebsart | Aktionen |
+|---|---|
+| Normalbetrieb | Skript „ENLEO Normal“ → Ausführen |
+| Akku halten | Skript „ENLEO Halten“ → Ausführen |
+| Aus dem Netz laden | Skript „ENLEO Laden“ → Ausführen |
+
+Die Integration wiederholt den Befehl alle 10 Sekunden. Nach einem Neustart von Home Assistant regelt der Speicher
+wieder selbst, bis ENLEO-Energy die nächste Betriebsart schaltet.
 
 #### GoodWe ET/EH/BT (Integration „GoodWe“ von Home Assistant)
 
