@@ -494,11 +494,13 @@ die Kachel nennt ihn, sobald es genug solche Tage gibt. Den Eigenverbrauch des S
 sobald es ihn gelernt hat (siehe „Eigenverbrauch des Speichers“).
 
 **Warum nicht mehr gespart?** Das Tagesdetail (Tag antippen) erklärt den Abstand zwischen „gespart“ und „möglich“.
-Dafür plant ENLEO-Energy den Tag noch einmal nur mit der Prognose, die es damals hatte, und ohne Mindestnutzen:
+Dafür plant ENLEO-Energy den Tag noch einmal nur mit der Prognose, die es damals zu jeder Stunde hatte, ohne
+Mindestnutzen, und sieht nach, wie viel diese Prognose versprach:
 
-- Hätte auch dieser Plan nicht mehr gespart, lag es an der **Prognose** – etwa weniger PV als vorhergesagt oder ein
-  E-Auto, das keine Prognose kennt.
-- Hätte er mehr gespart, lag es an den **Regeln des Plans**: Der Eingriff hätte laut Prognose weniger als den
+- Hat ein Eingriff Geld gekostet, steht das so da – mit dem, was anders kam als vorhergesagt.
+- Versprach die Prognose weniger als die Hälfte des Möglichen, lag es an der **Prognose** – etwa weniger PV als
+  vorhergesagt oder ein E-Auto, das keine Prognose kennt.
+- Versprach sie es, lag es an den **Regeln des Plans**: Der Eingriff hätte laut Prognose weniger als den
   Mindestnutzen gebracht, oder er hätte sich bei der üblichen Abweichung von Verbrauch und PV nicht sicher gelohnt.
 
 Dazu steht, was im Nachhinein am besten gewesen wäre (z. B. „3 Std. aus dem Netz laden“). Die Ersparnis vergleicht deshalb

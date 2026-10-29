@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.40.1
+
+- **Ersparnis mit Heizstab:** War an einem Tag der Akku auf sich gestellt schon am besten, zog die Nachrechnung den Heizstab mit Überschuss-Regelung bei der Rechnung „optimal“ doppelt ab. Dadurch erschien ein kleiner Betrag „im Nachhinein möglich“, der nicht möglich war, und „optimal“ wich von „ohne ENLEO-Energy“ ab – behoben
+- **Warum nicht mehr gespart?** Die Begründung richtet sich danach, was die Prognose damals versprach: Zeigte sie den größten Teil des Möglichen nicht, liegt es an der Prognose, sonst an Mindestnutzen oder Unsicherheit. Ein Eingriff, der Geld gekostet hat, heißt jetzt so
+- **Fahrplan:** Statt der gelben Fläche zeigt ein gelber Strich den Verlauf der PV-Prognose
+- **Übersicht:** Die Farbe der Empfehlung (grün, bei „Akku halten“ gelb, beim Laden blau) läuft weich in die Karte aus
+
 ## 0.40.0
 
 - **Eigenverbrauch des Speichers:** ENLEO-Energy lernt aus den Tagen ohne Eingriff, wie viel der Speicher selbst braucht, ohne dass der Hauszähler es sieht (Elektronik, Bereitschaft, Selbstentladung). Verwendet wird der Wert nur, wenn er an den jüngsten Tagen nachweislich besser zum Netzzähler passt als keiner. Plan, Reichweite und Nachrechnung rechnen dann damit, die Systemprüfung zeigt den gelernten Wert
