@@ -406,7 +406,8 @@ Speicher über die Jahre nachlässt. Ein Monat ohne Wert hatte dafür zu wenig B
   neben die eigene Messung. Ein Sensor „verbleibende Kapazität“ ist bei vielen Speichern der aktuelle Energieinhalt –
   er gehört nicht hierher.
 - **Bericht für den Hersteller:** fasst Zusammenfassung, Angaben des Speichers, die Kapazität als Verlauf, die Werte je
-  Monat und die Methode auf einer Seite zusammen – zum Drucken oder als PDF; die Monate gibt es zusätzlich als CSV.
+  Monat und die Methode zusammen – als PDF-Datei zum Speichern und Weitergeben, auch auf dem Handy; an Geräten mit Maus
+  auch zum Drucken. Die Monate gibt es zusätzlich als CSV.
 
 ## Wirtschaftlichkeit
 
@@ -637,9 +638,9 @@ Planung und Empfehlungen bleiben ohne Lizenz unverändert.
   entfernen – oder den Support bitten, das Gerät zurückzusetzen.
 - Der Diagnose-Export enthält den Lizenzschlüssel nicht.
 - **Probezeit:** Wird sie angeboten, steht unter Einstellungen › System ein Knopf, mit dem sich die Steuerung einige
-  Tage kostenlos testen lässt – einmal je Installation. Dafür wird eine zufällige Kennung dieser Installation
-  gesendet; der Lizenzdienst behält davon nur einen Prüfwert. Ein Lizenzschlüssel ersetzt die Probezeit ohne
-  Unterbrechung.
+  Tage kostenlos testen lässt – einmal je Installation und ohne Lizenzschlüssel: Die Freigabe gilt nur für diese
+  Installation. Dafür wird eine zufällige Kennung der Installation gesendet; der Lizenzdienst behält davon nur einen
+  Prüfwert. Ein Lizenzschlüssel ersetzt die Probezeit ohne Unterbrechung.
 
 ### Steuerung einrichten (nur mit Lizenz)
 
@@ -691,7 +692,8 @@ Mit **Akku automatisch nach Plan schalten** übernimmt ENLEO-Energy:
   verloren gegangen sein. Folgt der Akku weitere zehn Minuten nicht, läuft er im **Normalbetrieb**, bis der Plan
   etwas anderes vorsieht (höchstens vier Stunden); ein späterer Abschnitt mit derselben Betriebsart wird wieder
   versucht. Das steht als „Akku folgt nicht“ im Protokoll, auf der Seite Steuerung und in der Systemprüfung und wird
-  gemeldet – einmal je Schaltung.
+  gemeldet – einmal je Schaltung. Die Übersicht zeigt dann den Normalbetrieb, und für die Ersparnis zählt diese Zeit
+  als Normalbetrieb.
 - Beim Ausschalten, ohne gültige Lizenz, wenn der Hersteller die Steuerung abschaltet, ohne aktuellen Plan und beim
   Beenden des Add-ons wird einmal **Normalbetrieb** ausgeführt.
 - **Probebetrieb** (beim Einschalten voreingestellt): ENLEO-Energy schreibt nur auf, was es geschaltet hätte. Am
@@ -809,13 +811,13 @@ Voraussetzung: Beim Einrichten „Elevate permissions“ ankreuzen.
 
 | Betriebsart | Aktionen |
 |---|---|
-| Normalbetrieb | „Working Mode“ → `Maximise self consumption` · „Maximum discharging power“ → fester Wert (die volle Entladeleistung) |
-| Akku halten | „Working Mode“ → `Maximise self consumption` · „Maximum discharging power“ → fester Wert 0 |
+| Normalbetrieb | „Working Mode“ → `Maximise self consumption` · „Maximum discharging power“ → fester Wert (die volle Entladeleistung) · Skript „ENLEO Normal“ → Ausführen |
+| Akku halten | „Working Mode“ → `Maximise self consumption` · „Maximum discharging power“ → fester Wert 0 · Skript „ENLEO Normal“ → Ausführen |
 | Aus dem Netz laden | Skript „ENLEO Laden“ → Ausführen |
 
 Das erzwungene Laden gibt es in dieser Integration nur als Dienst. Dafür in Home Assistant zwei Skripte anlegen:
 „ENLEO Laden“ ruft `huawei_solar.forcible_charge_soc` mit Ziel-Ladestand und Ladeleistung auf, „ENLEO Normal“ ruft
-`huawei_solar.stop_forcible_charge` auf und gehört zusätzlich in den Normalbetrieb. Die übrigen Einstellungen schreibt
+`huawei_solar.stop_forcible_charge` auf und beendet so ein laufendes Laden. Die übrigen Einstellungen schreibt
 der Wechselrichter dauerhaft; ENLEO-Energy sendet sie nur, wenn sie abweichen.
 
 #### Sungrow SH (Modbus-Vorlage „Sungrow SHx Inverter Modbus“ von mkaiser)
@@ -835,7 +837,7 @@ Nur mit der lokalen Verbindung gibt es einen Schalter zum Laden; über die Web-A
 | Betriebsart | Aktionen |
 |---|---|
 | Normalbetrieb | „Akku Volladung“ (Load Battery) → Ausschalten |
-| Akku halten | **keine passende Entität** – leer lassen |
+| Akku halten | „Akku Volladung“ → Ausschalten (beendet das Laden; Halten im eigentlichen Sinn gibt es hier nicht) |
 | Aus dem Netz laden | „Akku Volladung“ → Einschalten |
 
 Leistung und Ziel-Ladestand der Volladung bestimmt der Speicher selbst.
@@ -866,7 +868,7 @@ wieder selbst, bis ENLEO-Energy die nächste Betriebsart schaltet.
 |---|---|
 | Normalbetrieb | „Inverter operation mode“ → `General mode` |
 | Aus dem Netz laden | „Inverter operation mode“ → `Eco charge mode` |
-| Akku halten | **keine passende Entität** in der Integration von Home Assistant (es gibt nur „Depth of discharge (on-grid)“; dafür müsste ENLEO-Energy „100 % minus Ladestand“ senden können). Halten deshalb leer lassen oder wie Normalbetrieb. |
+| Akku halten | „Inverter operation mode“ → `General mode`. Das beendet das Laden; Halten im eigentlichen Sinn gibt es in der Integration von Home Assistant nicht (nur „Depth of discharge (on-grid)“; dafür müsste ENLEO-Energy „100 % minus Ladestand“ senden können). |
 
 Leistung und Zielladestand des Eco-Lademodus lassen sich in dieser Integration nicht einstellen.
 

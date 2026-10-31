@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.40.2
+
+- **Bericht für den Hersteller:** „Als PDF speichern“ erzeugt eine PDF-Datei direkt in ENLEO-Energy. Das funktioniert auch auf dem iPhone, wo der Knopf zum Drucken weder im Browser noch in der App etwas getan hat. „Drucken“ gibt es weiterhin an Geräten mit Maus
+- **Support-Export:** Namen mit Umlauten werden jetzt ebenfalls ersetzt, und der Standort ist auch in den Texten der Systemprüfung gerundet
+- **Speicher-Vorlagen:** „Als Vorlage übernehmen“ gibt es für alle Speicher mit Anleitung, also auch für Sungrow, SENEC, E3/DC, Anker und Zendure. Bei SENEC, GoodWe und Huawei beendet „Akku halten“ jetzt ein laufendes Laden – vorher konnte der Speicher nach Erreichen des Ziels weiter aus dem Netz laden. Wer eine dieser Vorlagen übernommen hat, übernimmt sie bitte neu
+- **Übersicht:** Sie zeigt, was wirklich geschaltet ist, auch wenn das vom aktuellen Plan abweicht – etwa nach dem Rückfall in den Normalbetrieb oder wenn das Ladeziel erreicht ist
+- **Ersparnis:** Was der Akku nicht ausgeführt hat, zählt nicht mehr als gespart. „Warum nicht mehr gespart?“ nennt bei einem Eingriff, der Geld gekostet hat, den Betrag und gibt Zeiten in Stunden und Minuten an
+- **Eigenverbrauch des Speichers:** Tage, an denen die Steuerung auch nur kurz eingegriffen hat, zählen beim Lernen nicht mehr als Tage ohne Eingriff. Die Systemprüfung beschreibt genauer, wenn kein fester Wert verwendet wird
+- **Probezeit:** Sie kommt ohne Lizenzschlüssel aus und gilt nur für die Installation, die sie angefordert hat. Geht die Antwort des Lizenzdienstes verloren, kostet das nichts. Nach dem Ende fragt das Add-on nicht mehr nach
+- **Abgelaufene Lizenz:** Das Add-on fragt nur noch einmal am Tag beim Lizenzdienst nach
+- **iPhone:** Dialoge und Menü richten sich nach der sichtbaren Höhe, hinter einem Dialog scrollt nichts mehr mit. Zahlenfelder zeigen die Tastatur mit Komma, Seriennummer und Lizenzschlüssel laufen nicht mehr durch die Autokorrektur
+- **Barrierefreiheit:** Dialoge haben einen Namen für Screenreader und halten den Tastaturfokus, Meldungen werden angesagt, der Fahrplan hat eine Beschreibung
+- **Fahrplan:** Der PV-Strich beginnt auch bei Viertelstunden-Tarifen früh genug und ist etwas kräftiger
+
 ## 0.40.1
 
 - **Ersparnis mit Heizstab:** War an einem Tag der Akku auf sich gestellt schon am besten, zog die Nachrechnung den Heizstab mit Überschuss-Regelung bei der Rechnung „optimal“ doppelt ab. Dadurch erschien ein kleiner Betrag „im Nachhinein möglich“, der nicht möglich war, und „optimal“ wich von „ohne ENLEO-Energy“ ab – behoben
