@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.40.3
+
+- **Support-Export:** Sensor-Kennungen, der genaue Standort und Solcast-Kennungen sind jetzt auch aus den Namen der internen Notizen in der Datenbank entfernt
+- **iPhone-App:** Vom Home-Bildschirm gestartet beginnen Überschrift, Menü und Dialoge unterhalb des Bereichs, den iOS unter der Statusleiste weichzeichnet
+
 ## 0.40.2
 
 - **Bericht für den Hersteller:** „Als PDF speichern“ erzeugt eine PDF-Datei direkt in ENLEO-Energy. Das funktioniert auch auf dem iPhone, wo der Knopf zum Drucken weder im Browser noch in der App etwas getan hat. „Drucken“ gibt es weiterhin an Geräten mit Maus
