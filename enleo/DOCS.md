@@ -486,12 +486,13 @@ rechnet es für jeden Tag drei Stromrechnungen aus den **echten** Werten:
 nahe an „optimal“ (Anteil „davon erreicht“ hoch), sind Prognosen und Planung verlässlich genug, um
 ENLEO-Energy die Steuerung zu überlassen. Gerechnet wird mit dem gesamten gemessenen Hausverbrauch
 einschließlich E-Auto. Ein Heizstab, der nur mit PV-Überschuss läuft (Einstellung beim Heizstab-Sensor),
-nimmt in der Nachrechnung nur auf, was sonst eingespeist würde. Zur Kontrolle steht daneben die gemessene
-Rechnung aus Netzbezug und Einspeisung.
+bekommt in der Nachrechnung seine gemessene Energie zuerst aus dem Überschuss der jeweiligen Stunde oder
+Viertelstunde, erst der Rest geht in den Akku. Zur Kontrolle steht daneben die gemessene Rechnung aus Netzbezug und
+Einspeisung.
 
 Die gemessene Rechnung liegt meist etwas neben der gerechneten – auch an Tagen, an denen ENLEO-Energy gar nicht
 eingegriffen hat. Das ist ein Unterschied der Rechnung (etwa Verluste des Speichers), kein Effekt von ENLEO-Energy;
-die Kachel nennt ihn, sobald es genug solche Tage gibt. Den Eigenverbrauch des Speichers rechnet ENLEO-Energy mit,
+die Kachel nennt ihn, sobald es in den letzten zwei Wochen genug solche Tage gibt. Den Eigenverbrauch des Speichers rechnet ENLEO-Energy mit,
 sobald es ihn gelernt hat (siehe „Eigenverbrauch des Speichers“).
 
 **Warum nicht mehr gespart?** Das Tagesdetail (Tag antippen) erklärt den Abstand zwischen „gespart“ und „möglich“.

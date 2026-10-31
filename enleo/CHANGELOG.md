@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.40.4
+
+- **Ersparnis mit Heizstab:** Die Nachrechnung gibt einem Überschuss-Heizstab seine gemessene Energie zuerst aus dem Überschuss, erst der Rest geht in den Akku. Er läuft auch, während der Akku lädt; bisher wurde der gerechnete Akku dadurch zu früh voll
+- **Tage ohne Eingriff:** Der Vergleich von Messung und Rechnung zählt nur noch die letzten zwei Wochen, weil das Regelverhalten des Speichers aus diesem Zeitraum gelernt wird
+
 ## 0.40.3
 
 - **Support-Export:** Sensor-Kennungen, der genaue Standort und Solcast-Kennungen sind jetzt auch aus den Namen der internen Notizen in der Datenbank entfernt
