@@ -724,7 +724,8 @@ auf dem Handy schon weggewischt sind. Unter **Was gemeldet wird** lässt sich je
 | Akku-Zustand | die gemessene nutzbare Kapazität ist in einem Schritt um 5 % oder mehr gesunken (einmal je Ereignis) |
 | Lizenz | Abo abgelaufen (Kulanzzeit), Freigabe abgelaufen oder Steuerung vom Hersteller abgeschaltet |
 
-Ein Problem, das anhält, wird einmal am Tag wiederholt; ist es vorbei, wird das nächste wieder sofort gemeldet.
+Ein Problem, das anhält, wird einmal am Tag wiederholt, auch über einen Neustart des Add-ons hinweg; ist es vorbei,
+wird das nächste wieder sofort gemeldet.
 
 In der Übersicht steht dann „Geschaltet jetzt“ (bzw. „Probebetrieb“) statt „Empfehlung jetzt“, darunter die nächste
 geplante Schaltung („ab 16:00 Uhr wird auf Akku halten geschaltet“).

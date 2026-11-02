@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.40.5
+
+- **Planung:** Der Füllstand des Akkus wird beim Planen nicht mehr gerundet. In Viertelstunden-Schritten summierte sich das über den ganzen Plan, kleine lohnende Eingriffe gingen dadurch verloren. „Im Nachhinein möglich“ auf der Seite Ersparnis wird dadurch richtig und kann höher ausfallen
+- **Benachrichtigungen:** Ein Neustart des Add-ons sendet eine Meldung nicht noch einmal, solange das Problem besteht
+
 ## 0.40.4
 
 - **Ersparnis mit Heizstab:** Die Nachrechnung gibt einem Überschuss-Heizstab seine gemessene Energie zuerst aus dem Überschuss, erst der Rest geht in den Akku. Er läuft auch, während der Akku lädt; bisher wurde der gerechnete Akku dadurch zu früh voll
