@@ -274,6 +274,14 @@ alle drei Fälle bringt. Ein Halten, das nur aufgeht, wenn der Abend genau wie v
 Ladung mit großem Preisabstand bleibt. Vor einer Woche mit Messwerten plant ENLEO-Energy wie bisher nur mit der
 Prognose. Die gelernten Werte stehen in der Systemprüfung, weggelassene Eingriffe unter „Warum?“ in der Planung.
 
+**Wie vorsichtig, lernt ENLEO-Energy aus den eigenen Entscheidungen.** Einmal am Tag spielt es die letzten 14 Tage
+Stunde für Stunde nach: mit der Prognose, die es damals hatte, ausgeführt auf den Messwerten – in mehreren Stufen, von
+der strengen Regel oben bis zu „die Eingriffe zusammen bewerten, ohne Zuschlag für Prognoseabweichungen“. Eine
+mutigere Stufe nimmt es nur, wenn sie über die zwei Wochen mehr gespart hätte, auf den älteren Tagen die beste war und
+auf den neuesten Tagen nicht schlechter ist als die strenge Regel. Bei flachen Preisen kommt der Gewinn oft in vielen
+kleinen Stücken, die einzeln den Mindestnutzen nicht erreichen – zusammen schon. Spart die gewählte Stufe nicht mehr,
+kehrt ENLEO-Energy von selbst zur strengeren Regel zurück. Die Planung nennt unter „Warum?“, was gelernt wurde.
+
 ## Kosten
 
 Die Seite **Kosten** rechnet aus dem gemessenen Netzbezug und den Preisen die tatsächlichen Stromkosten – pro Tag
@@ -492,11 +500,12 @@ Einspeisung.
 
 Die gemessene Rechnung liegt meist etwas neben der gerechneten – auch an Tagen, an denen ENLEO-Energy gar nicht
 eingegriffen hat. Das ist ein Unterschied der Rechnung (etwa Verluste des Speichers), kein Effekt von ENLEO-Energy;
-die Kachel nennt ihn, sobald es in den letzten zwei Wochen genug solche Tage gibt. Den Eigenverbrauch des Speichers rechnet ENLEO-Energy mit,
+die Kachel nennt ihn, sobald es genug solche Tage gibt. Jeder Tag wird dabei mit dem Regelverhalten des Speichers
+gerechnet, das aus den zwei Wochen um ihn herum gelernt wurde. Den Eigenverbrauch des Speichers rechnet ENLEO-Energy mit,
 sobald es ihn gelernt hat (siehe „Eigenverbrauch des Speichers“).
 
 **Warum nicht mehr gespart?** Das Tagesdetail (Tag antippen) erklärt den Abstand zwischen „gespart“ und „möglich“.
-Dafür plant ENLEO-Energy den Tag noch einmal nur mit der Prognose, die es damals zu jeder Stunde hatte, ohne
+Dafür plant ENLEO-Energy den Tag beim Öffnen noch einmal nur mit der Prognose, die es damals zu jeder Stunde hatte, ohne
 Mindestnutzen, und sieht nach, wie viel diese Prognose versprach:
 
 - Hat ein Eingriff Geld gekostet, steht das so da – mit dem, was anders kam als vorhergesagt.
@@ -639,9 +648,11 @@ Planung und Empfehlungen bleiben ohne Lizenz unverändert.
   entfernen – oder den Support bitten, das Gerät zurückzusetzen.
 - Der Diagnose-Export enthält den Lizenzschlüssel nicht.
 - **Probezeit:** Wird sie angeboten, steht unter Einstellungen › System ein Knopf, mit dem sich die Steuerung einige
-  Tage kostenlos testen lässt – einmal je Installation und ohne Lizenzschlüssel: Die Freigabe gilt nur für diese
-  Installation. Dafür wird eine zufällige Kennung der Installation gesendet; der Lizenzdienst behält davon nur einen
-  Prüfwert. Ein Lizenzschlüssel ersetzt die Probezeit ohne Unterbrechung.
+  Tage kostenlos testen lässt – einmal je Home Assistant und ohne Lizenzschlüssel: Die Freigabe gilt nur für diese
+  Installation. Dafür wird eine zufällige Kennung der Installation gesendet und, unter Home Assistant OS oder Supervised,
+  ein Prüfwert (Hash) der Rechnerkennung – die Kennung selbst verlässt Home Assistant nicht. So bekommt das neu
+  installierte Add-on dieselbe Probezeit, keine neue. Der Lizenzdienst behält von beidem nur einen Prüfwert. Ein
+  Lizenzschlüssel ersetzt die Probezeit ohne Unterbrechung.
 
 ### Steuerung einrichten (nur mit Lizenz)
 

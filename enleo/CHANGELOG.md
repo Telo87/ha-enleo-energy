@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.40.6
+
+- **Planung lernt aus den eigenen Entscheidungen:** Einmal am Tag spielt ENLEO-Energy die letzten 14 Tage mit den damaligen Prognosen nach und wählt die Vorsicht, die dabei am meisten gespart hätte – zum Beispiel kleine Eingriffe gemeinsam statt einzeln zu bewerten. Eine mutigere Stufe gilt nur, wenn sie sich auch auf den neuesten Tagen bewährt hat, sonst bleibt die strenge Regel. Die Planung nennt unter „Warum?“, was gelernt wurde
+- **Ersparnis über längere Zeiträume:** Jeder Tag wird mit dem Regelverhalten des Speichers aus den zwei Wochen um ihn herum gerechnet. Bisher galt für alle Tage das der letzten zwei Wochen, in der 30-Tage-Ansicht lag „gerechnet ohne ENLEO-Energy“ dadurch deutlich neben der Messung. Die Tage ohne Eingriff zählen wieder über den ganzen Zeitraum
+- **Ersparnis-Seite schneller:** Den Grund für „Warum nicht mehr gespart?“ rechnet ENLEO-Energy erst, wenn ein Tag geöffnet wird
+- **Meldung „Steuerung fehlgeschlagen“:** kommt nach einem Neustart des Add-ons nicht noch einmal, solange der Fehler besteht
+- **Forecast.Solar:** Nach einem Abruflimit kommt beim nächsten Mal die Anlage zuerst dran, die am längsten wartet. Bisher konnte eine Anlage dauerhaft leer ausgehen
+- **Prognosegüte:** Bei „Nur gemeinsame Stunden“ verkleinert eine Quelle mit Werten an nur wenigen Tagen den Vergleich der anderen nicht mehr
+- **Probezeit:** gilt einmal je Home Assistant, ein neu installiertes Add-on bekommt dieselbe Probezeit. Dafür sendet das Add-on einen Prüfwert der Rechnerkennung, nicht die Kennung selbst
+
 ## 0.40.5
 
 - **Planung:** Der Füllstand des Akkus wird beim Planen nicht mehr gerundet. In Viertelstunden-Schritten summierte sich das über den ganzen Plan, kleine lohnende Eingriffe gingen dadurch verloren. „Im Nachhinein möglich“ auf der Seite Ersparnis wird dadurch richtig und kann höher ausfallen
