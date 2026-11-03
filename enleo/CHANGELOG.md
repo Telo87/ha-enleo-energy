@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.40.7
+
+- **Ersparnis verständlicher:** Die Kachel „Stromkosten gemessen“ zeigt nur noch die echte Stromrechnung. Darunter steht in einem Satz, wie genau die Nachrechnung an Tagen ohne Eingriff war, und dass „gespart“ Rechnung mit Rechnung vergleicht. Bisher stand die gemessene Rechnung neben „gerechnet ohne ENLEO-Energy“, das las sich wie Mehrkosten durch ENLEO-Energy, und die Erklärung wurde am Handy abgeschnitten
+- **Energiefluss kurz nach Mitternacht:** „Heute“ sagt, dass der Tag gerade erst begonnen hat und die erste Stunde kurz nach 1 Uhr erscheint, statt nach Sensoren zu fragen
+
 ## 0.40.6
 
 - **Planung lernt aus den eigenen Entscheidungen:** Einmal am Tag spielt ENLEO-Energy die letzten 14 Tage mit den damaligen Prognosen nach und wählt die Vorsicht, die dabei am meisten gespart hätte – zum Beispiel kleine Eingriffe gemeinsam statt einzeln zu bewerten. Eine mutigere Stufe gilt nur, wenn sie sich auch auf den neuesten Tagen bewährt hat, sonst bleibt die strenge Regel. Die Planung nennt unter „Warum?“, was gelernt wurde

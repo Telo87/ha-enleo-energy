@@ -499,8 +499,9 @@ Viertelstunde, erst der Rest geht in den Akku. Zur Kontrolle steht daneben die g
 Einspeisung.
 
 Die gemessene Rechnung liegt meist etwas neben der gerechneten – auch an Tagen, an denen ENLEO-Energy gar nicht
-eingegriffen hat. Das ist ein Unterschied der Rechnung (etwa Verluste des Speichers), kein Effekt von ENLEO-Energy;
-die Kachel nennt ihn, sobald es genug solche Tage gibt. Jeder Tag wird dabei mit dem Regelverhalten des Speichers
+eingegriffen hat. Das ist die Genauigkeit der Nachrechnung (etwa Verluste des Speichers), kein Effekt von ENLEO-Energy:
+Die Kachel „Stromkosten gemessen“ nennt sie, geprüft an den Tagen ohne Eingriff, sobald es genug solche Tage gibt.
+„Gespart“ vergleicht deshalb immer Gerechnetes mit Gerechnetem. Jeder Tag wird dabei mit dem Regelverhalten des Speichers
 gerechnet, das aus den zwei Wochen um ihn herum gelernt wurde. Den Eigenverbrauch des Speichers rechnet ENLEO-Energy mit,
 sobald es ihn gelernt hat (siehe „Eigenverbrauch des Speichers“).
 
