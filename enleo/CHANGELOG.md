@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.40.8
+
+- **Steuerung wiederholt fehlgeschlagene Befehle:** Schlägt ein Befehl an den Speicher fehl, versucht ENLEO-Energy ihn jede Minute erneut, bis er durchgeht – in jeder Betriebsart, auch beim Zurückschalten in den Normalbetrieb, und mit den Knöpfen, die fehlgeschlagen sind. Bisher wurde ein fehlgeschlagener Wechsel in den Normalbetrieb erst beim nächsten geplanten Wechsel wiederholt
+- **Aussetzer statt Fehler:** War die Betriebsart schon geschaltet und erreicht nur die regelmäßige Prüfung den Speicher kurz nicht, zeigt die Systemprüfung eine gelbe Warnung statt eines roten Fehlers, ohne Nachricht. Misst ENLEO-Energy die Akkuleistung, steht dabei, ob der Akku weiter hält oder lädt. Rot und mit Nachricht bleibt es, wenn ein Wechsel nicht durchging, der Akku etwas anderes tut oder der Speicher länger als 15 Minuten nicht erreichbar ist
+
 ## 0.40.7
 
 - **Ersparnis verständlicher:** Die Kachel „Stromkosten gemessen“ zeigt nur noch die echte Stromrechnung. Darunter steht in einem Satz, wie genau die Nachrechnung an Tagen ohne Eingriff war, und dass „gespart“ Rechnung mit Rechnung vergleicht. Bisher stand die gemessene Rechnung neben „gerechnet ohne ENLEO-Energy“, das las sich wie Mehrkosten durch ENLEO-Energy, und die Erklärung wurde am Handy abgeschnitten

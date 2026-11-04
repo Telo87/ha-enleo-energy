@@ -693,6 +693,13 @@ Mit **Akku automatisch nach Plan schalten** übernimmt ENLEO-Energy:
 - Zu Beginn jedes Planschritts (je nach Preisraster des Tarifs jede Stunde, halbe oder Viertelstunde) wird die
   Betriebsart des Plans ausgeführt. Die Befehle von „Akku halten“ und „Aus dem Netz laden“ werden alle 5 Minuten
   wiederholt – manche Speicher setzen Vorgaben nach kurzer Zeit zurück.
+- **Schlägt ein Befehl fehl** (z. B. weil die Integration des Speichers gerade nicht erreichbar ist), versucht
+  ENLEO-Energy ihn jede Minute erneut, in jeder Betriebsart und mit den Knöpfen, die fehlgeschlagen sind – bis er
+  durchgeht. Das Protokoll der Schaltungen zeigt, wann es wieder geklappt hat. War die Betriebsart schon geschaltet
+  und erreicht nur die Prüfung den Speicher nicht, ist das ein **Aussetzer** (gelb, ohne Nachricht): Der Speicher
+  behält seine Einstellung in der Regel, und misst ENLEO-Energy die Akkuleistung, steht dabei, ob der Akku weiter hält
+  oder lädt. Ein Fehler (rot, mit Nachricht) ist es, wenn ein Wechsel der Betriebsart nicht durchging, wenn der Akku
+  sichtbar etwas anderes tut oder wenn der Speicher länger als 15 Minuten nicht erreichbar ist.
 - Die Betriebsart steht fest, sobald der Schritt beginnt. Rechnet der Plan zwischendurch neu (alle 5 Minuten), wird
   erst zum nächsten Schritt umgeschaltet – der Speicher springt nicht hin und her.
 - Ist beim Laden der geplante Zielladestand erreicht, wird bis zum Ende des Schritts gehalten.
@@ -727,7 +734,7 @@ auf dem Handy schon weggewischt sind. Unter **Was gemeldet wird** lässt sich je
 
 | Anlass | wann |
 | --- | --- |
-| Steuerung fehlgeschlagen | ein Befehl an den Speicher schlägt fehl oder eine Entität ist nicht erreichbar (derselbe Fehler höchstens einmal pro Stunde) |
+| Steuerung fehlgeschlagen | ein Wechsel der Betriebsart schlägt fehl, oder der Speicher ist länger als 15 Minuten nicht erreichbar (derselbe Fehler höchstens einmal pro Stunde; kurze Aussetzer werden nur im Protokoll vermerkt) |
 | Akku folgt nicht | der Befehl kam an, aber der Akku entlädt trotz Halten oder lädt nicht – auch nach erneutem Schalten; er läuft dann im Normalbetrieb (einmal je Schaltung) |
 | Kein Plan | seit einer Stunde gibt es keinen gültigen Plan |
 | Preise für morgen fehlen | um 15 Uhr sind die Börsenpreise für morgen noch nicht da |
