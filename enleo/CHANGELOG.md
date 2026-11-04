@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.41.0
+
+- **Neue Seite „Gelernt“:** zeigt an einem Ort, was ENLEO-Energy aus den Messwerten der Installation gelernt hat – wie genau PV- und Verbrauchsprognose den nächsten Tag treffen (gegenüber der besten Wetterquelle und „wie vor einer Woche“), welche Quellen, Korrekturen und Schatten sie nutzen, wie weit die Prognosen typisch danebenliegen, wie vorsichtig der Plan rechnet, was am Akku gemessen wurde (Kapazität, Wirkungsgrad, Eigenverbrauch, Regelverhalten) und was die Meldungen der Wechselrichter bedeuten. Was noch nicht gelernt ist, sagt, was dafür fehlt
+- **Verschattung als Bild:** Für jede Anlage mit gelerntem Schatten zeigt „Gelernt“ den Schatten nach Himmelsrichtung und Höhe, darüber die Sonnenbahn von heute, vom 21. Juni und vom 21. Dezember – dazu, wann die Anlage heute im Schatten liegt und wie viel Leistung dann fehlt
+- **Mehr auf „Gelernt“:** der Lernfortschritt der PV-Prognose Woche für Woche neben der besten Wetterquelle, die Anteile der Wetterquellen bei Sonne, wechselhaftem und trübem Wetter, die Korrektur je Uhrzeit als Kurve, die eingetragene neben der gemessenen Ausrichtung mit der Abweichung in Grad, erkannte Schneezeiten, der gelernte Tagesverlauf des Verbrauchs mit Grundlast und Temperatureinfluss sowie bei der Vorsicht des Plans, was jede Stufe beim Nachspielen gespart hätte – insgesamt und je Tag – und welche Stufe seit wann gilt
+
 ## 0.40.8
 
 - **Steuerung wiederholt fehlgeschlagene Befehle:** Schlägt ein Befehl an den Speicher fehl, versucht ENLEO-Energy ihn jede Minute erneut, bis er durchgeht – in jeder Betriebsart, auch beim Zurückschalten in den Normalbetrieb, und mit den Knöpfen, die fehlgeschlagen sind. Bisher wurde ein fehlgeschlagener Wechsel in den Normalbetrieb erst beim nächsten geplanten Wechsel wiederholt

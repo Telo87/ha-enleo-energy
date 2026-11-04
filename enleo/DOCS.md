@@ -518,6 +518,41 @@ Mindestnutzen, und sieht nach, wie viel diese Prognose versprach:
 Dazu steht, was im Nachhinein am besten gewesen wäre (z. B. „3 Std. aus dem Netz laden“). Die Ersparnis vergleicht deshalb
 nur Gerechnetes mit Gerechnetem. Solange die Steuerung im Probebetrieb läuft, ist sie ausdrücklich ein „wäre“.
 
+## Gelernt
+
+Die Seite **Gelernt** (Menü, unter Rückblick) fasst zusammen, was ENLEO-Energy aus den Messwerten dieser Installation
+gelernt hat – jeweils in einem Satz und mit dem, woran es gemessen wird. Sie ist in PV-Anlage, Verbrauch, Planung und
+Akku gegliedert:
+
+- **PV-Prognose:** wie weit die Prognose für morgen im Mittel neben der Tagessumme lag (letzte 30 Tage), verglichen mit
+  der besten einzelnen Wetterquelle; je Anlage die stärksten Quellen und trübe Stunden; dazu Live-Korrektur und
+  Viertelstunden.
+- **Lernfortschritt:** die Genauigkeit der eigenen Prognose Woche für Woche (bis zu 13 Wochen) neben der besten
+  Wetterquelle. Wächst der Vorsprung deutlicher, als die Wochen ohnehin schwanken, steht „lernt dazu“ – dasselbe Urteil
+  wie in der Prognosegüte.
+- **Wetterquellen:** je Anlage, welchen Anteil jede Quelle bei Sonne, wechselhaftem und trübem Wetter hat.
+- **Korrektur nach Tageszeit:** je Anlage als Kurve, um wie viel Prozent ENLEO-Energy die Wettermodelle zu jeder
+  Uhrzeit korrigiert, getrennt für Sonne und Wolken.
+- **Verschattung:** für jede Anlage mit gelerntem Schatten ein Bild – der Schatten nach Himmelsrichtung und Höhe, darüber
+  die Sonnenbahn von heute, vom 21. Juni und vom 21. Dezember –, dazu, wann die Anlage heute im Schatten liegt und wie
+  viel Leistung dann fehlt. Schatten wird ab 21 Tagen mit Messwerten gesucht und nur genutzt, wenn er die Prognose
+  genauer macht.
+- **Ausrichtung:** je Teilfläche die eingetragene Richtung und Neigung und – wenn die Messwerte deutlich besser zu einer
+  anderen passen – diese mit der Abweichung in Grad. Geprüft wird einmal pro Woche an klaren Stunden.
+- **Schnee:** wann in den letzten 12 Monaten Schnee auf den Modulen erkannt wurde und ob gerade welcher liegt.
+- **Verbrauchsprognose:** wie weit sie neben dem Tagesverbrauch lag, verglichen mit „wie vor einer Woche“, und welche
+  Verfeinerungen (Wochentag, Temperatur, Tagesverlauf) hier genauer gemacht haben.
+- **Tagesverlauf des Verbrauchs:** der gelernte Grundverbrauch je Stunde an Werktagen und an freien Tagen, die ruhigste
+  Stunde (Grundlast), die Spitzen und – wenn gelernt – wie viel ein Grad kälter am Tag ausmacht.
+- **Wie sicher die Prognosen sind:** die typische Abweichung über ein paar Stunden, mit der der Plan prüft.
+- **Vorsicht beim Planen:** die gelernte Stufe, was jede Stufe beim Nachspielen der letzten 14 Tage gegenüber dem Akku
+  allein gespart hätte, dasselbe je Tag als Balken und welche Stufe seit wann gilt.
+- **Akku:** gemessene Kapazität, Wirkungsgrad, Eigenverbrauch des Speichers und Regelverhalten.
+- **Wechselrichter:** was die Meldungen bedeuten (nur mit Status-Sensor).
+
+Was noch nicht gelernt ist, sagt, was dafür fehlt. Gelerntes nutzt ENLEO-Energy nur, wenn es nachweislich genauer ist
+als ohne.
+
 ## Prognosegüte
 
 *Zu finden unter **Auswertung** – die vier Reiter Prognosegüte, Plan gegen Messung, Ersparnis und Kosten stehen dort unter der Kopfzeile.*
