@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.41.1
+
+- **Speicher lehnt einen Wert ab:** Gehen die anderen Aktionen einer Betriebsart durch und weist der Speicher nur einen Wert auch beim zweiten Versuch zurück (z. B. eine Reserve, die er so nicht annimmt), sendet ENLEO-Energy ihn nicht mehr jede Minute neu. Der Akku läuft bis zum Ende des Planschritts im Normalbetrieb, danach wird es wieder versucht. Das steht einmal im Protokoll, auf der Seite Steuerung und in der Systemprüfung und wird einmal gemeldet; für die Ersparnis zählt die Zeit als Normalbetrieb
+- **Gesendeter Wert im Fehler:** Protokoll, Systemprüfung und Nachrichten nennen bei einem fehlgeschlagenen Befehl den Wert, der gesendet wurde
+- **Systemprüfung zählt Schaltungen, nicht Versuche:** Eine Schaltung, die jede Minute erneut versucht wurde, zählt als ein Fehler, mit der Zahl der Versuche. „Protokoll ansehen“ öffnet das Protokoll der Schaltungen
+- **Erst gemeldet, wenn auch der zweite Versuch scheitert:** Ein Befehl, der eine Minute später durchgeht, löst keine Nachricht mehr aus
+- Lange Entitätsnamen in Fehlertexten brechen auf dem Handy um, statt die Seite zu verbreitern
+
 ## 0.41.0
 
 - **Neue Seite „Gelernt“:** zeigt an einem Ort, was ENLEO-Energy aus den Messwerten der Installation gelernt hat – wie genau PV- und Verbrauchsprognose den nächsten Tag treffen (gegenüber der besten Wetterquelle und „wie vor einer Woche“), welche Quellen, Korrekturen und Schatten sie nutzen, wie weit die Prognosen typisch danebenliegen, wie vorsichtig der Plan rechnet, was am Akku gemessen wurde (Kapazität, Wirkungsgrad, Eigenverbrauch, Regelverhalten) und was die Meldungen der Wechselrichter bedeuten. Was noch nicht gelernt ist, sagt, was dafür fehlt
