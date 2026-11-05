@@ -743,6 +743,12 @@ Mit **Akku automatisch nach Plan schalten** übernimmt ENLEO-Energy:
   im **Normalbetrieb**; der nächste Schritt versucht es wieder. Das steht einmal im Protokoll („abgelehnt“), auf der
   Seite Steuerung und in der Systemprüfung (gelb) und wird gemeldet; für die Ersparnis zählt diese Zeit als
   Normalbetrieb. Ist die Entität dagegen nicht erreichbar, bleibt es beim Wiederholen jede Minute.
+- **Abgelehnte Werte lernt ENLEO-Energy** aus den Antworten des Speichers, je Entität und Wert – eine Grenze wird nicht
+  angenommen (ein Speicher kann z. B. 0 und 8 annehmen, aber nichts dazwischen). Kommt ein abgelehnter Wert wieder vor
+  oder einer zwischen zwei abgelehnten, ohne dass dazwischen einer angenommen wurde, schaltet ENLEO-Energy die
+  Betriebsart gar nicht erst: Der Planschritt läuft gleich im Normalbetrieb, im Protokoll als „ausgelassen“, ohne Fehler
+  und ohne Nachricht. Werte daneben werden ausprobiert; gemeldet wird nur die erste Ablehnung einer Entität. Eine Woche
+  nach der Ablehnung wird ein Wert einmal neu versucht. Die Systemprüfung zeigt, welche Werte gerade als abgelehnt gelten.
 - Die Betriebsart steht fest, sobald der Schritt beginnt. Rechnet der Plan zwischendurch neu (alle 5 Minuten), wird
   erst zum nächsten Schritt umgeschaltet – der Speicher springt nicht hin und her.
 - Ist beim Laden der geplante Zielladestand erreicht, wird bis zum Ende des Schritts gehalten.

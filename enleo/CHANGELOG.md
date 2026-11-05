@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.41.2
+
+- **Abgelehnte Werte werden gelernt:** ENLEO-Energy merkt sich, welche Werte der Speicher abgelehnt und welche er angenommen hat – je Entität, ohne eine Grenze anzunehmen. Kommt ein abgelehnter Wert wieder vor (oder einer zwischen zwei abgelehnten), wird die Betriebsart gar nicht erst geschaltet: Der Akku läuft in diesem Planschritt gleich im Normalbetrieb, das Protokoll zeigt „ausgelassen“ mit dem Grund, es gibt keinen Fehler und keine Nachricht. Werte daneben werden ausprobiert; gemeldet wird nur die erste Ablehnung. Eine Woche nach der Ablehnung wird ein Wert einmal neu versucht – etwa wenn ein Update des Speichers ihn zulässt. Die Systemprüfung listet die abgelehnten Werte
+
 ## 0.41.1
 
 - **Speicher lehnt einen Wert ab:** Gehen die anderen Aktionen einer Betriebsart durch und weist der Speicher nur einen Wert auch beim zweiten Versuch zurück (z. B. eine Reserve, die er so nicht annimmt), sendet ENLEO-Energy ihn nicht mehr jede Minute neu. Der Akku läuft bis zum Ende des Planschritts im Normalbetrieb, danach wird es wieder versucht. Das steht einmal im Protokoll, auf der Seite Steuerung und in der Systemprüfung und wird einmal gemeldet; für die Ersparnis zählt die Zeit als Normalbetrieb
